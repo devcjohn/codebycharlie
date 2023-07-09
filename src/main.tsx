@@ -6,7 +6,7 @@ import * as Sentry from '@sentry/react'
 import { FallbackComponent } from './components/fallbackComponent.tsx'
 
 Sentry.init({
-  dsn: 'https://0fd3db01e90a4a679c3ad81433de9676@o4505484319129600.ingest.sentry.io/4505484326076416',
+  dsn: process.env.SENTRY_DSN,
   integrations: [
     new Sentry.BrowserTracing({
       // Set `tracePropagationTargets` to control for which URLs distributed tracing should be enabled
