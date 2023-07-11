@@ -68,8 +68,8 @@ export const Wordle = () => {
       currentBoard: Board,
       rowIndex: number,
       columnIndex: number,
-      newValue?: string,
-      newResult?: GuessResult
+      newValue?: string | null, //undefined: do not set. null: clear the square
+      newResult?: GuessResult | null //undefined: do not set. null: clear the square
     ) => {
       const newBoard = [...currentBoard]
 
@@ -105,21 +105,23 @@ export const Wordle = () => {
       return turn === ROWS - 1
     }
 
+    // Main Gameplay loop
     const handleKeyDown = (event: KeyboardEvent) => {
       const answerArray = answer.split('')
 
       const pressedKey: string = event.key
+      if (!isAlpha(pressedKey) || pressedKey.length > 2) {
+        return // Ignore bad input
+      }
       if (pressedKey === 'Backspace') {
-        if (activeSquare > 0) {
-          return
-        } else {
-          // Handle backspace
-          //setActiveSquare((as) => as - 1)
+        if (activeSquare === 0) {
+          // Cannot delete if on first square in row
           return
         }
-      }
-      if (pressedKey.length > 2) {
-        // Ignore unusual key presses
+        // Handle backspace
+        const newBoard = updateSquare(board, turn, activeSquare - 1, null)
+        setBoard(newBoard)
+        setActiveSquare((as) => as - 1)
         return
       }
       let newBoard = updateSquare(board, turn, activeSquare, pressedKey)

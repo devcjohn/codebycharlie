@@ -10,6 +10,6 @@ module.exports = {
   plugins: ['react-refresh'],
   rules: {
     'react-refresh/only-export-components': 'warn',
-    'no-shadow': ['error', { hoist: 'all' }],
+    'no-shadow': ['error', { hoist: 'never' }],
   },
 }
