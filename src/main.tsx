@@ -4,9 +4,24 @@ import App from './App.tsx'
 import './index.css'
 import * as Sentry from '@sentry/react'
 import { FallbackComponent } from './components/fallbackComponent.tsx'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { Wordle } from './wordle.tsx'
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />,
+    errorElement: <FallbackComponent />,
+  },
+  {
+    path: '/wordle',
+    element: <Wordle />,
+    errorElement: <FallbackComponent />,
+  },
+])
 
 Sentry.init({
-  dsn: process.env.SENTRY_DSN,
+  dsn: import.meta.env.SENTRY_DSN,
   integrations: [
     new Sentry.BrowserTracing({
       // Set `tracePropagationTargets` to control for which URLs distributed tracing should be enabled
@@ -37,7 +52,7 @@ Sentry.init({
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Sentry.ErrorBoundary fallback={FallbackComponent} showDialog>
-      <App />
+      <RouterProvider router={router} />
     </Sentry.ErrorBoundary>
   </React.StrictMode>
 )

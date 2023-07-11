@@ -10,10 +10,10 @@ export default defineConfig({
     react(),
 
     // Put the Sentry vite plugin after all other plugins
-    sentryVitePlugin({
-      authToken: process.env.SENTRY_AUTH_TOKEN,
-      org: 'letitrip-zz',
-      project: 'javascript-react',
-    }),
+    // sentryVitePlugin({
+    //   authToken: process.env.SENTRY_AUTH_TOKEN,
+    //   org: 'letitrip-zz',
+    //   project: 'javascript-react',
+    // }),
   ],
 })
