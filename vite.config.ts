@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import { sentryVitePlugin } from '@sentry/vite-plugin'
+import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
   build: {
@@ -16,4 +17,7 @@ export default defineConfig({
     //   project: 'javascript-react',
     // }),
   ],
+  test: {
+    environment: 'jsdom',
+  },
 })

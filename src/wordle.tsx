@@ -1,12 +1,13 @@
 import { useState, useEffect, useRef } from 'react'
 import { faker } from '@faker-js/faker'
+import { loadChecker, checkWord } from '../src/dictionary/wordChecker'
 
 //todo:
-// support backspace
 // show answer when game is over
 // show win/loss message
 // when game over, don't allow more letters to be entered
 // support hard mode
+// Delete correctly in all cases
 
 export const Wordle = () => {
   const inputRef = useRef() as any
@@ -16,6 +17,10 @@ export const Wordle = () => {
       inputRef.current.focus()
     }
   }, [])
+
+  useEffect(() => {
+    loadChecker()
+  })
 
   const getEmptyBoard = () => {
     const res = new Array(ROWS).fill(
@@ -43,6 +48,8 @@ export const Wordle = () => {
   const [activeSquare, setActiveSquare] = useState(0)
   const [board, setBoard] = useState<Board>(getEmptyBoard())
   const [answer, setAnswer] = useState<string>(getRandomWord())
+
+  console.log({ activeSquare })
 
   const reset = () => {
     setTurn(0)
@@ -110,19 +117,30 @@ export const Wordle = () => {
       const answerArray = answer.split('')
 
       const pressedKey: string = event.key
-      if (!isAlpha(pressedKey) || pressedKey.length > 2) {
+      const isAlphabetic = isAlpha(pressedKey)
+      const isDelete = pressedKey === 'Backspace' || pressedKey === 'Delete'
+      console.log({ isAlphabetic, isDelete })
+      if (!isAlphabetic) {
         return // Ignore bad input
       }
-      if (pressedKey === 'Backspace') {
+      if (isDelete) {
         if (activeSquare === 0) {
           // Cannot delete if on first square in row
           return
         }
-        // Handle backspace
-        const newBoard = updateSquare(board, turn, activeSquare - 1, null)
-        setBoard(newBoard)
-        setActiveSquare((as) => as - 1)
-        return
+        if (activeSquare === COLS - 1) {
+          //Handle delete at end of row
+          const newBoard = updateSquare(board, turn, COLS - 1, null)
+          setBoard(newBoard)
+          //setActiveSquare((as) => as - 1)
+          return
+        } else {
+          //Handle delete in middle of row
+          const newBoard = updateSquare(board, turn, activeSquare - 1, null)
+          setBoard(newBoard)
+          setActiveSquare((as) => as - 1)
+          return
+        }
       }
       let newBoard = updateSquare(board, turn, activeSquare, pressedKey)
 
@@ -132,23 +150,32 @@ export const Wordle = () => {
         setActiveSquare((as) => as + 1)
       } else {
         // at end of row
-        // Grade the last row
-        for (let i = 0; i < COLS; i++) {
-          const userLetter: string = newBoard[turn][i].value as string
-          const answerLetter = answerArray[i]
 
-          let res: GuessResult
-          if (userLetter === answerLetter) {
-            // CORRECT
-            res = 'CORRECT'
-          } else if (answerArray.includes(userLetter)) {
-            // MISPLACED
-            res = 'MISPLACED'
-          } else {
-            // INCORRECT
-            res = 'INCORRECT'
+        const userWord = newBoard[turn].map((square) => square.value).join('')
+        const checkResult = checkWord(userWord)
+        console.log({ checkResult })
+        if (!checkResult) {
+          // Invalid word
+          console.log('invalid word')
+        } else {
+          // Grade the last row
+          for (let i = 0; i < COLS; i++) {
+            const userLetter: string = newBoard[turn][i].value as string
+            const answerLetter = answerArray[i]
+
+            let res: GuessResult
+            if (userLetter === answerLetter) {
+              // CORRECT
+              res = 'CORRECT'
+            } else if (answerArray.includes(userLetter)) {
+              // MISPLACED
+              res = 'MISPLACED'
+            } else {
+              // INCORRECT
+              res = 'INCORRECT'
+            }
+            newBoard = updateSquare(newBoard, turn, i, undefined, res)
           }
-          newBoard = updateSquare(newBoard, turn, i, undefined, res)
         }
         setBoard(newBoard)
 
@@ -161,9 +188,11 @@ export const Wordle = () => {
           return
         }
 
-        // Proceed to the next turn
-        setTurn((t) => t + 1)
-        setActiveSquare(0)
+        // Proceed to the next turn if word is valid
+        if (checkResult) {
+          setTurn((t) => t + 1)
+          setActiveSquare(0)
+        }
       }
     }
 
