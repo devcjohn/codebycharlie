@@ -3,11 +3,11 @@ import { faker } from '@faker-js/faker'
 import { loadChecker, checkWord } from '../src/dictionary/wordChecker'
 
 //todo:
-// show answer when game is over
 // show win/loss message
-// when game over, don't allow more letters to be entered
+// Shake on incorrect (maybe message too)
+// when game is over, don't allow more letters to be entered
 // support hard mode
-// Delete correctly in all cases
+// Show keyboard
 
 export const Wordle = () => {
   const inputRef = useRef() as any
@@ -48,8 +48,6 @@ export const Wordle = () => {
   const [activeSquare, setActiveSquare] = useState(0)
   const [board, setBoard] = useState<Board>(getEmptyBoard())
   const [answer, setAnswer] = useState<string>(getRandomWord())
-
-  console.log({ activeSquare })
 
   const reset = () => {
     setTurn(0)
@@ -117,22 +115,23 @@ export const Wordle = () => {
       const answerArray = answer.split('')
 
       const pressedKey: string = event.key
-      const isAlphabetic = isAlpha(pressedKey)
       const isDelete = pressedKey === 'Backspace' || pressedKey === 'Delete'
-      console.log({ isAlphabetic, isDelete })
-      if (!isAlphabetic) {
-        return // Ignore bad input
-      }
       if (isDelete) {
         if (activeSquare === 0) {
           // Cannot delete if on first square in row
           return
         }
-        if (activeSquare === COLS - 1) {
-          //Handle delete at end of row
-          const newBoard = updateSquare(board, turn, COLS - 1, null)
+        if (activeSquare === COLS - 1 && !board[turn][activeSquare].value) {
+          //Handle delete at end of row when last character is empty
+          const newBoard = updateSquare(board, turn, activeSquare - 1, null)
           setBoard(newBoard)
-          //setActiveSquare((as) => as - 1)
+          setActiveSquare((as) => as - 1)
+          return
+        }
+        if (activeSquare === COLS - 1) {
+          //Handle delete at end of row when last character is filled
+          const newBoard = updateSquare(board, turn, activeSquare, null)
+          setBoard(newBoard)
           return
         } else {
           //Handle delete in middle of row
@@ -142,7 +141,13 @@ export const Wordle = () => {
           return
         }
       }
-      let newBoard = updateSquare(board, turn, activeSquare, pressedKey)
+      const isAlphabetic = isAlpha(pressedKey)
+      if (!isAlphabetic || pressedKey.length > 1) {
+        return // Ignore nonalphabetic input
+      }
+
+      const enteredLetter = pressedKey.toUpperCase()
+      let newBoard = updateSquare(board, turn, activeSquare, enteredLetter)
 
       if (activeSquare !== COLS - 1) {
         //Not at end of row
@@ -153,10 +158,9 @@ export const Wordle = () => {
 
         const userWord = newBoard[turn].map((square) => square.value).join('')
         const checkResult = checkWord(userWord)
-        console.log({ checkResult })
         if (!checkResult) {
           // Invalid word
-          console.log('invalid word')
+          console.log('Invalid word.')
         } else {
           // Grade the last row
           for (let i = 0; i < COLS; i++) {
@@ -180,11 +184,11 @@ export const Wordle = () => {
         setBoard(newBoard)
 
         if (isLost(newBoard)) {
-          console.log('you lost!')
+          console.log('You lost!')
           return
         }
         if (isWon(newBoard)) {
-          console.log('you won!')
+          console.log('You won!')
           return
         }
 
@@ -218,12 +222,20 @@ export const Wordle = () => {
     }
   }
 
+  const getBorderClass = (isActive: boolean) => {
+    // If square is active, show with a border
+    return isActive ? 'border-8 border-black' : ''
+  }
+
   const renderRow = (row: Row, colIndex: number) =>
     row.map((square, rowIndex) => {
+      const isSquareActive = colIndex === turn && rowIndex === activeSquare
       return (
         <span
           key={`${colIndex}-${rowIndex}`}
+          data-testid={`square-${colIndex}-${rowIndex}`}
           className={` ${getSquareColorClass(square)} 
+            ${getBorderClass(isSquareActive)}
             text-white 
             p-1 m-1 
             flex items-center justify-center 
@@ -251,9 +263,9 @@ export const Wordle = () => {
   return (
     <>
       <div className="text-5xl p-5 m-5 min-w-full min-h-full flex flex-col items-center justify-center">
+        <div>Popular Word Game</div>
         <div>Word Length (Columns): {COLS}</div>
         <div>Guesses (Rows): {ROWS}</div>
-        <div>Turn: {turn + 1}</div>
         <div className="">{renderBoard()}</div>
         <button onClick={() => reset()}>RESET</button>
       </div>

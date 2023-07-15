@@ -10,7 +10,6 @@ async function load() {
   const dic = await fetch('/src/dictionary/index.dic').then((response) => {
     return response.text()
   })
-  console.log({ aff, dic })
   spell = nspell(aff, dic)
 }
 
