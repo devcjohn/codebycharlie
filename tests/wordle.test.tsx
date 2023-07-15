@@ -3,15 +3,9 @@ import userEvent from '@testing-library/user-event'
 import { Wordle } from '../src/wordle'
 import React from 'react'
 import { describe, expect, afterEach, it, vi } from 'vitest'
-import * as wordChecker from '../src/dictionary/wordChecker'
+import * as wordLib from '../src/dictionary/wordLib'
 
-/* These must be mocked because wordChecker loads files from the file system
-  That is not supported in vitest and other node-based testing frameworks
-*/
-const spyCheckWord = vi.spyOn(wordChecker, 'checkWord')
-const spyLoad = vi.spyOn(wordChecker, 'loadChecker')
-spyLoad.mockImplementation(() => true)
-spyCheckWord.mockImplementation(() => true)
+const spyGenerateWord = vi.spyOn(wordLib, 'getRandomWord')
 
 // setup function.  Allows us to use user.keyboard to simlate keystrokes, which is really nice
 function setup(jsx) {
@@ -32,7 +26,7 @@ describe('Wordle', () => {
 
     expect(screen.getByText(/Popular Word Game/i)).toBeTruthy()
 
-    // Get all empty squares
+    // All squares are empty ('_')
     const emptySquares = screen.getAllByText(/_/i)
     expect(emptySquares.length).toBe(30)
   })
@@ -55,6 +49,8 @@ describe('Wordle', () => {
   it('ignores input that is nonalphabetic (other than delete)', async () => {
     const { user } = setup(<Wordle />)
 
+    // None of these inputs do anything
+
     await user.keyboard('{control}')
     expect((await screen.findByTestId('square-0-0')).textContent).toBe('_')
 
@@ -68,6 +64,12 @@ describe('Wordle', () => {
     expect((await screen.findByTestId('square-0-0')).textContent).toBe('_')
 
     await user.keyboard('{Meta}')
+    expect((await screen.findByTestId('square-0-0')).textContent).toBe('_')
+
+    await user.keyboard('{Enter}')
+    expect((await screen.findByTestId('square-0-0')).textContent).toBe('_')
+
+    await user.keyboard('0')
     expect((await screen.findByTestId('square-0-0')).textContent).toBe('_')
   })
 
@@ -84,7 +86,7 @@ describe('Wordle', () => {
     const emptySquares = screen.getAllByText(/_/i)
     expect(emptySquares.length).toBe(26)
 
-    // Now the first square is 'A'
+    // Squares are filled with the user's input
     const filledSquare = await screen.findByTestId('square-0-0')
     expect(filledSquare.textContent).toBe('A')
 
@@ -131,7 +133,7 @@ describe('Wordle', () => {
 
     expect((await screen.findByTestId('square-0-3')).textContent).toBe('D')
 
-    // User hits 4 times
+    // User hits backspace 4 times
     await user.keyboard('{backspace}')
     expect((await screen.findByTestId('square-0-3')).textContent).toBe('_')
 
@@ -146,12 +148,9 @@ describe('Wordle', () => {
   })
 
   it('allows user to delete characters at the end of a row ', async () => {
-    // Simluate an invalid word
-    spyCheckWord.mockImplementation(() => false)
-
     const { user } = setup(<Wordle />)
 
-    // User enters 'abcde'
+    // User enters 'abcde', an invalid word
     await user.keyboard('a')
     await user.keyboard('b')
     await user.keyboard('c')
@@ -180,6 +179,7 @@ describe('Wordle', () => {
     ).toBe(true)
     expect((await screen.findByTestId('square-0-3')).textContent).toBe('_')
 
+    // Simulate user deleting remaining squares
     await user.keyboard('{backspace}')
     expect((await screen.findByTestId('square-0-2')).textContent).toBe('_')
 
@@ -193,5 +193,91 @@ describe('Wordle', () => {
     expect(
       (await screen.findByTestId('square-0-0')).classList.contains('border-8')
     ).toBe(true)
+  })
+
+  it('resets the board when reset button is clicked', async () => {
+    const { user } = setup(<Wordle />)
+
+    // User enters 'abcd'
+    await user.keyboard('a')
+    await user.keyboard('b')
+    await user.keyboard('c')
+    await user.keyboard('d')
+
+    const resetButton = screen.getByText(/reset/i)
+    await userEvent.click(resetButton)
+
+    const emptySquares = screen.getAllByText(/_/i)
+    expect(emptySquares.length).toBe(30)
+  })
+
+  it('shows loss message when game is lost', async () => {
+    // Mock out the correct answer to be 'RIGHT'
+    spyGenerateWord.mockImplementation(() => 'RIGHT')
+
+    const { user } = setup(<Wordle />)
+
+    // User fills up each row with 'wrong' (a real word, but not the answer)
+    for (let i = 0; i < 6; i++) {
+      await user.keyboard('w')
+      await user.keyboard('r')
+      await user.keyboard('o')
+      await user.keyboard('n')
+      await user.keyboard('g')
+    }
+
+    // User has run out of guesses
+    expect(await screen.findByText(/You Lost!/i)).toBeTruthy()
+  })
+
+  it('shows win message when game is won', async () => {
+    // Mock out the correct answer to be 'RIGHT'
+    spyGenerateWord.mockImplementation(() => 'RIGHT')
+
+    const { user } = setup(<Wordle />)
+
+    await user.keyboard('RIGHT')
+
+    expect(screen.getByText(/You Won!/i)).toBeTruthy()
+  })
+
+  describe('Grading', () => {
+    it('Colors squares based on correctness', async () => {
+      // Mock out the correct answer to be 'RIGHT'
+      spyGenerateWord.mockImplementation(() => 'RIGHT')
+
+      const { user } = setup(<Wordle />)
+
+      await user.keyboard('raggy')
+
+      // The first and third squares are green because they matche the answer.
+      // The 4th square is yellow because it is in the answer but in the wrong place.
+      // The other squares are gray because they are not in the answer.
+      expect(
+        (await screen.findByTestId('square-0-0')).classList.contains(
+          'bg-green-500'
+        )
+      ).toBe(true)
+      expect(
+        (await screen.findByTestId('square-0-1')).classList.contains(
+          'bg-gray-500'
+        )
+      ).toBe(true)
+      expect(
+        (await screen.findByTestId('square-0-2')).classList.contains(
+          'bg-green-500'
+        )
+      ).toBe(true)
+      expect(
+        (await screen.findByTestId('square-0-3')).classList.contains(
+          'bg-yellow-500'
+        )
+      ).toBe(true)
+      expect(
+        (await screen.findByTestId('square-0-4')).classList.contains(
+          'bg-gray-500'
+        )
+      ).toBe(true)
+    })
   })
 })

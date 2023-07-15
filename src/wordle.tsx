@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { faker } from '@faker-js/faker'
-import { loadChecker, checkWord } from '../src/dictionary/wordChecker'
+import { checkIsWordReal, getRandomWord } from './dictionary/wordLib'
 
 //todo:
 // show win/loss message
@@ -18,10 +17,6 @@ export const Wordle = () => {
     }
   }, [])
 
-  useEffect(() => {
-    loadChecker()
-  })
-
   const getEmptyBoard = () => {
     const res = new Array(ROWS).fill(
       new Array(COLS).fill({ value: null, result: null })
@@ -33,27 +28,22 @@ export const Wordle = () => {
     return /^[A-Z]+$/i.test(str)
   }
 
-  const getRandomWord = (): string => {
-    const candidateWord = faker.word.sample(5)
-    if (!isAlpha(candidateWord)) {
-      console.log(`Rejecting ${candidateWord} because it is not alphabetic`)
-      return getRandomWord()
-    }
-    return candidateWord
-  }
-
   const [COLS] = useState(5)
   const [ROWS] = useState(6)
   const [turn, setTurn] = useState(0)
   const [activeSquare, setActiveSquare] = useState(0)
   const [board, setBoard] = useState<Board>(getEmptyBoard())
-  const [answer, setAnswer] = useState<string>(getRandomWord())
+  const [answer, setAnswer] = useState<string>(() => getRandomWord())
+  const [gameState, setGameState] = useState<'IN_PROGRESS' | 'WON' | 'LOST'>(
+    'IN_PROGRESS'
+  )
 
   const reset = () => {
     setTurn(0)
     setActiveSquare(0)
     setBoard(getEmptyBoard())
     setAnswer(getRandomWord())
+    setGameState('IN_PROGRESS')
   }
 
   type GuessResult = 'CORRECT' | 'INCORRECT' | 'MISPLACED'
@@ -157,12 +147,11 @@ export const Wordle = () => {
         // at end of row
 
         const userWord = newBoard[turn].map((square) => square.value).join('')
-        const checkResult = checkWord(userWord)
+        const checkResult = checkIsWordReal(userWord)
         if (!checkResult) {
-          // Invalid word
-          console.log('Invalid word.')
+          // Invalid word.  Do not grade row.
         } else {
-          // Grade the last row
+          // Word is valid. Grade the row
           for (let i = 0; i < COLS; i++) {
             const userLetter: string = newBoard[turn][i].value as string
             const answerLetter = answerArray[i]
@@ -184,11 +173,11 @@ export const Wordle = () => {
         setBoard(newBoard)
 
         if (isLost(newBoard)) {
-          console.log('You lost!')
+          setGameState('LOST')
           return
         }
         if (isWon(newBoard)) {
-          console.log('You won!')
+          setGameState('WON')
           return
         }
 
@@ -264,9 +253,15 @@ export const Wordle = () => {
     <>
       <div className="text-5xl p-5 m-5 min-w-full min-h-full flex flex-col items-center justify-center">
         <div>Popular Word Game</div>
-        <div>Word Length (Columns): {COLS}</div>
-        <div>Guesses (Rows): {ROWS}</div>
         <div className="">{renderBoard()}</div>
+
+        {gameState === 'WON' && <div className="m-5 p-5">You Won!</div>}
+        {gameState === 'LOST' && (
+          <div className="m-5 p-5">You Lost! The answer was {answer}.</div>
+        )}
+        {(gameState === 'WON' || gameState === 'LOST') && (
+          <p className="m-5 p-5"> Click reset to play again</p>
+        )}
         <button onClick={() => reset()}>RESET</button>
       </div>
     </>
