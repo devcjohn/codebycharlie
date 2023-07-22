@@ -5,7 +5,7 @@ import './index.css'
 import * as Sentry from '@sentry/react'
 import { FallbackComponent } from './components/fallbackComponent.tsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { Wordle } from './wordle.tsx'
+import { WordGame } from './wordGame.tsx'
 
 const router = createBrowserRouter([
   {
@@ -14,8 +14,8 @@ const router = createBrowserRouter([
     errorElement: <FallbackComponent />,
   },
   {
-    path: '/wordle',
-    element: <Wordle />,
+    path: '/wordgame',
+    element: <WordGame />,
     errorElement: <FallbackComponent />,
   },
 ])

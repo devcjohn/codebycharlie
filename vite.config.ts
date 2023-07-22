@@ -2,6 +2,8 @@ import react from '@vitejs/plugin-react-swc'
 import { sentryVitePlugin } from '@sentry/vite-plugin'
 import { defineConfig } from 'vitest/config'
 
+const isProduction = process.env.NODE_ENV === 'production'
+
 export default defineConfig({
   build: {
     sourcemap: true,
@@ -10,11 +12,17 @@ export default defineConfig({
     react(),
 
     // Put the Sentry vite plugin after all other plugins
-    // sentryVitePlugin({
-    //   authToken: process.env.SENTRY_AUTH_TOKEN,
-    //   org: 'letitrip-zz',
-    //   project: 'javascript-react',
-    // }),
+    // Sentry messes up hot reloading, so we only want to use it in production
+    // Most of what we want to log with Sentry will likely happen in prod anyway
+    ...(isProduction
+      ? [
+          sentryVitePlugin({
+            authToken: process.env.SENTRY_AUTH_TOKEN,
+            org: 'letitrip-zz',
+            project: 'javascript-react',
+          }),
+        ]
+      : []),
   ],
   test: {
     environment: 'jsdom',

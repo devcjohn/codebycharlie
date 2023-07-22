@@ -8,8 +8,8 @@ import { checkIsWordReal, getRandomWord } from './dictionary/wordLib'
 // support hard mode
 // Show keyboard
 
-export const Wordle = () => {
-  const inputRef = useRef() as any
+export const WordGame = () => {
+  const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     if (inputRef?.current) {

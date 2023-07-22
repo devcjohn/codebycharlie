@@ -1,6 +1,6 @@
 import { render, cleanup, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { Wordle } from '../src/wordle'
+import { WordGame } from '../src/wordGame'
 import React from 'react'
 import { describe, expect, afterEach, it, vi } from 'vitest'
 import * as wordLib from '../src/dictionary/wordLib'
@@ -20,9 +20,9 @@ afterEach(() => {
   cleanup()
 })
 
-describe('Wordle', () => {
+describe('Word Game', () => {
   it('renders the empty board', () => {
-    render(<Wordle />)
+    render(<WordGame />)
 
     expect(screen.getByText(/Popular Word Game/i)).toBeTruthy()
 
@@ -32,7 +32,7 @@ describe('Wordle', () => {
   })
 
   it('allows user to enter a letter', async () => {
-    const { user } = setup(<Wordle />)
+    const { user } = setup(<WordGame />)
 
     // User enters 'A'
     await user.keyboard('a')
@@ -47,7 +47,7 @@ describe('Wordle', () => {
   })
 
   it('ignores input that is nonalphabetic (other than delete)', async () => {
-    const { user } = setup(<Wordle />)
+    const { user } = setup(<WordGame />)
 
     // None of these inputs do anything
 
@@ -74,7 +74,7 @@ describe('Wordle', () => {
   })
 
   it('allows user to enter 4 letters', async () => {
-    const { user } = setup(<Wordle />)
+    const { user } = setup(<WordGame />)
 
     // User enters 'abcd'
     await user.keyboard('a')
@@ -101,7 +101,7 @@ describe('Wordle', () => {
   })
 
   it('allows user to delete a character at the beginning of the row', async () => {
-    const { user } = setup(<Wordle />)
+    const { user } = setup(<WordGame />)
 
     // User enters 'A'
     await user.keyboard('a')
@@ -123,7 +123,7 @@ describe('Wordle', () => {
   })
 
   it('allows user to delete characters in the middle of the row', async () => {
-    const { user } = setup(<Wordle />)
+    const { user } = setup(<WordGame />)
 
     // User enters 'abcd'
     await user.keyboard('a')
@@ -148,7 +148,7 @@ describe('Wordle', () => {
   })
 
   it('allows user to delete characters at the end of a row ', async () => {
-    const { user } = setup(<Wordle />)
+    const { user } = setup(<WordGame />)
 
     // User enters 'abcde', an invalid word
     await user.keyboard('a')
@@ -196,7 +196,7 @@ describe('Wordle', () => {
   })
 
   it('resets the board when reset button is clicked', async () => {
-    const { user } = setup(<Wordle />)
+    const { user } = setup(<WordGame />)
 
     // User enters 'abcd'
     await user.keyboard('a')
@@ -215,7 +215,7 @@ describe('Wordle', () => {
     // Mock out the correct answer to be 'RIGHT'
     spyGenerateWord.mockImplementation(() => 'RIGHT')
 
-    const { user } = setup(<Wordle />)
+    const { user } = setup(<WordGame />)
 
     // User fills up each row with 'wrong' (a real word, but not the answer)
     for (let i = 0; i < 6; i++) {
@@ -234,7 +234,7 @@ describe('Wordle', () => {
     // Mock out the correct answer to be 'RIGHT'
     spyGenerateWord.mockImplementation(() => 'RIGHT')
 
-    const { user } = setup(<Wordle />)
+    const { user } = setup(<WordGame />)
 
     await user.keyboard('RIGHT')
 
@@ -246,7 +246,7 @@ describe('Wordle', () => {
       // Mock out the correct answer to be 'RIGHT'
       spyGenerateWord.mockImplementation(() => 'RIGHT')
 
-      const { user } = setup(<Wordle />)
+      const { user } = setup(<WordGame />)
 
       await user.keyboard('raggy')
 
