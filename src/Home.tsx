@@ -2,7 +2,6 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import FormFillDemo from './components/FormFillDemo'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -29,7 +28,6 @@ function App() {
       </p>
       <div className="text-3xl">Hello</div>
       <div className="text-xl">Hi</div>
-      return{' '}
       <button
         onClick={() => {
           throw new Error('oops')
@@ -37,7 +35,6 @@ function App() {
       >
         Break the world
       </button>
-      <FormFillDemo />
     </>
   )
 }

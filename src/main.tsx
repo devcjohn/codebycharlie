@@ -1,52 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './Home.tsx'
 import './index.css'
 import * as Sentry from '@sentry/react'
 import { FallbackComponent } from './components/FallbackComponent.tsx'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { WordGame } from './WordGame.tsx'
-import { About } from './About.tsx'
-import { Helmet, HelmetProvider } from 'react-helmet-async'
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: (
-      <>
-        <Helmet>
-          <title>Home</title>
-        </Helmet>
-        <App />
-      </>
-    ),
-    errorElement: <FallbackComponent />,
-  },
-  {
-    path: '/wordgame',
-    element: (
-      <>
-        <Helmet>
-          <title>Word Game</title>
-        </Helmet>
-        <WordGame />
-      </>
-    ),
-    errorElement: <FallbackComponent />,
-  },
-  {
-    path: '/about',
-    element: (
-      <>
-        <Helmet>
-          <title>About</title>
-        </Helmet>
-        <About />
-      </>
-    ),
-    errorElement: <FallbackComponent />,
-  },
-])
+import { RouterProvider } from 'react-router-dom'
+import { HelmetProvider } from 'react-helmet-async'
+import { router } from './Router.tsx'
 
 Sentry.init({
   dsn: import.meta.env.SENTRY_DSN,

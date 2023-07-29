@@ -1,14 +1,13 @@
 import { render, cleanup, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { WordGame } from '../src/WordGame'
-import React from 'react'
 import { describe, expect, afterEach, it, vi } from 'vitest'
 import * as wordLib from '../src/dictionary/wordLib'
 
 const spyGenerateWord = vi.spyOn(wordLib, 'getRandomWord')
 
 // setup function.  Allows us to use user.keyboard to simlate keystrokes, which is really nice
-function setup(jsx) {
+function setup(jsx: JSX.Element) {
   return {
     user: userEvent.setup(),
     // See https://testing-library.com/docs/dom-testing-library/install#wrappers
