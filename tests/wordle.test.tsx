@@ -1,6 +1,6 @@
 import { render, cleanup, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { WordGame } from '../src/wordGame'
+import { WordGame } from '../src/WordGame'
 import React from 'react'
 import { describe, expect, afterEach, it, vi } from 'vitest'
 import * as wordLib from '../src/dictionary/wordLib'

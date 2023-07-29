@@ -1,21 +1,49 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
+import App from './Home.tsx'
 import './index.css'
 import * as Sentry from '@sentry/react'
-import { FallbackComponent } from './components/fallbackComponent.tsx'
+import { FallbackComponent } from './components/FallbackComponent.tsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { WordGame } from './wordGame.tsx'
+import { WordGame } from './WordGame.tsx'
+import { About } from './About.tsx'
+import { Helmet, HelmetProvider } from 'react-helmet-async'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: (
+      <>
+        <Helmet>
+          <title>Home</title>
+        </Helmet>
+        <App />
+      </>
+    ),
     errorElement: <FallbackComponent />,
   },
   {
     path: '/wordgame',
-    element: <WordGame />,
+    element: (
+      <>
+        <Helmet>
+          <title>Word Game</title>
+        </Helmet>
+        <WordGame />
+      </>
+    ),
+    errorElement: <FallbackComponent />,
+  },
+  {
+    path: '/about',
+    element: (
+      <>
+        <Helmet>
+          <title>About</title>
+        </Helmet>
+        <About />
+      </>
+    ),
     errorElement: <FallbackComponent />,
   },
 ])
@@ -52,7 +80,9 @@ Sentry.init({
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Sentry.ErrorBoundary fallback={FallbackComponent} showDialog>
-      <RouterProvider router={router} />
+      <HelmetProvider>
+        <RouterProvider router={router} />
+      </HelmetProvider>
     </Sentry.ErrorBoundary>
   </React.StrictMode>
 )
