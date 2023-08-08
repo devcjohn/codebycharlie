@@ -1,5 +1,3 @@
-# letitrip
+# codebycharlie
 
-# Libraries Used
-
-index.aff and index.dlc are from 'dictionary-en'
+Icons are from https://www.iconfinder.com/iconsets/circle-icons-1
