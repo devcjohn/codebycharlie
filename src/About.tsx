@@ -1,66 +1,59 @@
-const stackSvg = (
-  <svg
-    enableBackground="new 0 0 64 64"
-    height="64px"
-    version="1.1"
-    viewBox="0 0 64 64"
-    width="64px"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <g id="Layer_1">
-      <g>
-        <circle cx="32" cy="32" fill="#E0E0D1" r="32" />
-      </g>
-      <g opacity="0.2">
-        <path
-          d="M33.752,53.565c-0.968,0.581-2.537,0.581-3.504,0L12.726,43.051c-0.968-0.581-0.968-1.522,0-2.103    l17.522-10.513c0.968-0.581,2.537-0.581,3.504,0l17.522,10.513c0.968,0.581,0.968,1.522,0,2.103L33.752,53.565z"
-          fill="#231F20"
-        />
-      </g>
-      <g>
-        <path
-          d="M33.752,51.565c-0.968,0.581-2.537,0.581-3.504,0L12.726,41.051c-0.968-0.581-0.968-1.522,0-2.103    l17.522-10.513c0.968-0.581,2.537-0.581,3.504,0l17.522,10.513c0.968,0.581,0.968,1.522,0,2.103L33.752,51.565z"
-          fill="#C75C5C"
-        />
-      </g>
-      <g opacity="0.2">
-        <path
-          d="M33.752,45.565c-0.968,0.581-2.537,0.581-3.504,0L12.726,35.051c-0.968-0.581-0.968-1.522,0-2.103    l17.522-10.513c0.968-0.581,2.537-0.581,3.504,0l17.522,10.513c0.968,0.581,0.968,1.522,0,2.103L33.752,45.565z"
-          fill="#231F20"
-        />
-      </g>
-      <g>
-        <path
-          d="M33.752,43.565c-0.968,0.581-2.537,0.581-3.504,0L12.726,33.051c-0.968-0.581-0.968-1.522,0-2.103    l17.522-10.513c0.968-0.581,2.537-0.581,3.504,0l17.522,10.513c0.968,0.581,0.968,1.522,0,2.103L33.752,43.565z"
-          fill="#76C2AF"
-        />
-      </g>
-      <g opacity="0.2">
-        <path
-          d="M33.752,37.565c-0.968,0.581-2.537,0.581-3.504,0L12.726,27.051c-0.968-0.581-0.968-1.522,0-2.103    l17.522-10.513c0.968-0.581,2.537-0.581,3.504,0l17.522,10.513c0.968,0.581,0.968,1.522,0,2.103L33.752,37.565z"
-          fill="#231F20"
-        />
-      </g>
-      <g>
-        <path
-          d="M33.752,35.565c-0.968,0.581-2.537,0.581-3.504,0L12.726,25.051c-0.968-0.581-0.968-1.522,0-2.103    l17.522-10.513c0.968-0.581,2.537-0.581,3.504,0l17.522,10.513c0.968,0.581,0.968,1.522,0,2.103L33.752,35.565z"
-          fill="#4F5D73"
-        />
-      </g>
-    </g>
-    <g id="Layer_2" />
-  </svg>
-)
+import stackSvg from './assets/circleIcons/stack.svg'
+import booksSvg from './assets/circleIcons/books.svg'
+import checkmarkSvg from './assets/circleIcons/checkmark.svg'
+import speedometerSvg from './assets/circleIcons/speedometer.svg'
+import toolsSvg from './assets/circleIcons/tools.svg'
+import monitorSvg from './assets/circleIcons/monitor.svg'
+
+const aboutData = [
+  {
+    image: stackSvg,
+    title: 'Full Stack Development',
+    subtitle: 'Building versatile applications from front to back',
+  },
+  {
+    image: monitorSvg,
+    title: 'Developer Experience',
+    subtitle:
+      'Empowering productive devs through efficient tooling and clear documentation',
+  },
+  {
+    image: speedometerSvg,
+    title: 'Agile Methodologies',
+    subtitle: 'Implementing Kanban/Scrum for efficient project management',
+  },
+  {
+    image: checkmarkSvg,
+    title: 'Software Testing',
+    subtitle: 'Ensuring software quality with unit, integration, and E2E tests',
+  },
+  {
+    image: toolsSvg,
+    title: 'Continuous Integration & Deployment',
+    subtitle: 'Automating software delivery',
+  },
+  {
+    image: booksSvg,
+    title: 'Mentoring',
+    subtitle: 'Fostering professional growth and knowledge sharing',
+  },
+]
 
 export const About = () => {
   return (
     <>
-      <h1>About</h1>
-
-      <div className="flex p-5 m-5 border-2 border-gray-500 ">
-        {stackSvg}
-        <h2>Full Stack Development</h2>
-        <h3>Building versatile applications from front to back</h3>
+      <h1 className="text-4xl font-bold text-center my-8">About</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
+        {aboutData.map((item, index) => (
+          <div
+            key={index}
+            className="flex flex-col justify-center align-middle items-center border-gray-500 m-5 p-5 h-150 text-sm"
+          >
+            <img src={item.image} />
+            <h2 className="text-3xl">{item.title}</h2>
+            <h3 className="text-lg italic mt-3">{item.subtitle}</h3>
+          </div>
+        ))}
       </div>
     </>
   )
