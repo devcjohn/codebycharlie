@@ -18,24 +18,24 @@ const aboutData = [
       'Empowering productive devs through efficient tooling and clear documentation',
   },
   {
-    image: speedometerSvg,
-    title: 'Agile Methodologies',
-    subtitle: 'Implementing Kanban/Scrum for efficient project management',
-  },
-  {
     image: checkmarkSvg,
     title: 'Software Testing',
     subtitle: 'Ensuring software quality with unit, integration, and E2E tests',
   },
   {
-    image: toolsSvg,
-    title: 'Continuous Integration & Deployment',
-    subtitle: 'Automating software delivery',
+    image: speedometerSvg,
+    title: 'Agile Methodologies',
+    subtitle: 'Implementing Kanban/Scrum for efficient project management',
   },
   {
     image: booksSvg,
     title: 'Mentoring',
     subtitle: 'Fostering professional growth and knowledge sharing',
+  },
+  {
+    image: toolsSvg,
+    title: 'Continuous Integration & Deployment',
+    subtitle: 'Automating software delivery',
   },
 ]
 
