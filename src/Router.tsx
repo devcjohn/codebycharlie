@@ -6,6 +6,7 @@ import { WordGame } from './pages/WordGame'
 import { FallbackComponent } from './components/FallbackComponent'
 import FormFillDemo from './components/FormFillDemo'
 import Crash from './pages/Crash'
+import { Contact } from './pages/Contact'
 
 const routes = [
   {
@@ -32,6 +33,11 @@ const routes = [
     path: '/crash',
     title: 'Crash',
     component: <Crash />,
+  },
+  {
+    path: '/contact',
+    title: 'Contact',
+    component: <Contact />,
   },
 ]
 

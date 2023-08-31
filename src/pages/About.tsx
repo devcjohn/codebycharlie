@@ -42,7 +42,7 @@ const aboutData = [
 export const About = () => {
   return (
     <>
-      <h1 className="text-4xl font-bold text-center my-8">About</h1>
+      <h1 className="text-4xl font-bold text-center my-8">About Me</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
         {aboutData.map((item, index) => (
           <div
@@ -55,6 +55,21 @@ export const About = () => {
           </div>
         ))}
       </div>
+      <h1 className="text-4xl font-bold text-center my-8">About this site</h1>
+      <h2>
+        View the source code for this website here:
+        https://github.com/devcjohn/codebycharlie
+      </h2>
+      <h3>Summary of Tools used</h3>
+      <ul>
+        <li>Vite</li>
+        <li>React</li>
+        <li>Typescript</li>
+        <li>TailwindCSS</li>
+        <li>React Router</li>
+        <li>Vitest</li>
+        <li>React Testing Library</li>
+      </ul>
     </>
   )
 }

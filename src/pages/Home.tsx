@@ -38,6 +38,14 @@ const Home = () => {
               Crash
             </Link>
           </li>
+          <li>
+            <Link
+              className="no-underline text-blue-500 hover:text-blue-700"
+              to="/Contact"
+            >
+              Contact
+            </Link>
+          </li>
         </ul>
       </nav>
     </div>
