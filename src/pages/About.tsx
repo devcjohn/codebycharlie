@@ -1,9 +1,9 @@
-import stackSvg from './assets/circleIcons/stack.svg'
-import booksSvg from './assets/circleIcons/books.svg'
-import checkmarkSvg from './assets/circleIcons/checkmark.svg'
-import speedometerSvg from './assets/circleIcons/speedometer.svg'
-import toolsSvg from './assets/circleIcons/tools.svg'
-import monitorSvg from './assets/circleIcons/monitor.svg'
+import stackSvg from '../assets/circleIcons/stack.svg'
+import booksSvg from '../assets/circleIcons/books.svg'
+import checkmarkSvg from '../assets/circleIcons/checkmark.svg'
+import speedometerSvg from '../assets/circleIcons/speedometer.svg'
+import toolsSvg from '../assets/circleIcons/tools.svg'
+import monitorSvg from '../assets/circleIcons/monitor.svg'
 
 const aboutData = [
   {

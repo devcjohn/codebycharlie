@@ -23,7 +23,7 @@
     /* Root directory */
     "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*", "src/pages/*"]
     }
   }
 }

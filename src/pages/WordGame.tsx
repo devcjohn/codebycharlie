@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { checkIsWordReal, getRandomWord } from './dictionary/wordLib'
+import { checkIsWordReal, getRandomWord } from '../dictionary/wordLib'
 
 //todo:
 // show win/loss message
