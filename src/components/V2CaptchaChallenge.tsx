@@ -5,8 +5,7 @@ import ReCAPTCHA from 'react-google-recaptcha'
 
 const captchaKey = import.meta.env.VITE_CAPTCHA_KEY
 
-const obfuscatedInfo =
-  'ZGV2Y2pvaG5AZ21haWwuY29tLGxpbmtlZGluLmNvbS9pbi9kZXZjam9obi8=' // after btoa([email, linkedin])]
+const obfuscatedInfo = 'ZGV2Y2pvaG5AZ21haWwuY29tLGxpbmtlZGluLmNvbS9pbi9kZXZjam9obi8=' // after btoa([email, linkedin])]
 
 const unobfuscateinfo = (obfuscated: string) => {
   return atob(obfuscated).split(',')
@@ -40,9 +39,7 @@ export const V2CaptchaChallenge = () => {
         size="compact"
         className="p-5 m-5"
       />
-      <div className="p-5 m-5">
-        Email: {captchaToken ? email : 'Complete Captcha to see email'}
-      </div>
+      <div className="p-5 m-5">Email: {captchaToken ? email : 'Complete Captcha to see email'}</div>
       <div className="p-5 m-5">
         LinkedIn: {captchaToken ? linkedIn : 'Complete Captcha to see Linkedin'}
       </div>

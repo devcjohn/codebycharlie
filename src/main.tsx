@@ -8,8 +8,8 @@ import { HelmetProvider } from 'react-helmet-async'
 import { router } from './Router.tsx'
 
 Sentry.init({
-  //TODO: This is undefined.  Remove it or change name to VITE_SENTRY_DSN
-  dsn: import.meta.env.SENTRY_DSN,
+  environment: import.meta.env.MODE, // import.meta.env.MODE === 'development' or 'production'
+  dsn: import.meta.env.VITE_SENTRY_DSN,
   integrations: [
     new Sentry.BrowserTracing({
       // Set `tracePropagationTargets` to control for which URLs distributed tracing should be enabled

@@ -157,25 +157,19 @@ describe('Word Game', () => {
     await user.keyboard('e')
 
     // The last square is highlighted
-    expect(
-      (await screen.findByTestId('square-0-4')).classList.contains('border-8')
-    ).toBe(true)
+    expect((await screen.findByTestId('square-0-4')).classList.contains('border-8')).toBe(true)
     expect((await screen.findByTestId('square-0-4')).textContent).toBe('E')
 
     await user.keyboard('{backspace}')
 
     // Now the last square is empty but still highlighted
-    expect(
-      (await screen.findByTestId('square-0-4')).classList.contains('border-8')
-    ).toBe(true)
+    expect((await screen.findByTestId('square-0-4')).classList.contains('border-8')).toBe(true)
     expect((await screen.findByTestId('square-0-4')).textContent).toBe('_')
 
     await user.keyboard('{backspace}')
 
     // Now the 4th square is empty and highlighted
-    expect(
-      (await screen.findByTestId('square-0-3')).classList.contains('border-8')
-    ).toBe(true)
+    expect((await screen.findByTestId('square-0-3')).classList.contains('border-8')).toBe(true)
     expect((await screen.findByTestId('square-0-3')).textContent).toBe('_')
 
     // Simulate user deleting remaining squares
@@ -189,9 +183,7 @@ describe('Word Game', () => {
     expect((await screen.findByTestId('square-0-0')).textContent).toBe('_')
 
     // Now the first square is empty and highlighted
-    expect(
-      (await screen.findByTestId('square-0-0')).classList.contains('border-8')
-    ).toBe(true)
+    expect((await screen.findByTestId('square-0-0')).classList.contains('border-8')).toBe(true)
   })
 
   it('resets the board when reset button is clicked', async () => {
@@ -252,31 +244,17 @@ describe('Word Game', () => {
       // The first and third squares are green because they matche the answer.
       // The 4th square is yellow because it is in the answer but in the wrong place.
       // The other squares are gray because they are not in the answer.
-      expect(
-        (await screen.findByTestId('square-0-0')).classList.contains(
-          'bg-green-500'
-        )
-      ).toBe(true)
-      expect(
-        (await screen.findByTestId('square-0-1')).classList.contains(
-          'bg-gray-500'
-        )
-      ).toBe(true)
-      expect(
-        (await screen.findByTestId('square-0-2')).classList.contains(
-          'bg-green-500'
-        )
-      ).toBe(true)
-      expect(
-        (await screen.findByTestId('square-0-3')).classList.contains(
-          'bg-yellow-500'
-        )
-      ).toBe(true)
-      expect(
-        (await screen.findByTestId('square-0-4')).classList.contains(
-          'bg-gray-500'
-        )
-      ).toBe(true)
+      expect((await screen.findByTestId('square-0-0')).classList.contains('bg-green-500')).toBe(
+        true
+      )
+      expect((await screen.findByTestId('square-0-1')).classList.contains('bg-gray-500')).toBe(true)
+      expect((await screen.findByTestId('square-0-2')).classList.contains('bg-green-500')).toBe(
+        true
+      )
+      expect((await screen.findByTestId('square-0-3')).classList.contains('bg-yellow-500')).toBe(
+        true
+      )
+      expect((await screen.findByTestId('square-0-4')).classList.contains('bg-gray-500')).toBe(true)
     })
   })
 })

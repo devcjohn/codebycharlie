@@ -18,8 +18,8 @@ export default defineConfig({
       ? [
           sentryVitePlugin({
             authToken: process.env.SENTRY_AUTH_TOKEN,
-            org: 'letitrip-zz',
-            project: 'javascript-react',
+            org: 'codebycharlie',
+            project: 'code-by-charlie-project',
           }),
         ]
       : []),

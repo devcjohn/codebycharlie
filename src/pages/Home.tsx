@@ -7,42 +7,27 @@ const Home = () => {
       <nav>
         <ul>
           <li>
-            <Link
-              className="no-underline text-blue-500 hover:text-blue-700"
-              to="/WordGame"
-            >
+            <Link className="no-underline text-blue-500 hover:text-blue-700" to="/WordGame">
               Word Game
             </Link>
           </li>
           <li>
-            <Link
-              className="no-underline text-blue-500 hover:text-blue-700"
-              to="/About"
-            >
+            <Link className="no-underline text-blue-500 hover:text-blue-700" to="/About">
               About
             </Link>
           </li>
           <li>
-            <Link
-              className="no-underline text-blue-500 hover:text-blue-700"
-              to="/FormFillDemo"
-            >
+            <Link className="no-underline text-blue-500 hover:text-blue-700" to="/FormFillDemo">
               Form Fill Demo
             </Link>
           </li>
           <li>
-            <Link
-              className="no-underline text-blue-500 hover:text-blue-700"
-              to="/Crash"
-            >
+            <Link className="no-underline text-blue-500 hover:text-blue-700" to="/Crash">
               Crash
             </Link>
           </li>
           <li>
-            <Link
-              className="no-underline text-blue-500 hover:text-blue-700"
-              to="/Contact"
-            >
+            <Link className="no-underline text-blue-500 hover:text-blue-700" to="/Contact">
               Contact
             </Link>
           </li>

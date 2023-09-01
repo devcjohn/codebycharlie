@@ -18,9 +18,7 @@ export const WordGame = () => {
   }, [])
 
   const getEmptyBoard = () => {
-    const res = new Array(ROWS).fill(
-      new Array(COLS).fill({ value: null, result: null })
-    )
+    const res = new Array(ROWS).fill(new Array(COLS).fill({ value: null, result: null }))
     return res
   }
 
@@ -34,9 +32,7 @@ export const WordGame = () => {
   const [activeSquare, setActiveSquare] = useState(0)
   const [board, setBoard] = useState<Board>(getEmptyBoard())
   const [answer, setAnswer] = useState<string>(() => getRandomWord())
-  const [gameState, setGameState] = useState<'IN_PROGRESS' | 'WON' | 'LOST'>(
-    'IN_PROGRESS'
-  )
+  const [gameState, setGameState] = useState<'IN_PROGRESS' | 'WON' | 'LOST'>('IN_PROGRESS')
 
   const reset = () => {
     setTurn(0)
@@ -79,8 +75,7 @@ export const WordGame = () => {
       // If newValue or newResult are provided, use them; otherwise, keep the existing values
       newRow[columnIndex] = {
         value: newValue !== undefined ? newValue : newRow[columnIndex].value,
-        result:
-          newResult !== undefined ? newResult : newRow[columnIndex].result,
+        result: newResult !== undefined ? newResult : newRow[columnIndex].result,
       }
 
       newBoard[rowIndex] = newRow
@@ -239,10 +234,7 @@ export const WordGame = () => {
   const renderBoard = () => {
     return board.map((row, colIndex) => {
       return (
-        <div
-          key={colIndex}
-          className={`grid grid-cols-5 gap-1 font-mono uppercase`}
-        >
+        <div key={colIndex} className={`grid grid-cols-5 gap-1 font-mono uppercase`}>
           {renderRow(row, colIndex)}
         </div>
       )
@@ -256,9 +248,7 @@ export const WordGame = () => {
         <div className="">{renderBoard()}</div>
 
         {gameState === 'WON' && <div className="m-5 p-5">You Won!</div>}
-        {gameState === 'LOST' && (
-          <div className="m-5 p-5">You Lost! The answer was {answer}.</div>
-        )}
+        {gameState === 'LOST' && <div className="m-5 p-5">You Lost! The answer was {answer}.</div>}
         {(gameState === 'WON' || gameState === 'LOST') && (
           <p className="m-5 p-5"> Click reset to play again</p>
         )}

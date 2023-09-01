@@ -14,8 +14,7 @@ const aboutData = [
   {
     image: monitorSvg,
     title: 'Developer Experience',
-    subtitle:
-      'Empowering productive devs through efficient tooling and clear documentation',
+    subtitle: 'Empowering productive devs through efficient tooling and clear documentation',
   },
   {
     image: checkmarkSvg,
@@ -56,10 +55,7 @@ export const About = () => {
         ))}
       </div>
       <h1 className="text-4xl font-bold text-center my-8">About this site</h1>
-      <h2>
-        View the source code for this website here:
-        https://github.com/devcjohn/codebycharlie
-      </h2>
+      <h2>View the source code for this website here: https://github.com/devcjohn/codebycharlie</h2>
       <h3>Summary of Tools used</h3>
       <ul>
         <li>Vite</li>
