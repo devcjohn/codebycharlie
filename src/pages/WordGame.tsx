@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from 'react'
 import { checkIsWordReal, getRandomWord } from '../dictionary/wordLib'
 
 //todo:
-// show win/loss message
 // Shake on incorrect (maybe message too)
 // when game is over, don't allow more letters to be entered
 // support hard mode
@@ -26,19 +25,22 @@ export const WordGame = () => {
     return /^[A-Z]+$/i.test(str)
   }
 
+  /* Set this to a word to debug the game with a known answer, eg 'CLOSE' */
+  const DEBUG_MANUAL_ANSWER = null
+
   const [COLS] = useState(5)
   const [ROWS] = useState(6)
   const [turn, setTurn] = useState(0)
   const [activeSquare, setActiveSquare] = useState(0)
   const [board, setBoard] = useState<Board>(getEmptyBoard())
-  const [answer, setAnswer] = useState<string>(() => getRandomWord())
+  const [answer, setAnswer] = useState<string>(() => DEBUG_MANUAL_ANSWER || getRandomWord())
   const [gameState, setGameState] = useState<'IN_PROGRESS' | 'WON' | 'LOST'>('IN_PROGRESS')
 
   const reset = () => {
     setTurn(0)
     setActiveSquare(0)
     setBoard(getEmptyBoard())
-    setAnswer(getRandomWord())
+    setAnswer(DEBUG_MANUAL_ANSWER || getRandomWord())
     setGameState('IN_PROGRESS')
   }
 
@@ -78,9 +80,9 @@ export const WordGame = () => {
         result: newResult !== undefined ? newResult : newRow[columnIndex].result,
       }
 
+      // Update and return the board
       newBoard[rowIndex] = newRow
-
-      return newBoard // Return the updated board
+      return newBoard
     }
 
     const isWon = (currentBoard: Board) => {
@@ -107,19 +109,19 @@ export const WordGame = () => {
           return
         }
         if (activeSquare === COLS - 1 && !board[turn][activeSquare].value) {
-          //Handle delete at end of row when last character is empty
+          // Handle delete at end of row when last character is empty
           const newBoard = updateSquare(board, turn, activeSquare - 1, null)
           setBoard(newBoard)
           setActiveSquare((as) => as - 1)
           return
         }
         if (activeSquare === COLS - 1) {
-          //Handle delete at end of row when last character is filled
+          // Handle delete at end of row when last character is filled
           const newBoard = updateSquare(board, turn, activeSquare, null)
           setBoard(newBoard)
           return
         } else {
-          //Handle delete in middle of row
+          // Handle delete in middle of row
           const newBoard = updateSquare(board, turn, activeSquare - 1, null)
           setBoard(newBoard)
           setActiveSquare((as) => as - 1)
@@ -135,11 +137,11 @@ export const WordGame = () => {
       let newBoard = updateSquare(board, turn, activeSquare, enteredLetter)
 
       if (activeSquare !== COLS - 1) {
-        //Not at end of row
+        // Not at end of row
         setBoard(newBoard)
         setActiveSquare((as) => as + 1)
       } else {
-        // at end of row
+        // At end of row
 
         const userWord = newBoard[turn].map((square) => square.value).join('')
         const checkResult = checkIsWordReal(userWord)
@@ -147,24 +149,39 @@ export const WordGame = () => {
           // Invalid word.  Do not grade row.
         } else {
           // Word is valid. Grade the row
+          let remainingAnswerLetters = answerArray.join()
+
+          // First loop: Grade correct and incorrect letters
           for (let i = 0; i < COLS; i++) {
             const userLetter: string = newBoard[turn][i].value as string
             const answerLetter = answerArray[i]
 
             let res: GuessResult
             if (userLetter === answerLetter) {
-              // CORRECT
               res = 'CORRECT'
-            } else if (answerArray.includes(userLetter)) {
-              // MISPLACED
-              res = 'MISPLACED'
+              // remove letter from further consideration as 'MISPLACED'.
+              remainingAnswerLetters = remainingAnswerLetters.replace(userLetter, '')
+              console.log({ after: remainingAnswerLetters })
             } else {
-              // INCORRECT
               res = 'INCORRECT'
             }
             newBoard = updateSquare(newBoard, turn, i, undefined, res)
           }
+
+          // Second loop: Grade misplaced letters
+          // Logic from: https://stackoverflow.com/a/71326031
+          for (let i = 0; i < COLS; i++) {
+            const userLetter: string = newBoard[turn][i].value as string
+            const existingGrade = newBoard[turn][i].result
+
+            if (existingGrade !== 'CORRECT' && remainingAnswerLetters.includes(userLetter)) {
+              // remove letter from further consideration as 'MISPLACED'.
+              remainingAnswerLetters = remainingAnswerLetters.replace(userLetter, '')
+              newBoard = updateSquare(newBoard, turn, i, undefined, 'MISPLACED')
+            }
+          }
         }
+
         setBoard(newBoard)
 
         if (isLost(newBoard)) {

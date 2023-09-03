@@ -2,13 +2,13 @@
 
 Icons are from https://www.iconfinder.com/iconsets/circle-icons-1
 
-## Local Tools Used
+## Development Tools Used
 
 - Vite: Build tool.
 - React: UI library.
 - TypeScript: Static type checker.
 - tailwindcss: Utility-first CSS framework.
-- Git: Version control
+- Git: Version control.
 - react-router-dom: Navigation components.
 - @sentry/react: Crash reporting.
 - react-test-renderer: Render React components to JS objects.

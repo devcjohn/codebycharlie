@@ -4,9 +4,20 @@ import { WordGame } from '../src/pages/WordGame'
 import { describe, expect, afterEach, it, vi } from 'vitest'
 import * as wordLib from '../src/dictionary/wordLib'
 
+/* Uncomment to minimize verbose output on test failure*/
+// import { configure } from '@testing-library/dom'
+// configure({
+//   getElementError: (message, container) => {
+//     const error = new Error(message)
+//     error.name = 'TestingLibraryElementError'
+//     error.stack = null
+//     return error
+//   },
+// })
+
 const spyGenerateWord = vi.spyOn(wordLib, 'getRandomWord')
 
-// setup function.  Allows us to use user.keyboard to simlate keystrokes, which is really nice
+// setup function.  Allows us to use user.keyboard to simlate keystrokes
 function setup(jsx: JSX.Element) {
   return {
     user: userEvent.setup(),
@@ -239,7 +250,7 @@ describe('Word Game', () => {
 
       const { user } = setup(<WordGame />)
 
-      await user.keyboard('raggy')
+      await user.keyboard('rings')
 
       // The first and third squares are green because they matche the answer.
       // The 4th square is yellow because it is in the answer but in the wrong place.
@@ -247,14 +258,129 @@ describe('Word Game', () => {
       expect((await screen.findByTestId('square-0-0')).classList.contains('bg-green-500')).toBe(
         true
       )
-      expect((await screen.findByTestId('square-0-1')).classList.contains('bg-gray-500')).toBe(true)
-      expect((await screen.findByTestId('square-0-2')).classList.contains('bg-green-500')).toBe(
+      expect((await screen.findByTestId('square-0-1')).classList.contains('bg-green-500')).toBe(
         true
       )
+      expect((await screen.findByTestId('square-0-2')).classList.contains('bg-gray-500')).toBe(true)
       expect((await screen.findByTestId('square-0-3')).classList.contains('bg-yellow-500')).toBe(
         true
       )
       expect((await screen.findByTestId('square-0-4')).classList.contains('bg-gray-500')).toBe(true)
+    })
+
+    describe('Double letters', () => {
+      it('marks the first letter yellow and 2nd gray when both duplicate letters are in the wrong position.', async () => {
+        // Mock out the correct answer to be 'RIGHT'
+        spyGenerateWord.mockImplementation(() => 'CLOSE')
+
+        const { user } = setup(<WordGame />)
+
+        await user.keyboard('cheer')
+
+        // The first and third squares are green because they matche the answer.
+        // The 4th square is yellow because it is in the answer but in the wrong place.
+        // The other squares are gray because they are not in the answer.
+        expect((await screen.findByTestId('square-0-0')).classList.contains('bg-green-500')).toBe(
+          true
+        )
+        expect((await screen.findByTestId('square-0-1')).classList.contains('bg-gray-500')).toBe(
+          true
+        )
+        expect((await screen.findByTestId('square-0-2')).classList.contains('bg-yellow-500')).toBe(
+          true
+        )
+        expect((await screen.findByTestId('square-0-3')).classList.contains('bg-gray-500')).toBe(
+          true
+        )
+        expect((await screen.findByTestId('square-0-4')).classList.contains('bg-gray-500')).toBe(
+          true
+        )
+      })
+
+      it('marks the first letter green and 2nd grey when first dup is in correct position and 2nd is not', async () => {
+        // Mock out the correct answer to be 'RIGHT'
+        spyGenerateWord.mockImplementation(() => 'CLOSE')
+
+        const { user } = setup(<WordGame />)
+
+        await user.keyboard('crack')
+
+        // The first and third squares are green because they matche the answer.
+        // The 4th square is yellow because it is in the answer but in the wrong place.
+        // The other squares are gray because they are not in the answer.
+        expect((await screen.findByTestId('square-0-0')).classList.contains('bg-green-500')).toBe(
+          true
+        )
+        expect((await screen.findByTestId('square-0-1')).classList.contains('bg-gray-500')).toBe(
+          true
+        )
+        expect((await screen.findByTestId('square-0-2')).classList.contains('bg-gray-500')).toBe(
+          true
+        )
+        expect((await screen.findByTestId('square-0-3')).classList.contains('bg-gray-500')).toBe(
+          true
+        )
+        expect((await screen.findByTestId('square-0-4')).classList.contains('bg-gray-500')).toBe(
+          true
+        )
+      })
+
+      it('marks the first letter gray and 2nd green when first dup is in wrong position and 2nd is in correct position', async () => {
+        // Mock out the correct answer to be 'RIGHT'
+        spyGenerateWord.mockImplementation(() => 'CLOSE')
+
+        const { user } = setup(<WordGame />)
+
+        await user.keyboard('leave')
+
+        // The first and third squares are green because they matche the answer.
+        // The 4th square is yellow because it is in the answer but in the wrong place.
+        // The other squares are gray because they are not in the answer.
+        expect((await screen.findByTestId('square-0-0')).classList.contains('bg-yellow-500')).toBe(
+          true
+        )
+        expect((await screen.findByTestId('square-0-1')).classList.contains('bg-gray-500')).toBe(
+          true
+        )
+        expect((await screen.findByTestId('square-0-2')).classList.contains('bg-gray-500')).toBe(
+          true
+        )
+        expect((await screen.findByTestId('square-0-3')).classList.contains('bg-gray-500')).toBe(
+          true
+        )
+        expect((await screen.findByTestId('square-0-4')).classList.contains('bg-green-500')).toBe(
+          true
+        )
+      })
+    })
+
+    describe('triple letters', () => {
+      it('correctly grades a guess when the naswer has 3 of the same letter', async () => {
+        spyGenerateWord.mockImplementation(() => 'EMCEE')
+
+        const { user } = setup(<WordGame />)
+
+        await user.keyboard('EERIE')
+
+        // The first and third squares are green because they matche the answer.
+        // The 4th square is yellow because it is in the answer but in the wrong place.
+        // The other squares are gray because they are not in the answer.
+        expect((await screen.findByTestId('square-0-0')).classList.contains('bg-green-500')).toBe(
+          true
+        )
+        expect((await screen.findByTestId('square-0-1')).classList.contains('bg-yellow-500')).toBe(
+          true
+        )
+        expect((await screen.findByTestId('square-0-2')).classList.contains('bg-gray-500')).toBe(
+          true
+        )
+        expect((await screen.findByTestId('square-0-3')).classList.contains('bg-gray-500')).toBe(
+          true
+        )
+        expect((await screen.findByTestId('square-0-4')).classList.contains('bg-green-500')).toBe(
+          true
+        )
+      })
     })
   })
 })
