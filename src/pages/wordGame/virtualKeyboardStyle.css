@@ -1,0 +1,19 @@
+.simple-keyboard.hg-theme-default {
+  font-size: 1.5rem;
+  margin: 10px;
+}
+
+.simple-keyboard.hg-layout-default .hg-button.gray {
+  background: gray;
+  color: white;
+}
+
+.simple-keyboard.hg-layout-default .hg-button.green {
+  background: green;
+  color: white;
+}
+
+.simple-keyboard.hg-layout-default .hg-button.yellow {
+  background: yellow;
+  color: white;
+}

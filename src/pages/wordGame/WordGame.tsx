@@ -19,6 +19,7 @@ import {
 import { useCallback, useEffect, useRef } from 'react'
 import { checkIsWordReal } from '../../dictionary/wordLib'
 import { useGameState } from './useGameState'
+import { VirtualKeyboard } from './VirtualKeyboard'
 
 export const WordGame = () => {
   const inputRef = useRef<HTMLInputElement>(null)
@@ -136,16 +137,19 @@ export const WordGame = () => {
     [setActiveSquare, gradeRow, setBoard, setGameState, setTurn, turn]
   )
 
-  // Main Gameplay loop
+  // MAIN GAMEPLAY LOOP
   const handleKeyDown = useCallback(
-    (event: KeyboardEvent) => {
+    (event: KeyboardEvent | string) => {
+      //KeyboardEvent is from real keyboard, string is from virtual keyboard
+      const pressedKey: string = typeof event === 'string' ? event : event.key
+
       if (gameState === 'WON' || gameState === 'LOST') {
         // Ignore input if game is over
         return
       }
 
-      const pressedKey: string = event.key
-      const isDelete = pressedKey === 'Backspace' || pressedKey === 'Delete'
+      const isDelete =
+        pressedKey === 'Backspace' || pressedKey === 'Delete' || pressedKey === '{bksp}'
       if (isDelete) {
         handleDelete()
       }
@@ -228,6 +232,7 @@ export const WordGame = () => {
         <button aria-label="New Game" onClick={() => startNewGame()}>
           New Game
         </button>
+        <VirtualKeyboard onKeyPress={handleKeyDown} />
       </div>
     </>
   )

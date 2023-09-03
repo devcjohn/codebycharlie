@@ -331,7 +331,7 @@ describe('Word Game', () => {
         )
       })
 
-      it('marks the first letter green and 2nd grey when first dup is in correct position and 2nd is not', async () => {
+      it('marks the first letter green and 2nd gray when first dup is in correct position and 2nd is not', async () => {
         // Mock out the correct answer to be 'RIGHT'
         spyGenerateWord.mockImplementation(() => 'CLOSE')
 
