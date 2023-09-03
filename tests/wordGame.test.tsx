@@ -1,6 +1,6 @@
 import { render, cleanup, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { WordGame } from '../src/pages/WordGame'
+import { WordGame } from '../src/pages/wordGame/WordGame'
 import { describe, expect, afterEach, it, vi } from 'vitest'
 import * as wordLib from '../src/dictionary/wordLib'
 
@@ -197,7 +197,7 @@ describe('Word Game', () => {
     expect((await screen.findByTestId('square-0-0')).classList.contains('border-8')).toBe(true)
   })
 
-  it('resets the board when reset button is clicked', async () => {
+  it('starts a new game when new game button is clicked', async () => {
     const { user } = setup(<WordGame />)
 
     // User enters 'abcd'
@@ -206,8 +206,8 @@ describe('Word Game', () => {
     await user.keyboard('c')
     await user.keyboard('d')
 
-    const resetButton = screen.getByText(/reset/i)
-    await userEvent.click(resetButton)
+    const newGameButton = screen.getByText(/new game/i)
+    await userEvent.click(newGameButton)
 
     const emptySquares = screen.getAllByText(/_/i)
     expect(emptySquares.length).toBe(30)
@@ -241,6 +241,40 @@ describe('Word Game', () => {
     await user.keyboard('RIGHT')
 
     expect(screen.getByText(/You Won!/i)).toBeTruthy()
+  })
+
+  it('allows no more keyboard input when game is won', async () => {
+    // Mock out the correct answer to be 'RIGHT'
+    spyGenerateWord.mockImplementation(() => 'RIGHT')
+
+    const { user } = setup(<WordGame />)
+
+    await user.keyboard('RIGHT')
+
+    await user.keyboard('Z')
+
+    // Last square should not be overwritten with 'Z'
+    expect((await screen.findByTestId('square-0-4')).textContent).toBe('T')
+  })
+
+  it('allows no more keyboard input when game is lost', async () => {
+    spyGenerateWord.mockImplementation(() => 'RIGHT')
+
+    const { user } = setup(<WordGame />)
+
+    // User fills up each row with 'wrong' (a real word, but not the answer)
+    for (let i = 0; i < 6; i++) {
+      await user.keyboard('w')
+      await user.keyboard('r')
+      await user.keyboard('o')
+      await user.keyboard('n')
+      await user.keyboard('g')
+    }
+
+    await user.keyboard('z')
+
+    // Last square should not be overwritten with 'Z'
+    expect((await screen.findByTestId('square-0-4')).textContent).toBe('G')
   })
 
   describe('Grading', () => {
