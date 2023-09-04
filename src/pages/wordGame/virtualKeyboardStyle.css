@@ -17,3 +17,7 @@
 .simple-keyboard.hg-layout-default .hg-button.yellow {
   @apply bg-yellow-500 text-white;
 }
+
+.simple-keyboard.hg-layout-default .hg-button.white {
+  @apply bg-white text-gray-600;
+}

@@ -4,7 +4,7 @@ import { Board, GameState, getEmptyBoard } from './utils'
 
 export const useGameState = () => {
   /* Set this to a word to debug the game with a known answer, eg 'CLOSE' */
-  const DEBUG_MANUAL_ANSWER: null | string = 'CLOSE'
+  const DEBUG_MANUAL_ANSWER: null | string = null
 
   const [turn, setTurn] = useState<number>(0)
   const [activeSquare, setActiveSquare] = useState<number>(0)

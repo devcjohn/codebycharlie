@@ -52,7 +52,7 @@ export const VirtualKeyboard: React.FC<VirtualKeyboardProps> = ({ onKeyPress, bo
   }[] => {
     const themes = []
     for (const letter in letterStates) {
-      let className = ''
+      let className = 'white'
       switch (letterStates[letter]) {
         case 'CORRECT':
           className = 'green'
