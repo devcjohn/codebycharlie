@@ -230,28 +230,24 @@ export const WordGame = () => {
 
   return (
     <>
-      <div className="p-5 mx-autogr min-w-full min-h-full flex flex-col items-center justify-center">
-        <h1 className="fixed top-10 select-none">Popular Word Game</h1>
+      <div className="mx-auto min-h-full flex flex-col items-center justify-center text-3xl lg:text-5xl">
+        {renderBoard()}
+
+        {gameState === 'WON' && <div className="m-5 p-5">You Won!</div>}
+        {gameState === 'LOST' && <div className="m-5 p-5">You Lost! The answer was {answer}.</div>}
+        {(gameState === 'WON' || gameState === 'LOST') && (
+          <p className="m-5 p-5"> Click New Game to play again</p>
+        )}
+
+        <VirtualKeyboard onKeyPress={handleKeyDown} board={board} />
+
         <button
-          className="select-none border-1 border-black m-2 p-2"
+          className="select-none p-2 m-2 border-1 border-black"
           aria-label="New Game"
           onClick={() => startNewGame()}
         >
           New Game
         </button>
-        <div className="text-3xl flex flex-col justify-center items-center lg:text-5xl">
-          <div className="">{renderBoard()}</div>
-
-          {gameState === 'WON' && <div className="m-5 p-5">You Won!</div>}
-          {gameState === 'LOST' && (
-            <div className="m-5 p-5">You Lost! The answer was {answer}.</div>
-          )}
-          {(gameState === 'WON' || gameState === 'LOST') && (
-            <p className="m-5 p-5"> Click New Game to play again</p>
-          )}
-
-          <VirtualKeyboard onKeyPress={handleKeyDown} board={board} />
-        </div>
       </div>
     </>
   )
