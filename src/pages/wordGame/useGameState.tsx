@@ -1,15 +1,15 @@
 import { getRandomWord } from '../../dictionary/wordLib'
 import { useState } from 'react'
-import { GameState, getEmptyBoard } from './utils'
+import { Board, GameState, getEmptyBoard } from './utils'
 
 export const useGameState = () => {
   /* Set this to a word to debug the game with a known answer, eg 'CLOSE' */
-  const DEBUG_MANUAL_ANSWER = null
+  const DEBUG_MANUAL_ANSWER: null | string = 'CLOSE'
 
-  const [turn, setTurn] = useState(0)
-  const [activeSquare, setActiveSquare] = useState(0)
-  const [board, setBoard] = useState(getEmptyBoard())
-  const [answer, setAnswer] = useState(() => DEBUG_MANUAL_ANSWER || getRandomWord())
+  const [turn, setTurn] = useState<number>(0)
+  const [activeSquare, setActiveSquare] = useState<number>(0)
+  const [board, setBoard] = useState<Board>(getEmptyBoard())
+  const [answer, setAnswer] = useState<string>(() => DEBUG_MANUAL_ANSWER || getRandomWord())
   const [gameState, setGameState] = useState<GameState>('IN_PROGRESS')
 
   const startNewGame = () => {

@@ -201,6 +201,7 @@ export const WordGame = () => {
             p-1 m-1 
             flex items-center justify-center 
             overflow-hidden
+            select-none
           `}
         >
           {square.value || '_'}
@@ -229,10 +230,10 @@ export const WordGame = () => {
         {(gameState === 'WON' || gameState === 'LOST') && (
           <p className="m-5 p-5"> Click reset to play again</p>
         )}
-        <button aria-label="New Game" onClick={() => startNewGame()}>
+        <button className="select-none" aria-label="New Game" onClick={() => startNewGame()}>
           New Game
         </button>
-        <VirtualKeyboard onKeyPress={handleKeyDown} />
+        <VirtualKeyboard onKeyPress={handleKeyDown} board={board} />
       </div>
     </>
   )
