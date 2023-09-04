@@ -15,7 +15,11 @@ import {
 // Shake on incorrect (maybe message too)
 // when game is over, don't allow more letters to be entered
 // support hard mode
-// Show keyboard
+// Improve styling
+// - When game is over, keyboard should stay the same size
+// - Improve colors
+// - Add animations like letters flipping around
+
 import { useCallback, useEffect, useRef } from 'react'
 import { checkIsWordReal } from '../../dictionary/wordLib'
 import { useGameState } from './useGameState'
@@ -228,7 +232,7 @@ export const WordGame = () => {
         {gameState === 'WON' && <div className="m-5 p-5">You Won!</div>}
         {gameState === 'LOST' && <div className="m-5 p-5">You Lost! The answer was {answer}.</div>}
         {(gameState === 'WON' || gameState === 'LOST') && (
-          <p className="m-5 p-5"> Click reset to play again</p>
+          <p className="m-5 p-5"> Click New Game to play again</p>
         )}
         <button className="select-none" aria-label="New Game" onClick={() => startNewGame()}>
           New Game
