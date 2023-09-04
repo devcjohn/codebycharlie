@@ -13,7 +13,6 @@ import {
 
 //todo:
 // Shake on incorrect (maybe message too)
-// when game is over, don't allow more letters to be entered
 // support hard mode
 // Improve styling
 // - When game is over, keyboard should stay the same size
@@ -187,28 +186,38 @@ export const WordGame = () => {
   }),
     [COLS, activeSquare, answer, turn, board]
 
-  const getBorderClass = (isActive: boolean) => {
-    // Display a border around the active square
-    return isActive ? 'border-8 border-black' : ''
+  // const getBorderClass = (isActive: boolean) => {
+  //   // Display a border around the active square
+  //   return isActive ? 'border-8 border-black' : ''
+  // }
+
+  const getSquareLabel = (isSquareActive: boolean, square: Square) => {
+    const activeText = isSquareActive ? '- active' : ''
+    const resultText = square.result ? `- ${square.result}` : ''
+    const valueText = square.value ? square.value : 'Empty'
+    return `${valueText} ${resultText} ${activeText}`
   }
 
   const renderRow = (row: Row, colIndex: number) =>
     row.map((square, rowIndex) => {
       const isSquareActive = colIndex === turn && rowIndex === activeSquare
+      const label = getSquareLabel(isSquareActive, square)
       return (
         <span
           key={`${colIndex}-${rowIndex}`}
           data-testid={`square-${colIndex}-${rowIndex}`}
+          aria-label={label}
+          title={label}
           className={` ${getSquareColorClass(square)} 
-            ${getBorderClass(isSquareActive)}
             text-white 
             p-1 m-1 
             flex items-center justify-center 
             overflow-hidden
             select-none
+            h-16 w-16
           `}
         >
-          {square.value || '_'}
+          {square.value || ''}
         </span>
       )
     })
@@ -225,8 +234,8 @@ export const WordGame = () => {
 
   return (
     <>
+      <h1>Popular Word Game</h1>
       <div className="text-5xl p-5 m-5 min-w-full min-h-full flex flex-col items-center justify-center">
-        <div>Popular Word Game</div>
         <div className="">{renderBoard()}</div>
 
         {gameState === 'WON' && <div className="m-5 p-5">You Won!</div>}

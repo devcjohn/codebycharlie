@@ -39,7 +39,7 @@ export const getSquareColorClass = (square: Square) => {
       return 'bg-yellow-500'
     case 'INCORRECT':
       return 'bg-gray-500'
-    default:
+    default: // Empty
       return 'bg-gray-300'
   }
 }

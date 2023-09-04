@@ -37,7 +37,7 @@ describe('Word Game', () => {
     expect(screen.getByText(/Popular Word Game/i)).toBeTruthy()
 
     // All squares are empty ('_')
-    const emptySquares = screen.getAllByText(/_/i)
+    const emptySquares = screen.getAllByLabelText(/empty/i)
     expect(emptySquares.length).toBe(30)
   })
 
@@ -48,7 +48,7 @@ describe('Word Game', () => {
     await user.keyboard('a')
 
     // Now there are 29 empty squares
-    const emptySquares = screen.getAllByText(/_/i)
+    const emptySquares = screen.getAllByLabelText(/empty/i)
     expect(emptySquares.length).toBe(29)
 
     // Now the first square is 'A'
@@ -62,25 +62,25 @@ describe('Word Game', () => {
     // None of these inputs do anything
 
     await user.keyboard('{control}')
-    expect((await screen.findByTestId('square-0-0')).textContent).toBe('_')
+    expect((await screen.findByTestId('square-0-0')).textContent).toBe('')
 
     await user.keyboard('{insert}')
-    expect((await screen.findByTestId('square-0-0')).textContent).toBe('_')
+    expect((await screen.findByTestId('square-0-0')).textContent).toBe('')
 
     await user.keyboard('{Alt}')
-    expect((await screen.findByTestId('square-0-0')).textContent).toBe('_')
+    expect((await screen.findByTestId('square-0-0')).textContent).toBe('')
 
     await user.keyboard('{Tab}')
-    expect((await screen.findByTestId('square-0-0')).textContent).toBe('_')
+    expect((await screen.findByTestId('square-0-0')).textContent).toBe('')
 
     await user.keyboard('{Meta}')
-    expect((await screen.findByTestId('square-0-0')).textContent).toBe('_')
+    expect((await screen.findByTestId('square-0-0')).textContent).toBe('')
 
     await user.keyboard('{Enter}')
-    expect((await screen.findByTestId('square-0-0')).textContent).toBe('_')
+    expect((await screen.findByTestId('square-0-0')).textContent).toBe('')
 
     await user.keyboard('0')
-    expect((await screen.findByTestId('square-0-0')).textContent).toBe('_')
+    expect((await screen.findByTestId('square-0-0')).textContent).toBe('')
   })
 
   it('allows user to enter 4 letters', async () => {
@@ -93,7 +93,7 @@ describe('Word Game', () => {
     await user.keyboard('d')
 
     // Now there are 26 empty squares
-    const emptySquares = screen.getAllByText(/_/i)
+    const emptySquares = screen.getAllByLabelText(/empty/i)
     expect(emptySquares.length).toBe(26)
 
     // Squares are filled with the user's input
@@ -116,7 +116,7 @@ describe('Word Game', () => {
     // User enters 'A'
     await user.keyboard('a')
 
-    const emptySquares = screen.getAllByText(/_/i)
+    const emptySquares = screen.getAllByLabelText(/empty/i)
     expect(emptySquares.length).toBe(29)
 
     // Now the first square is 'A'
@@ -127,9 +127,9 @@ describe('Word Game', () => {
     await user.keyboard('{backspace}')
 
     // Now there are 30 empty squares again
-    expect(screen.getAllByText(/_/i).length).toBe(30)
+    expect(screen.getAllByLabelText(/empty/i).length).toBe(30)
     // The first square is empty again
-    expect((await screen.findByTestId('square-0-0')).textContent).toBe('_')
+    expect((await screen.findByTestId('square-0-0')).textContent).toBe('')
   })
 
   it('allows user to delete characters in the middle of the row', async () => {
@@ -145,16 +145,16 @@ describe('Word Game', () => {
 
     // User hits backspace 4 times
     await user.keyboard('{backspace}')
-    expect((await screen.findByTestId('square-0-3')).textContent).toBe('_')
+    expect((await screen.findByTestId('square-0-3')).textContent).toBe('')
 
     await user.keyboard('{backspace}')
-    expect((await screen.findByTestId('square-0-2')).textContent).toBe('_')
+    expect((await screen.findByTestId('square-0-2')).textContent).toBe('')
 
     await user.keyboard('{backspace}')
-    expect((await screen.findByTestId('square-0-1')).textContent).toBe('_')
+    expect((await screen.findByTestId('square-0-1')).textContent).toBe('')
 
     await user.keyboard('{backspace}')
-    expect((await screen.findByTestId('square-0-0')).textContent).toBe('_')
+    expect((await screen.findByTestId('square-0-0')).textContent).toBe('')
   })
 
   it('allows user to delete characters at the end of a row ', async () => {
@@ -167,34 +167,34 @@ describe('Word Game', () => {
     await user.keyboard('d')
     await user.keyboard('e')
 
-    // The last square is highlighted
-    expect((await screen.findByTestId('square-0-4')).classList.contains('border-8')).toBe(true)
+    // The last square is active (If a square is active, new user input will go there)
+    expect((await screen.findByTestId('square-0-4')).title.includes('active')).toBe(true)
     expect((await screen.findByTestId('square-0-4')).textContent).toBe('E')
 
     await user.keyboard('{backspace}')
 
-    // Now the last square is empty but still highlighted
-    expect((await screen.findByTestId('square-0-4')).classList.contains('border-8')).toBe(true)
-    expect((await screen.findByTestId('square-0-4')).textContent).toBe('_')
+    // Now the last square is empty but still active
+    expect((await screen.findByTestId('square-0-4')).title.includes('active')).toBe(true)
+    expect((await screen.findByTestId('square-0-4')).textContent).toBe('')
 
     await user.keyboard('{backspace}')
 
-    // Now the 4th square is empty and highlighted
-    expect((await screen.findByTestId('square-0-3')).classList.contains('border-8')).toBe(true)
-    expect((await screen.findByTestId('square-0-3')).textContent).toBe('_')
+    // Now the 4th square is empty and active
+    expect((await screen.findByTestId('square-0-3')).title.includes('active')).toBe(true)
+    expect((await screen.findByTestId('square-0-3')).textContent).toBe('')
 
     // Simulate user deleting remaining squares
     await user.keyboard('{backspace}')
-    expect((await screen.findByTestId('square-0-2')).textContent).toBe('_')
+    expect((await screen.findByTestId('square-0-2')).textContent).toBe('')
 
     await user.keyboard('{backspace}')
-    expect((await screen.findByTestId('square-0-1')).textContent).toBe('_')
+    expect((await screen.findByTestId('square-0-1')).textContent).toBe('')
 
     await user.keyboard('{backspace}')
-    expect((await screen.findByTestId('square-0-0')).textContent).toBe('_')
+    expect((await screen.findByTestId('square-0-0')).textContent).toBe('')
 
     // Now the first square is empty and highlighted
-    expect((await screen.findByTestId('square-0-0')).classList.contains('border-8')).toBe(true)
+    expect((await screen.findByTestId('square-0-0')).title.includes('active')).toBe(true)
   })
 
   it('starts a new game when new game button is clicked', async () => {
@@ -209,7 +209,7 @@ describe('Word Game', () => {
     const newGameButton = screen.getByText(/new game/i)
     await userEvent.click(newGameButton)
 
-    const emptySquares = screen.getAllByText(/_/i)
+    const emptySquares = screen.getAllByLabelText(/empty/i)
     expect(emptySquares.length).toBe(30)
   })
 
