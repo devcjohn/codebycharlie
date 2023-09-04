@@ -31,7 +31,19 @@ export const isLost = (currentBoard: Board, turn: number) => {
   return turn === ROWS - 1
 }
 
+export const getSquareTitle = (isSquareActive: boolean, square: Square) => {
+  const activeText = isSquareActive ? '- active' : ''
+  const resultText = square.result ? `- ${square.result}` : ''
+  const valueText = square.value ? square.value : 'Empty'
+  return `${valueText} ${resultText} ${activeText}`
+}
+
 export const getSquareColorClass = (square: Square) => {
+  if (!square.result) {
+    // Square is ungraded.  Ungraded squares with letters have thicker borders
+    const borderStyle = square.value ? 'border-black' : 'border-black-800'
+    return 'bg-white border border-2 text-black text-bold ' + borderStyle
+  }
   switch (square.result) {
     case 'CORRECT':
       return 'bg-green-500'
@@ -39,8 +51,6 @@ export const getSquareColorClass = (square: Square) => {
       return 'bg-yellow-500'
     case 'INCORRECT':
       return 'bg-gray-500'
-    default: // Empty
-      return 'bg-gray-300'
   }
 }
 

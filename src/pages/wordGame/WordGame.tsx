@@ -5,6 +5,7 @@ import {
   Row,
   Square,
   getSquareColorClass,
+  getSquareTitle,
   isAlpha,
   isLost,
   isWon,
@@ -191,30 +192,24 @@ export const WordGame = () => {
   //   return isActive ? 'border-8 border-black' : ''
   // }
 
-  const getSquareLabel = (isSquareActive: boolean, square: Square) => {
-    const activeText = isSquareActive ? '- active' : ''
-    const resultText = square.result ? `- ${square.result}` : ''
-    const valueText = square.value ? square.value : 'Empty'
-    return `${valueText} ${resultText} ${activeText}`
-  }
-
   const renderRow = (row: Row, colIndex: number) =>
     row.map((square, rowIndex) => {
       const isSquareActive = colIndex === turn && rowIndex === activeSquare
-      const label = getSquareLabel(isSquareActive, square)
+      const title = getSquareTitle(isSquareActive, square)
       return (
         <span
           key={`${colIndex}-${rowIndex}`}
           data-testid={`square-${colIndex}-${rowIndex}`}
-          aria-label={label}
-          title={label}
-          className={` ${getSquareColorClass(square)} 
+          aria-label={title}
+          title={title}
+          className={` 
             text-white 
-            p-1 m-1 
+            m-0.5 
             flex items-center justify-center 
             overflow-hidden
             select-none
             h-16 w-16
+            ${getSquareColorClass(square)} 
           `}
         >
           {square.value || ''}
