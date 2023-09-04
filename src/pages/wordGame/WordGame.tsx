@@ -202,14 +202,15 @@ export const WordGame = () => {
           data-testid={`square-${colIndex}-${rowIndex}`}
           aria-label={title}
           title={title}
-          className={` 
-            text-white 
+          className={`
             m-0.5 
             flex items-center justify-center 
             overflow-hidden
             select-none
-            h-16 w-16
-            ${getSquareColorClass(square)} 
+            h-8 w-8
+            lg:h-16
+            lg:w-16
+           ${getSquareColorClass(square)} 
           `}
         >
           {square.value || ''}
@@ -229,19 +230,28 @@ export const WordGame = () => {
 
   return (
     <>
-      <h1>Popular Word Game</h1>
-      <div className="text-5xl p-5 m-5 min-w-full min-h-full flex flex-col items-center justify-center">
-        <div className="">{renderBoard()}</div>
-
-        {gameState === 'WON' && <div className="m-5 p-5">You Won!</div>}
-        {gameState === 'LOST' && <div className="m-5 p-5">You Lost! The answer was {answer}.</div>}
-        {(gameState === 'WON' || gameState === 'LOST') && (
-          <p className="m-5 p-5"> Click New Game to play again</p>
-        )}
-        <button className="select-none" aria-label="New Game" onClick={() => startNewGame()}>
+      <div className="p-5 mx-autogr min-w-full min-h-full flex flex-col items-center justify-center">
+        <h1 className="fixed top-10 select-none">Popular Word Game</h1>
+        <button
+          className="select-none border-1 border-black m-2 p-2"
+          aria-label="New Game"
+          onClick={() => startNewGame()}
+        >
           New Game
         </button>
-        <VirtualKeyboard onKeyPress={handleKeyDown} board={board} />
+        <div className="text-3xl flex flex-col justify-center items-center lg:text-5xl">
+          <div className="">{renderBoard()}</div>
+
+          {gameState === 'WON' && <div className="m-5 p-5">You Won!</div>}
+          {gameState === 'LOST' && (
+            <div className="m-5 p-5">You Lost! The answer was {answer}.</div>
+          )}
+          {(gameState === 'WON' || gameState === 'LOST') && (
+            <p className="m-5 p-5"> Click New Game to play again</p>
+          )}
+
+          <VirtualKeyboard onKeyPress={handleKeyDown} board={board} />
+        </div>
       </div>
     </>
   )

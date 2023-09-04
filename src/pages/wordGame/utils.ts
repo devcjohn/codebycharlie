@@ -46,11 +46,11 @@ export const getSquareColorClass = (square: Square) => {
   }
   switch (square.result) {
     case 'CORRECT':
-      return 'bg-green-500'
+      return 'bg-green-500 text-white'
     case 'MISPLACED':
-      return 'bg-yellow-500'
+      return 'bg-yellow-500 text-white'
     case 'INCORRECT':
-      return 'bg-gray-500'
+      return 'bg-gray-500 text-white'
   }
 }
 
