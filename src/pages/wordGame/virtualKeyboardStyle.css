@@ -3,21 +3,25 @@
 @import 'tailwindcss/utilities';
 
 .simple-keyboard.hg-theme-default {
-  @apply text-lg m-4;
+  @apply text-lg m-4  bg-white text-black;
 }
 
+/* Letters that have never been entered */
+.simple-keyboard.hg-layout-default .hg-button.white {
+  @apply bg-white text-gray-600;
+}
+
+/* Incorrect Letters */
 .simple-keyboard.hg-layout-default .hg-button.gray {
   @apply bg-gray-500 text-white;
 }
 
+/* Correct letters */
 .simple-keyboard.hg-layout-default .hg-button.green {
   @apply bg-green-500 text-white;
 }
 
+/* Misplaced Letters */
 .simple-keyboard.hg-layout-default .hg-button.yellow {
   @apply bg-yellow-500 text-white;
-}
-
-.simple-keyboard.hg-layout-default .hg-button.white {
-  @apply bg-white text-gray-600;
 }
