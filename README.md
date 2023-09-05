@@ -19,6 +19,7 @@ Icons are from https://www.iconfinder.com/iconsets/circle-icons-1
 - postcss: Transform CSS with JS plugins.
 - vitest: Test runner for Vite.
 - vite-bundle-visualizer: Visualize bundle content.
+- react-simple-keyboard: On-screen keyboard.
 
 ## Cloud tools used
 

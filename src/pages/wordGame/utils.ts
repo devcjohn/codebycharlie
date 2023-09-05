@@ -40,7 +40,7 @@ export const getSquareTitle = (isSquareActive: boolean, square: Square) => {
 
 export const getSquareColorClass = (square: Square) => {
   if (!square.result) {
-    // Square is ungraded.  Ungraded squares with letters have thicker borders
+    // Square is ungraded.  Ungraded squares with letters have thicker borders than those without letters
     const borderStyle = square.value ? 'border-black' : 'border-black-800'
     return 'bg-white border border-2 text-black text-bold ' + borderStyle
   }
@@ -54,6 +54,7 @@ export const getSquareColorClass = (square: Square) => {
   }
 }
 
+// Update the given square in the board and return the updated board
 export const updateSquare = (
   currentBoard: Board,
   rowIndex: number,

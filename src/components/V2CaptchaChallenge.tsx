@@ -14,7 +14,7 @@ const unobfuscateinfo = (obfuscated: string) => {
 export const V2CaptchaChallenge = () => {
   const [captchaToken, setCaptchaToken] = useState<string | null>(null)
   const [email, setEmail] = useState<string>('')
-  const [linkedIn, setLinkedIn] = useState('')
+  const [linkedIn, setLinkedIn] = useState<string>('')
 
   const captchaRef = useRef(null)
 

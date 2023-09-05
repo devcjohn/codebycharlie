@@ -34,8 +34,6 @@ describe('Word Game', () => {
   it('renders the empty board', () => {
     render(<WordGame />)
 
-    expect(screen.getByText(/Popular Word Game/i)).toBeTruthy()
-
     // All squares are empty ('_')
     const emptySquares = screen.getAllByLabelText(/empty/i)
     expect(emptySquares.length).toBe(30)

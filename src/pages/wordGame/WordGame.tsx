@@ -19,6 +19,7 @@ import {
 // - When game is over, keyboard should stay the same size
 // - Improve colors
 // - Add animations like letters flipping around
+// Grade last row on loss?
 
 import { useCallback, useEffect, useRef } from 'react'
 import { checkIsWordReal } from '../../dictionary/wordLib'
@@ -242,7 +243,7 @@ export const WordGame = () => {
         <VirtualKeyboard onKeyPress={handleKeyDown} board={board} />
 
         <button
-          className="select-none p-2 m-2 border-1 border-black"
+          className="select-none p-2 m-2 border-1 border-black text-xl"
           aria-label="New Game"
           onClick={() => startNewGame()}
         >
