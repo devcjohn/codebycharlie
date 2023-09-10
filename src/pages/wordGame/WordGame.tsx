@@ -240,10 +240,11 @@ export const WordGame = () => {
           <p className="m-5 p-5"> Click New Game to play again</p>
         )}
 
-        <VirtualKeyboard onKeyPress={handleKeyDown} board={board} />
-
+        <div className="w-60 h-auto lg:w-96 flex items-center">
+          <VirtualKeyboard onKeyPress={handleKeyDown} board={board} />
+        </div>
         <button
-          className="select-none p-2 m-2 border-1 border-black text-xl"
+          className="select-none p-2 m-2 border-1 border-slate-300 text-xl"
           aria-label="New Game"
           onClick={() => startNewGame()}
         >

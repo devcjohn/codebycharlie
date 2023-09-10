@@ -6,6 +6,10 @@
   @apply text-lg m-4  bg-white text-black;
 }
 
+.simple-keyboard.hg-layout-default .hg-button {
+  @apply border border-slate-300;
+}
+
 /* Letters that have never been entered */
 .simple-keyboard.hg-layout-default .hg-button.white {
   @apply bg-white text-gray-600;
