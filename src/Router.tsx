@@ -1,18 +1,18 @@
 import { Helmet } from 'react-helmet-async'
 import { createBrowserRouter } from 'react-router-dom'
 import { About } from './pages/About'
-import App from './pages/Home'
 import { WordGame } from './pages/wordGame/WordGame'
 import { FallbackComponent } from './components/FallbackComponent'
 import FormFillDemo from './components/FormFillDemo'
 import Crash from './pages/Crash'
 import { Contact } from './pages/Contact'
+import { Home } from './pages/Home'
 
 const routes = [
   {
     path: '/',
     title: 'Home',
-    component: <App />,
+    component: <Home />,
   },
   {
     path: '/wordgame',
