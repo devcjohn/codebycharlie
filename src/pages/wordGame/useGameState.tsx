@@ -6,8 +6,8 @@ export const useGameState = () => {
   /* Set this to a word to debug the game with a known answer, eg 'CLOSE' */
   const DEBUG_MANUAL_ANSWER: null | string = null
 
-  const [turn, setTurn] = useState<number>(0)
-  const [activeSquare, setActiveSquare] = useState<number>(0)
+  const [turn, setTurn] = useState<number>(0) /* The row the game is on */
+  const [activeSquare, setActiveSquare] = useState<number>(0) /* The column the game is on */
   const [board, setBoard] = useState<Board>(getEmptyBoard())
   const [answer, setAnswer] = useState<string>(() => DEBUG_MANUAL_ANSWER || getRandomWord())
   const [gameState, setGameState] = useState<GameState>('IN_PROGRESS')

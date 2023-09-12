@@ -6,8 +6,13 @@ export const Contact = () => {
 
   return (
     <div>
-      <button onClick={() => setHasClicked(true)}>Show Contact Info</button>
-      {hasClicked && <V2CaptchaChallenge />}
+      <button onClick={() => setHasClicked(true)}>Show Secret (No Robots Allowed)</button>
+      {hasClicked && (
+        <V2CaptchaChallenge
+          encodedStr="U28gaGVyZSdzIGhvdyB3ZSdkIGZpZ2h0IGJhY2sgaW4gdGhlIGV2ZW50IG9mIGFuIEFJIHRha2VvdmVyLi4u" /* From running btoa on the 'secret' message */
+          decoder={(s) => atob(s)}
+        />
+      )}
     </div>
   )
 }

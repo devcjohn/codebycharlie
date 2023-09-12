@@ -1,48 +1,43 @@
 import { useRef, useState } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 
-/* Note: Captcha V3 could have been used, which runs without prompting the user, but I wanted to try V2. */
+/* This component takes an encoded string and a decoder function.
+ * When the user completes the captcha, the decoded string is displayed.
+ * This is of course not secure in any sense, as all secrets are exposed in the client code.
+ * It's just a way to demonstrate a V2 Captcha that is slightly more interesting than a regular unencoded string.
+ * Note: Captcha V3 could have been used, which runs without prompting the user, but I wanted to try V2.
+ */
 
-const captchaKey = import.meta.env.VITE_CAPTCHA_KEY
-
-const obfuscatedInfo = 'ZGV2Y2pvaG5AZ21haWwuY29tLGxpbmtlZGluLmNvbS9pbi9kZXZjam9obi8=' // after btoa([email, linkedin])]
-
-const unobfuscateinfo = (obfuscated: string) => {
-  return atob(obfuscated).split(',')
+type Props = {
+  encodedStr: string
+  decoder: (str: string) => string
 }
-
-export const V2CaptchaChallenge = () => {
+export const V2CaptchaChallenge: React.FC<Props> = ({ encodedStr, decoder }) => {
   const [captchaToken, setCaptchaToken] = useState<string | null>(null)
-  const [email, setEmail] = useState<string>('')
-  const [linkedIn, setLinkedIn] = useState<string>('')
+  const [decodedStr, setDecodedStr] = useState<string>('')
 
   const captchaRef = useRef(null)
 
-  const onChange = (t: string | null) => {
-    if (!t) {
+  const onChange = (token: string | null) => {
+    if (!token) {
       return
     }
 
-    setCaptchaToken(t)
-    const realInfo = unobfuscateinfo(obfuscatedInfo)
-    setEmail(realInfo[0])
-    setLinkedIn(realInfo[1])
+    setCaptchaToken(token)
+    setDecodedStr(decoder(encodedStr))
   }
 
   return (
     <div className="flex flex-col items-center justify-center">
       <ReCAPTCHA
-        sitekey={captchaKey}
+        sitekey={import.meta.env.VITE_CAPTCHA_KEY}
         ref={captchaRef}
         onChange={onChange}
         badge="bottomright"
         size="compact"
         className="p-5 m-5"
       />
-      <div className="p-5 m-5">Email: {captchaToken ? email : 'Complete Captcha to see email'}</div>
-      <div className="p-5 m-5">
-        LinkedIn: {captchaToken ? linkedIn : 'Complete Captcha to see Linkedin'}
-      </div>
+      <div className="p-5 m-5">{captchaToken ? decodedStr : null}</div>
     </div>
   )
 }
