@@ -8,8 +8,8 @@ export const NavBar = () => {
     setIsDropdownOpen(!isDropdownOpen)
   }
 
+  /* 'Demos' Nested Dropdown menu */
   const getDropDownOptions = (isOpen: boolean) => {
-    /* Dropdown menu */
     if (!isOpen) {
       return null
     }
@@ -24,6 +24,14 @@ export const NavBar = () => {
           className="py-2 text-sm text-gray-700 dark:text-gray-400"
           aria-labelledby="dropdownLargeButton"
         >
+          <li>
+            <Link
+              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+              to="/whiteboard"
+            >
+              Whiteboard
+            </Link>
+          </li>
           <li>
             <Link
               className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600"

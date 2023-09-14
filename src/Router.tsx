@@ -7,6 +7,7 @@ import FormFillDemo from './components/FormFillDemo'
 import Crash from './pages/Crash'
 import { Contact } from './pages/Contact'
 import { Home } from './pages/Home'
+import { WhiteBoard } from './pages/WhiteBoard'
 
 const routes = [
   {
@@ -38,6 +39,11 @@ const routes = [
     path: '/contact',
     title: 'Contact',
     component: <Contact />,
+  },
+  {
+    path: '/whiteboard',
+    title: 'whiteboard',
+    component: <WhiteBoard />,
   },
 ]
 
