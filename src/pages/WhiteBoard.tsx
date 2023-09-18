@@ -58,11 +58,13 @@ const handleMount = (editor: Editor) => {
       },
     },
   ])
+
+  editor.zoomToFit()
 }
 
 export const WhiteBoard = () => {
   return (
-    <div style={{ position: 'fixed', inset: 0 }}>
+    <div className="flex-grow h-screen">
       <Tldraw onMount={handleMount} />
     </div>
   )

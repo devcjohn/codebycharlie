@@ -1,6 +1,6 @@
 function Crash() {
   return (
-    <>
+    <div className="text-center">
       <button
         onClick={() => {
           throw new Error('oops')
@@ -8,7 +8,7 @@ function Crash() {
       >
         Crash the application (for Sentry testing purposes)
       </button>
-    </>
+    </div>
   )
 }
 

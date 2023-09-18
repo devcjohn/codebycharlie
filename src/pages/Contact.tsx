@@ -5,7 +5,7 @@ export const Contact = () => {
   const [hasClicked, setHasClicked] = useState(false)
 
   return (
-    <div>
+    <div className="text-center">
       <button onClick={() => setHasClicked(true)}>Show Secret (No Robots Allowed)</button>
       {hasClicked && (
         <V2CaptchaChallenge

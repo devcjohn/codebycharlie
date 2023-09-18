@@ -5,6 +5,7 @@ import ReCAPTCHA from 'react-google-recaptcha'
  * When the user completes the captcha, the decoded string is displayed.
  * This is of course not secure in any sense, as all secrets are exposed in the client code.
  * It's just a way to demonstrate a V2 Captcha that is slightly more interesting than a regular unencoded string.
+ * If a backend is ever added to this website, secrets could actually be hidden behind the captcha click.
  * Note: Captcha V3 could have been used, which runs without prompting the user, but I wanted to try V2.
  */
 

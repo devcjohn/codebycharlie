@@ -8,6 +8,8 @@ import Crash from './pages/Crash'
 import { Contact } from './pages/Contact'
 import { Home } from './pages/Home'
 import { WhiteBoard } from './pages/WhiteBoard'
+import { Posts } from './pages/Posts'
+import { NavBar } from './components/NavBar'
 
 const routes = [
   {
@@ -45,6 +47,11 @@ const routes = [
     title: 'whiteboard',
     component: <WhiteBoard />,
   },
+  {
+    path: '/posts',
+    title: 'Posts',
+    component: <Posts />,
+  },
 ]
 
 export const router = createBrowserRouter(
@@ -55,6 +62,7 @@ export const router = createBrowserRouter(
         <Helmet>
           <title>{title}</title>
         </Helmet>
+        <NavBar />
         {component}
       </>
     ),
