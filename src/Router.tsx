@@ -46,6 +46,7 @@ const routes = [
     path: '/whiteboard',
     title: 'whiteboard',
     component: <WhiteBoard />,
+    hideNavBar: true,
   },
   {
     path: '/posts',
@@ -55,14 +56,14 @@ const routes = [
 ]
 
 export const router = createBrowserRouter(
-  routes.map(({ path, title, component }) => ({
+  routes.map(({ path, title, component, hideNavBar }) => ({
     path,
     element: (
       <>
         <Helmet>
           <title>{title}</title>
         </Helmet>
-        <NavBar />
+        {!hideNavBar && <NavBar />}
         {component}
       </>
     ),
