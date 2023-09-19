@@ -15,7 +15,7 @@ import * as wordLib from '../src/dictionary/wordLib'
 //   },
 // })
 
-const spyGenerateWord = vi.spyOn(wordLib, 'getRandomWord')
+const spyGenerateWord = vi.spyOn(wordLib, 'getRandomAnswer')
 
 // setup function.  Allows us to use user.keyboard to simlate keystrokes
 function setup(jsx: JSX.Element) {
