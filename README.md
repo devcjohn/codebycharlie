@@ -1,7 +1,10 @@
 # codebycharlie
 
-Icons are from https://www.iconfinder.com/iconsets/circle-icons-1
-https://unsplash.com/photos/95YRwf6CNw8?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink
+## Credits
+
+- https://www.iconfinder.com/iconsets/circle-icons-1
+- https://unsplash.com/photos/95YRwf6CNw8?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink
+- https://atom.redpixelthemes.com/
 
 ## Development Tools Used
 
