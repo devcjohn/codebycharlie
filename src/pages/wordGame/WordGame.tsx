@@ -235,7 +235,7 @@ export const WordGame = () => {
         {renderBoard()}
 
         {gameState === 'WON' && <div className="m-5 p-5">You Won!</div>}
-        {gameState === 'LOST' && <div className="m-5 p-5">You Lost! The answer was {answer}.</div>}
+        {gameState === 'LOST' && <div className="m-5 p-5">The answer was {answer}.</div>}
         {(gameState === 'WON' || gameState === 'LOST') && (
           <p className="m-5 p-5"> Click New Game to play again</p>
         )}
