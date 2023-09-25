@@ -5,6 +5,7 @@
 - https://www.iconfinder.com/iconsets/circle-icons-1
 - https://unsplash.com/photos/95YRwf6CNw8?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink
 - https://atom.redpixelthemes.com/
+- https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg
 
 ## Development Tools Used
 

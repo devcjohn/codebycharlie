@@ -5,7 +5,7 @@ export const NavBar = () => {
   const dropDownOptions = (
     <div
       id="dropdownNavbar"
-      className="absolute top-full left-0 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600 group-hover:block"
+      className="absolute top-full left-0 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600 group-hover:block z-50"
     >
       <ul
         className="py-2 text-sm text-gray-700 dark:text-gray-400"
@@ -29,11 +29,6 @@ export const NavBar = () => {
             Captcha
           </Link>
         </li>
-        <li>
-          <Link className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600" to="/crash">
-            Crash
-          </Link>
-        </li>
       </ul>
     </div>
   )
@@ -41,9 +36,8 @@ export const NavBar = () => {
   return (
     <header>
       <nav className="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <div className="max-w-screen-xl flex flex-wrap items-center justify-between px-4">
           <a href="/" className="flex items-center">
-            <img src="/favicon.svg" className="h-8 mr-3" alt="Code By Charlie logo" />
             <span className="m-5 self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
               CodeByCharlie
             </span>
@@ -69,14 +63,7 @@ export const NavBar = () => {
                   Posts
                 </Link>
               </li>
-              <li>
-                <Link
-                  className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                  to="/WordGame"
-                >
-                  Word Game
-                </Link>
-              </li>
+
               <li className="group relative">
                 <button
                   id="dropdownNavbarLink"
@@ -108,9 +95,9 @@ export const NavBar = () => {
               <li>
                 <Link
                   className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                  to="/About"
+                  to="/WordGame"
                 >
-                  About
+                  Word Game
                 </Link>
               </li>
             </ul>
