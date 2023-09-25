@@ -40,15 +40,16 @@ const aboutData = [
 
 export const About = () => {
   return (
-    <>
-      <h1 className="text-4xl font-bold text-center my-8">About Me</h1>
+    <div className="mx-14 text-center">
+      <h1 className="text-4xl font-bold my-8">About Me</h1>
       <h2>
-        Hi, my name is Charlie Johnson. I'm a software engineer with ten years of professional
-        development experience. I am currently based in Saint Louis. My specialty is full-stack
-        Javascript development, but I have experience with a wide variety of languages and
-        frameworks. I am passionate about building high-quality software and fostering a
-        collaborative and inclusive work environment. If you'd like to get in touch, please add me
-        on <a href="https://www.linkedin.com/in/devcjohn">linkedIn.</a>
+        Hi, my name is Charlie Johnson. I'm a software engineer.
+        <br /> I am currently based in Saint Louis. My specialty is full-stack Javascript
+        development, but I have experience with a wide variety of languages and frameworks.
+        <br /> I am passionate about building high-quality software and fostering a collaborative
+        and inclusive work environment. <br />
+        If you'd like to get in touch, please add me on{' '}
+        <a href="https://www.linkedin.com/in/devcjohn">linkedIn.</a>
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
         {aboutData.map((item, index) => (
@@ -67,6 +68,6 @@ export const About = () => {
         View the source code for this website and the tools used to build it{' '}
         <a href="https://github.com/devcjohn/codebycharlie">Here</a>
       </h2>
-    </>
+    </div>
   )
 }

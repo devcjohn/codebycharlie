@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        mountain: "url('src/assets/webp-mountain.webp')",
+        laptop: "url('src/assets/img/laptop.webp')",
       },
     },
   },
