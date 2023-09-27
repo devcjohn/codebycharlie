@@ -1,8 +1,6 @@
 import ReactMarkdown from 'react-markdown'
 import { post1 } from '../posts/post1'
 
-console.log({ post1 })
-
 export const Posts = () => {
   return (
     <div className="">

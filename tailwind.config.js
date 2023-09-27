@@ -3,7 +3,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        laptop: "url('src/assets/img/laptop.webp')",
+        laptop: "url('/img/laptop.webp')",
       },
     },
   },
