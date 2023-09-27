@@ -59,14 +59,11 @@ export const About = () => {
       </p>
       <ConnectWithMe />
       <div>
-        <h2 className="m-5 text-4xl font-bold text-center">What I offer</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <h2 className="m-5 text-4xl font-bold">What I offer</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2">
           {aboutData.map((item, index) => (
-            <div
-              key={index}
-              className="flex flex-col justify-center align-middle items-center border-gray-500 m-5 p-5 h-150 text-sm"
-            >
-              <img src={item.image} />
+            <div key={index} className="flex flex-col items-center border-gray-500 m-5 p-5">
+              <img src={item.image} className="align-middle" />
               <h2 className="text-3xl">{item.title}</h2>
               <h3 className="text-lg italic mt-3">{item.subtitle}</h3>
             </div>
@@ -89,7 +86,7 @@ export const ConnectWithMe = () => {
     <div className="flex flex-col justify-center pt-20 pb-20 md:flex-row">
       <div className="flex items-center justify-center">
         <p className="font-body text-lg font-semibold uppercase text-grey-20">
-          Connect with me &gt; &nbsp;
+          Connect with me &nbsp;
         </p>
         <div className="hidden sm:block">
           <i className="bx bx-chevron-right text-2xl text-primary"></i>
