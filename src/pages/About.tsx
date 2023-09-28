@@ -42,30 +42,22 @@ const aboutData = [
 export const About = () => {
   return (
     <div className="mx-14 text-center">
-      {/* <h2 className="my-8 font-header text-4xl font-semibold uppercase text-primary lg:text-6xl">
-        Who Am I?
-      </h2>
-      <h4 className="pt-6 font-header text-xl font-medium text-black sm:text-2xl lg:text-3xl">
-        I'm Charlie Johnson, a full stack software engineer
-      </h4> */}
       <p className="pt-6 font-body leading-relaxed text-grey-20">
         <br /> I am based in Saint Louis.
         <br /> My specialty is full-stack Javascript development, but I have experience with a wide
         variety of languages and frameworks.
         <br /> I am passionate about building high-quality software and fostering a collaborative
         and inclusive work environment. <br />
-        {/* If you'd like to get in touch, please add me on{' '}
-        <a href="https://www.linkedin.com/in/devcjohn">linkedIn.</a> */}
       </p>
       <ConnectWithMe />
       <div>
         <h2 className="m-5 text-4xl font-bold">What I offer</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 md:mx-20">
           {aboutData.map((item, index) => (
             <div key={index} className="flex flex-col items-center border-gray-500 m-5 p-5">
               <img src={item.image} className="align-middle" />
-              <h2 className="text-3xl">{item.title}</h2>
-              <h3 className="text-lg italic mt-3">{item.subtitle}</h3>
+              <h2 className="text-lg md:text-3xl mt-2">{item.title}</h2>
+              <h3 className="text-sm md:text-lg italic mt-3">{item.subtitle}</h3>
             </div>
           ))}
         </div>
