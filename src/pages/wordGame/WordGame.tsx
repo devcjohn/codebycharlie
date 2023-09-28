@@ -19,7 +19,6 @@ import {
 // - When game is over, keyboard should stay the same size
 // - Improve colors
 // - Add animations like letters flipping around
-// Grade last row on loss?
 
 import { useCallback, useEffect, useRef } from 'react'
 import { checkIsWordReal } from '../../dictionary/wordLib'
@@ -187,11 +186,6 @@ export const WordGame = () => {
     }
   }),
     [COLS, activeSquare, answer, turn, board]
-
-  // const getBorderClass = (isActive: boolean) => {
-  //   // Display a border around the active square
-  //   return isActive ? 'border-8 border-black' : ''
-  // }
 
   const renderRow = (row: Row, colIndex: number) =>
     row.map((square, rowIndex) => {

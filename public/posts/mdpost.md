@@ -1,10 +1,12 @@
-# ChatGPT tips for developers
+# 7 Ways Developers can use ChatGPT
 
 #### 10-27-2023
 
 ---
 
-Here are a few questions that I asked ChatGPT when making this website, and the answers given. I hope you find inspiration in these examples!
+Here are a few questions that I asked OpenAI's ChatGPT 4.0 when making this website, and the answers given.
+The questions were asked between August and September 2023.
+I hope you find inspiration in these examples!
 
 ### 1. Generating SVGs
 
@@ -166,3 +168,58 @@ ChatGPT: As of my knowledge cutoff in September 2021, Vite and Remix are two dif
    **Remix:** Remix provides built-in components and hooks to handle data fetching, caching, error boundaries, loading states, and more, all tied into the routing system.
 
 Please note that the landscape of web development tools evolves rapidly, and the information might have changed beyond my knowledge cutoff in September 2021. You should look up the latest resources to get the most up-to-date comparison.
+
+### 7. Documentation
+
+Me: Here is my package.json file. Please generate a README section consisting of some of the most important tools used, and a very short description of each. eg "- Vite: Build tool. - React: UI library." <I pasted my package.json file here>
+
+ChatGPT: Based on the `package.json` file you provided, below is a section you can include in your `README.md` file to describe some of the important tools used in your project:
+
+```markdown
+## Key Tools and Libraries Used
+
+### [Vite](https://vitejs.dev/): Build Tool
+
+- **Vite:** A build tool that aims to provide a faster and leaner development experience for modern web projects. It serves your code via native ES modules, allowing you to develop your application without a bundler.
+
+### [React](https://reactjs.org/): UI Library
+
+- **React:** A declarative, efficient, and flexible JavaScript library for building user interfaces. It lets you compose complex UIs from small and isolated pieces of code called “components”.
+
+### [React-DOM](https://reactjs.org/docs/react-dom.html): React Renderer to the DOM
+
+- **React-DOM:** Provides DOM-specific methods that can be used at the top level of a React app to enable an efficient way of managing
+```
+
+Me: (After Pressing the "Stop Generating" button) Those are a bit long. Can you make the output shorter like this? Vite: Build tool. React: UI library.
+
+ChatGPT:
+
+Certainly! Below is a concise section for your `README.md`:
+
+```markdown
+## Key Tools and Libraries
+
+- **[Vite](https://vitejs.dev/):** Build tool.
+- **[React](https://reactjs.org/):** UI library.
+- **[React-DOM](https://reactjs.org/docs/react-dom.html):** React renderer to the DOM.
+- **[React-Router-DOM](https://reactrouter.com/):** DOM bindings for React Router.
+- **[React-Helmet-Async](https://github.com/staylor/react-helmet-async):** Manage document head tags.
+- **[React-Markdown](https://github.com/remarkjs/react-markdown):** Markdown component for React.
+- **[React-Google-Recaptcha](https://github.com/dozoisch/react-google-recaptcha):** Google's reCAPTCHA component for React.
+- **[React-Syntax-Highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter):** Syntax highlighter component for React.
+- **[Tailwind CSS](https://tailwindcss.com/):** Utility-first CSS framework.
+- **[ESLint](https://eslint.org/):** JavaScript linter.
+- **[TypeScript](https://www.typescriptlang.org/):** Typed superset of JavaScript.
+- **[Prettier](https://prettier.io/):** Code formatter.
+```
+
+### 8. Styling
+
+### Conclusion
+
+Note that these examples are cherry-picked!
+ChatGPT is sometimes completely unable to help, or requires additional prompting to produce something useful.
+
+However, in spite of its limitations, ChatGPT 4.0 can be a great tool in making developer's jobs easier.
+I am looking forward to seeing it become even more useful over time.

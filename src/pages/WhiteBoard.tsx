@@ -2,6 +2,8 @@ import { Tldraw, Editor, createShapeId, TLNoteShape, TLArrowShape } from '@tldra
 import '@tldraw/tldraw/tldraw.css'
 
 const handleMount = (editor: Editor) => {
+  /* On mount, draw two notes and an arrow between them */
+
   const note1ID = createShapeId('note1')
   const note2ID = createShapeId('note2')
   const arrowID = createShapeId('arrow')
