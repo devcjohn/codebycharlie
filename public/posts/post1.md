@@ -1,4 +1,4 @@
-# 7 Ways Developers can use ChatGPT
+# 10 Ways Developers can use ChatGPT
 
 #### 10-27-2023
 
@@ -215,6 +215,10 @@ Certainly! Below is a concise section for your `README.md`:
 ```
 
 ### 8. Styling
+
+### 9. Understanding Complex Code
+
+### 10. Something else!
 
 ### Conclusion
 
