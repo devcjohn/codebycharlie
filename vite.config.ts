@@ -8,6 +8,7 @@ export default defineConfig({
   build: {
     sourcemap: true,
   },
+  assetsInclude: ['/posts/*.md'] /* Let Vite know to include MD files in the build */,
   plugins: [
     react(),
 

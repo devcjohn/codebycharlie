@@ -1,8 +1,8 @@
-export const post1 = `
 # ChatGPT tips for developers
 
 ### Maybe you are a developer who is interested in ChatGPT, but you don't know where to start. \
- Here are a few questions and answers that I asked ChatGPT when making this website. \
+
+Here are a few questions and answers that I asked ChatGPT when making this website. \
 I hope you find inspiration in these examples!
 
 1. Generating SVGs
@@ -11,7 +11,7 @@ Me: Generate an svg favicon that is 64x64 and has the text "CbC"
 
 ChatGPT: Certainly! I can provide you with an SVG markup for a favicon with the text "CbC". However, keep in mind that SVGs are textual representations, so the following is a simple SVG content and may need to be further styled for your exact needs.
 
-~~~svg
+```svg
 <svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
     <!-- Background -->
     <rect width="100%" height="100%" fill="#FFFFFF"/>
@@ -19,26 +19,27 @@ ChatGPT: Certainly! I can provide you with an SVG markup for a favicon with the 
     <!-- Text "CbC" -->
     <text x="50%" y="50%" font-family="Arial" font-size="32" text-anchor="middle" alignment-baseline="middle" fill="#000000">CbC</text>
 </svg>
-~~~
+```
 
-
-2. Generating code challenges
-Me: Please generate some suboptimal JS code, maybe like 5 or 6 lines.  Then I'll try to improve it and you can grade my solution
+<br/><br/><br/> 2. Generating code challenges
+Me: Please generate some suboptimal JS code, maybe like 5 or 6 lines. Then I'll try to improve it and you can grade my solution
 
 ChatGPT: Sure, here is some suboptimal JavaScript code:
-~~~js
+
+```js
 function sumEvenNumbers(arr) {
-    var sum = 0;
-    for (var i = 0; i < arr.length; i++) {
-        if (arr[i] % 2 === 0) {
-            sum += arr[i];
-        }
+  var sum = 0
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 === 0) {
+      sum += arr[i]
     }
-    return sum;
+  }
+  return sum
 }
 
-console.log(sumEvenNumbers([1, 2, 3, 4, 5, 6]));
-~~~
+console.log(sumEvenNumbers([1, 2, 3, 4, 5, 6]))
+```
+
 This code will find the sum of all even numbers in an array. Try to improve this code and then I'll grade your solution.
 
 Me: const sumEvenNumbers = (arr) => arr.filter(x => x % 2 === 0).reduce((a,b) => a+b)
@@ -57,14 +58,16 @@ Great job!
 
 3. Ask about programming conventions
 
-Me: In React.JS, is it considered common practice to capitalize the names of files? (about.tsx vs About.tsx) 
+Me: In React.JS, is it considered common practice to capitalize the names of files? (about.tsx vs About.tsx)
 
 ChatGPT: Yes, in the React.js community, it is generally considered common practice to capitalize the names of component files. This is not a technical requirement from React itself, but a convention that many developers follow to indicate that a file exports a React component. So, you would typically name your file as About.tsx rather than about.tsx.
 
 Moreover, when you import this file, it becomes clear that you're importing a component and not a regular JavaScript module or utility function:
-~~~jsx
-import About from './About';
-~~~
+
+```jsx
+import About from './About'
+```
+
 However, this is not a hard and fast rule. Consistency across a project is most important, so whether you choose to capitalize component files or not, it's best to stick with one naming convention throughout the project.
 
 3. Programming Paradigms
@@ -93,19 +96,19 @@ In order to simulate the user pressing a key in the context of React Testing Lib
 
 For instance, to simulate a user pressing the 'Enter' key, your test might look like this:
 
-~~~jsx
-import { render, fireEvent } from '@testing-library/react';
+```jsx
+import { render, fireEvent } from '@testing-library/react'
 
 test('simulates pressing a key', () => {
-  const handleKeyDown = jest.fn();
+  const handleKeyDown = jest.fn()
 
-  const { getByTestId } = render(<input data-testid="input-test" onKeyDown={handleKeyDown} />);
+  const { getByTestId } = render(<input data-testid="input-test" onKeyDown={handleKeyDown} />)
 
-  fireEvent.keyDown(getByTestId('input-test'), { key: 'Enter', code: 'Enter' });
+  fireEvent.keyDown(getByTestId('input-test'), { key: 'Enter', code: 'Enter' })
 
-  expect(handleKeyDown).toHaveBeenCalled();
-});
-~~~
+  expect(handleKeyDown).toHaveBeenCalled()
+})
+```
 
 This test does the following:
 
