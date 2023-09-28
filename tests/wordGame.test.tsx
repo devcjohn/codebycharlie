@@ -227,7 +227,7 @@ describe('Word Game', () => {
     }
 
     // User has run out of guesses
-    expect(await screen.findByText(/You Lost!/i)).toBeTruthy()
+    expect(await screen.findByText(/The answer was RIGHT/i)).toBeTruthy()
   })
 
   it('shows win message when game is won', async () => {

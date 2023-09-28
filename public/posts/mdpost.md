@@ -1,11 +1,12 @@
 # ChatGPT tips for developers
 
-### Maybe you are a developer who is interested in ChatGPT, but you don't know where to start. \
+#### 10-27-2023
 
-Here are a few questions and answers that I asked ChatGPT when making this website. \
-I hope you find inspiration in these examples!
+---
 
-1. Generating SVGs
+Here are a few questions that I asked ChatGPT when making this website, and the answers given. I hope you find inspiration in these examples!
+
+### 1. Generating SVGs
 
 Me: Generate an svg favicon that is 64x64 and has the text "CbC"
 
@@ -21,7 +22,8 @@ ChatGPT: Certainly! I can provide you with an SVG markup for a favicon with the 
 </svg>
 ```
 
-<br/><br/><br/> 2. Generating code challenges
+### 2. Generating code challenges
+
 Me: Please generate some suboptimal JS code, maybe like 5 or 6 lines. Then I'll try to improve it and you can grade my solution
 
 ChatGPT: Sure, here is some suboptimal JavaScript code:
@@ -56,7 +58,7 @@ Note: The filter method creates a new array with all elements that pass the test
 
 Great job!
 
-3. Ask about programming conventions
+### 3. Discovering Programming Conventions
 
 Me: In React.JS, is it considered common practice to capitalize the names of files? (about.tsx vs About.tsx)
 
@@ -70,7 +72,7 @@ import About from './About'
 
 However, this is not a hard and fast rule. Consistency across a project is most important, so whether you choose to capitalize component files or not, it's best to stick with one naming convention throughout the project.
 
-3. Programming Paradigms
+### 4. Explaining Programming Paradigms
 
 Me: Explain "Progressive Enhancement"
 
@@ -88,7 +90,7 @@ This approach ensures that the essential content and functionality of a website 
 
 Progressive enhancement is often contrasted with another design philosophy called "graceful degradation". While progressive enhancement starts with a baseline experience and builds up, graceful degradation starts with a full experience and then tries to ensure that it still works in less-capable browsers or devices.
 
-4. Testing
+### 5. Testing
 
 Me: How can I simulate the user pressing a a key in Testing Library React?
 
@@ -120,3 +122,47 @@ Please remember to adjust your test case based on the specific requirements of y
 
 In addition, please consider whether a fireEvent or userEvent is more appropriate for your test case. userEvent is a library built on top of fireEvent that provides a more realistic simulation of user behavior, but may not be necessary for all test cases. You can import userEvent from @testing-library/user-event
 `
+
+### 6. Comparing tools
+
+Me: Compare Vite with Remix
+
+ChatGPT: As of my knowledge cutoff in September 2021, Vite and Remix are two different tools used in web development, with some overlap but also distinctive strengths. Here's a comparison of the two:
+
+1. **Goal:**
+
+   **Vite:** Vite (which means "fast" in French) is a build tool created by Evan You, the creator of Vue.js. Its primary goal is to provide a faster and leaner development experience for modern web projects. It provides features like hot module replacement and esbuild-powered fast bundling for production.
+
+   **Remix:** Remix is a comprehensive web framework for building better web applications. It's built with a focus on leveraging the browser's fetch API and it provides a seamless experience for data loading. The main focus of Remix is to provide developers with a robust framework for building web applications that are fast and efficient, making full use of the latest capabilities of the web platform.
+
+2. **Design Philosophy:**
+
+   **Vite:** Vite takes advantage of native ES modules (ESM) in modern browsers for development, allowing you to serve your code to the browser with minimal bundling during development. This approach results in significantly faster update times compared to traditional webpack-based tooling.
+
+   **Remix:** Remix emphasizes a "do it the browser way" philosophy, it uses browser fetch for data loading, which lets you isolate different parts of your app and have them update independently without global state.
+
+3. **Framework Compatibility:**
+
+   **Vite:** Vite is designed to be framework-agnostic. It can be used with any framework that can compile to JavaScript and work in the browser, including Vue, React, Preact, and more.
+
+   **Remix:** Remix is built primarily for React applications.
+
+4. **Performance:**
+
+   **Vite:** Vite greatly improves the speed of the development server start and hot-module replacement.
+
+   **Remix:** The Remix team has paid particular attention to performance with progressive rendering and streaming servers out of the box.
+
+5. **Routes:**
+
+   **Vite:** In Vite, routing largely depends on the framework you are using. If you use Vite with Vue, you'll use Vue Router. If you use it with React, you might use React Router or another choice.
+
+   **Remix:** Remix has its own built-in routing system, which is file-system based, and supports nested routing and data loading.
+
+6. **Data Fetching:**
+
+   **Vite:** Like routing, data fetching in Vite would depend on the framework you're using and its ecosystem.
+
+   **Remix:** Remix provides built-in components and hooks to handle data fetching, caching, error boundaries, loading states, and more, all tied into the routing system.
+
+Please note that the landscape of web development tools evolves rapidly, and the information might have changed beyond my knowledge cutoff in September 2021. You should look up the latest resources to get the most up-to-date comparison.
