@@ -85,12 +85,10 @@ const getSimpleLabelAndInput = (fieldName: string) => {
 
 const FormFillDemo = () => {
   return (
-    <div className="flex items-center flex-col">
-      <div>
-        This is a simple form fill page for testing the autofill functionality of your browser or
-        password manager. Data is never sent anywhere.
-      </div>
-      <div className="w-full max-w-xs">
+    <div className="flex items-center flex-col mt-10 m-5 p-5">
+      This is a simple form fill page for testing the autofill functionality of your browser or
+      password manager. Data is never sent anywhere.
+      <div className="w-full max-w-xs mt-10">
         <form className="shadow-md rounded px-8 pt-6 pb-8 mb-4">
           {fields.map((f) => getSimpleLabelAndInput(f))}
           <div className="flex flex-col">

@@ -225,14 +225,15 @@ export const WordGame = () => {
 
   return (
     <>
-      <div className="mx-auto min-h-full flex flex-col items-center justify-center text-3xl lg:text-5xl">
+      <div className="mx-auto min-h-full flex flex-col items-center justify-center text-3xl lg:text-5xl mt-10">
         {renderBoard()}
-
-        {gameState === 'WON' && <div className="m-5 p-5">You Won!</div>}
-        {gameState === 'LOST' && <div className="m-5 p-5">The answer was {answer}.</div>}
-        {(gameState === 'WON' || gameState === 'LOST') && (
-          <p className="m-5 p-5"> Click New Game to play again</p>
-        )}
+        <div className="text-2xl text-center">
+          {gameState === 'WON' && <div className="m-2 p-2">You Won!</div>}
+          {gameState === 'LOST' && <div className="m-2 p-2">The answer was {answer}.</div>}
+          {(gameState === 'WON' || gameState === 'LOST') && (
+            <p className=""> Click New Game to play again</p>
+          )}
+        </div>
 
         <div className="w-60 h-auto lg:w-96 flex items-center">
           <VirtualKeyboard onKeyPress={handleKeyDown} board={board} />

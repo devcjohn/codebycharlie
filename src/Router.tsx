@@ -14,7 +14,7 @@ import { NavBar } from './components/NavBar'
 const routes = [
   {
     path: '/',
-    title: 'Home',
+    title: 'Code By Charlie',
     component: <Home />,
   },
   {
