@@ -1,18 +1,9 @@
 /* eslint-disable no-useless-escape */
 import ReactMarkdown from 'react-markdown'
-import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter'
+import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism-light'
 import { materialDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
-
-//import post1 from '/posts/mdpost.md?raw'
 import { CodeProps } from 'react-markdown/lib/ast-to-react'
 import { FC, useEffect, useState } from 'react'
-import jsx from 'react-syntax-highlighter/dist/esm/languages/prism/jsx'
-import js from 'react-syntax-highlighter/dist/esm/languages/prism/javascript'
-//import xml from 'react-syntax-highlighter/dist/esm/languages/prism/xml-doc'
-
-SyntaxHighlighter.registerLanguage('jsx', jsx)
-SyntaxHighlighter.registerLanguage('js', js)
-//SyntaxHighlighter.registerLanguage('xml', xml)
 
 /* If code is detected, shows code block with syntax highlighting */
 const CodeBlock: FC<CodeProps> = ({ className, children, ...props }) => {
