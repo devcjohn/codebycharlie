@@ -63,10 +63,14 @@ export const About = () => {
         </div>
         <div className="mb-20">
           <h1 className="text-4xl font-bold text-center my-8">About this site</h1>
-          <h2>
-            View the source code for this website and the tools used to build it{' '}
-            <a href="https://github.com/devcjohn/codebycharlie">Here</a>
-          </h2>
+          <div className="flex flex-col md:flex-row justify-center align-middle items-center">
+            <h2>
+              View the source code for this website and the tools used to build it &nbsp; &nbsp;
+            </h2>
+            <a href="https://github.com/devcjohn/codebycharlie">
+              <img src="/img/github-mark.svg" className="h-15 w-15" title="Link to Github Repo" />
+            </a>
+          </div>
         </div>
       </div>
     </div>

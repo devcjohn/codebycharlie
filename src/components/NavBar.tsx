@@ -32,7 +32,7 @@ export const NavBar = () => {
       <nav>
         <div className="max-w-screen flex flex-wrap items-center justify-evenly px-4">
           <a href="/" className="flex items-center">
-            <span className="my-5 self-center text-2xl font-semibold whitespace-nowrap">
+            <span className="mt-2 md:my-5 self-center text-2xl font-semibold whitespace-nowrap">
               CodeByCharlie
             </span>
           </a>

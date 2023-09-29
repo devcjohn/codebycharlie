@@ -1,14 +1,22 @@
-import { useRouteError } from 'react-router-dom'
+import { useRouteError, isRouteErrorResponse } from 'react-router-dom'
 
 export const FallbackComponent = () => {
-  const routeError: any = useRouteError()
+  const error = useRouteError()
 
-  console.error(routeError)
+  console.error(error)
 
+  if (isRouteErrorResponse(error)) {
+    /* given error is an ErrorResponse generated from a 4xx/5xx Response thrown from an action/loader */
+    return (
+      <>
+        <div>An error has occurred</div>
+        <div>{`${error.status} - ${error.statusText} - ${error.data} - ${error.internal} - ${error.error}`}</div>
+      </>
+    )
+  }
   return (
     <>
-      <div>An error has occurred</div>
-      <div>{routeError.statusText || routeError.message || ''}</div>
+      <div>An unknown error has occurred</div>
     </>
   )
 }

@@ -10,14 +10,14 @@ interface VirtualKeyboardProps {
 
 export const VirtualKeyboard: React.FC<VirtualKeyboardProps> = ({ onKeyPress, board }) => {
   const getLetterStates = (): { [key: string]: GuessResult | null } => {
-    // {
+    const letterStates: { [key: string]: GuessResult | null } = {}
+    // letterStates = {
     //   'A': 'CORRECT',
     //   'B': 'INCORRECT',
     //   'C': 'MISPLACED',
     //   'D': null,
     //    etc...
     // }
-    const letterStates: { [key: string]: GuessResult | null } = {}
 
     board.forEach((row: Square[]) => {
       row.forEach((square: Square) => {
