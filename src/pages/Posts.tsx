@@ -3,7 +3,7 @@ const allPosts = [
     id: 1,
     title: '10 Ways Developers can use ChatGPT',
     imageUrl: '/img/ChatGPT_logo.svg',
-    date: new Date('10-27-2023'),
+    date: '10-30-2023',
   },
   // {
   //   id: 2,
@@ -29,7 +29,7 @@ export const Posts = () => {
                 />
               )}
               <h2 className="text-2xl font-bold mb-2">{title}</h2>
-              <p className="text-gray-500">{date.toLocaleDateString('en-US')}</p>
+              <p className="text-gray-500">{date}</p>
             </div>
           </a>
         ))}
