@@ -6,6 +6,7 @@ import { FC } from 'react'
 import jsx from 'react-syntax-highlighter/dist/esm/languages/prism/jsx'
 import markdown from 'react-syntax-highlighter/dist/esm/languages/prism/markdown'
 import ReactMarkdown from 'react-markdown'
+import { useLoaderData } from 'react-router-dom'
 
 /* Because we are using prism-light, we need to register the languages we want to use
 xml and js seem to be supported out of the box for some unknown reason */
@@ -34,12 +35,14 @@ const CodeBlock: FC<CodeProps> = ({ className, children, inline, ...props }) => 
   )
 }
 
-type Props = {
-  mdContent: string
-}
+export const BlogPost: FC = () => {
+  const content = useLoaderData() as string /* Data is loaded in Router */
 
-export const BlogPost: FC<Props> = ({ mdContent }) => (
-  <article className="prose lg:prose-lg m-4 md:m-20 flex flex-col items-center justify-center min-h-screen">
-    <ReactMarkdown components={{ code: CodeBlock }}>{mdContent}</ReactMarkdown>
-  </article>
-)
+  return (
+    <div className="flex items-center justify-center min-h-screen">
+      <article className="prose lg:prose-lg m-4 md:m-20 flex flex-col items-center justify-center min-h-screen">
+        <ReactMarkdown components={{ code: CodeBlock }}>{content}</ReactMarkdown>
+      </article>
+    </div>
+  )
+}

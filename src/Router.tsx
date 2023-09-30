@@ -2,7 +2,6 @@ import { Helmet } from 'react-helmet-async'
 import { createBrowserRouter } from 'react-router-dom'
 import { About } from './pages/About'
 import { WordGame } from './pages/wordGame/WordGame'
-import { FallbackComponent } from './components/FallbackComponent'
 import FormFillDemo from './components/FormFillDemo'
 import Crash from './pages/Crash'
 import { Contact } from './pages/Contact'
@@ -10,6 +9,8 @@ import { Home } from './pages/Home'
 import { WhiteBoard } from './pages/WhiteBoard'
 import { Posts } from './pages/Posts'
 import { NavBar } from './components/NavBar'
+import { BlogPost } from './components/BlogPost'
+import { FallbackComponent } from './components/FallbackComponent'
 
 const routes = [
   {
@@ -53,10 +54,28 @@ const routes = [
     title: 'Posts',
     component: <Posts />,
   },
+  {
+    path: '/posts/:postId',
+    title: 'Post',
+    component: <BlogPost />,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    loader: async ({ params }: { params: any }) => {
+      const res = await fetch(`/posts/post${params.postId}.md`)
+      if (res.status === 404) {
+        throw new Response('Not Found', { status: 404 })
+      }
+      return res.text()
+    },
+  },
+  {
+    path: '/404',
+    title: '404',
+    component: <FallbackComponent />,
+  },
 ]
 
 export const router = createBrowserRouter(
-  routes.map(({ path, title, component, hideNavBar }) => ({
+  routes.map(({ path, title, component, hideNavBar, loader }) => ({
     path,
     element: (
       <>
@@ -67,6 +86,7 @@ export const router = createBrowserRouter(
         {component}
       </>
     ),
-    errorElementLoaded: <FallbackComponent />,
+    errorElement: <FallbackComponent />,
+    loader: loader,
   }))
 )

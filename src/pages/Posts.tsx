@@ -1,15 +1,39 @@
-import { BlogPost } from '../components/BlogPost'
-import post1 from '/posts/post1.md?raw'
-//import post2 from '/posts/post2.md?raw'
+const allPosts = [
+  {
+    id: 1,
+    title: '10 Ways Developers can use ChatGPT',
+    imageUrl: '/img/ChatGPT_logo.svg',
+    date: new Date('10-27-2023'),
+  },
+  // {
+  //   id: 2,
+  //   title: 'Another Post!',
+  //   imageUrl: null,
+  //   date: new Date('10-27-2023'),
+  // },
+]
 
 export const Posts = () => {
-  const allPosts = [post1]
-
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      {allPosts.map((post) => (
-        <BlogPost mdContent={post} />
-      ))}
+    <div className="min-h-screen p-8">
+      <div className="max-w-2xl mx-auto">
+        <h1 className="text-3xl font-bold mb-4">Blog Posts</h1>
+        {allPosts.map(({ id, imageUrl, date, title }) => (
+          <a key={title} href={`/posts/${id}`}>
+            <div className=" p-6 rounded-lg shadow-md">
+              {imageUrl && (
+                <img
+                  src={imageUrl}
+                  alt={title}
+                  className="w-full h-64 object-contain object-center rounded-md mb-4"
+                />
+              )}
+              <h2 className="text-2xl font-bold mb-2">{title}</h2>
+              <p className="text-gray-500">{date.toLocaleDateString()}</p>
+            </div>
+          </a>
+        ))}
+      </div>
     </div>
   )
 }
