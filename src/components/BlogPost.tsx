@@ -40,7 +40,7 @@ export const BlogPost: FC = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen">
-      <article className="prose lg:prose-lg m-4 md:m-20 flex flex-col items-center justify-center min-h-screen">
+      <article className="prose lg:prose-lg m-4 md:m-20 flex flex-col justify-center min-h-screen">
         <ReactMarkdown components={{ code: CodeBlock }}>{content}</ReactMarkdown>
       </article>
     </div>
