@@ -29,7 +29,7 @@ export const Posts = () => {
                 />
               )}
               <h2 className="text-2xl font-bold mb-2">{title}</h2>
-              <p className="text-gray-500">{date.toLocaleDateString()}</p>
+              <p className="text-gray-500">{date.toLocaleDateString('en-US')}</p>
             </div>
           </a>
         ))}

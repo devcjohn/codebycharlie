@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
 
-/* 'Demos' Nested Dropdown menu */
 export const NavBar = () => {
+  /* 'Demos' Nested Dropdown menu */
   const dropDownOptions = (
     <div
       id="dropdownNavbar"
-      className="absolute top-full left-0 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44  group-hover:block z-50"
+      className="hidden group-hover:block absolute top-full left-0 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44   z-50"
     >
       <ul className="py-2 text-sm text-gray-700 " aria-labelledby="dropdownLargeButton">
         <li>
