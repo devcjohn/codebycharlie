@@ -66,7 +66,7 @@ const handleMount = (editor: Editor) => {
 
 export const WhiteBoard = () => {
   return (
-    <div className="flex-grow h-screen">
+    <div className="fixed inset-0">
       <Tldraw onMount={handleMount} />
     </div>
   )
