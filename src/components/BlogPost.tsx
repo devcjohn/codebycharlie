@@ -5,6 +5,7 @@ import { CodeProps } from 'react-markdown/lib/ast-to-react'
 import { FC } from 'react'
 import jsx from 'react-syntax-highlighter/dist/esm/languages/prism/jsx'
 import markdown from 'react-syntax-highlighter/dist/esm/languages/prism/markdown'
+import scheme from 'react-syntax-highlighter/dist/esm/languages/prism/scheme'
 import ReactMarkdown from 'react-markdown'
 import { useLoaderData } from 'react-router-dom'
 
@@ -12,6 +13,7 @@ import { useLoaderData } from 'react-router-dom'
 xml and js seem to be supported out of the box for some unknown reason */
 SyntaxHighlighter.registerLanguage('jsx', jsx)
 SyntaxHighlighter.registerLanguage('markdown', markdown)
+SyntaxHighlighter.registerLanguage('scheme', scheme)
 
 /* If code is detected, show code block with syntax highlighting */
 const CodeBlock: FC<CodeProps> = ({ className, children, inline, ...props }) => {
@@ -40,7 +42,7 @@ export const BlogPost: FC = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen">
-      <article className="prose lg:prose-lg m-4 md:m-20 flex flex-col justify-center min-h-screen">
+      <article className="prose m-4 md:m-20 flex flex-col justify-center min-h-screen">
         <ReactMarkdown components={{ code: CodeBlock }}>{content}</ReactMarkdown>
       </article>
     </div>
