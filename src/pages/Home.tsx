@@ -13,7 +13,7 @@ export const Home = () => {
             <div className="rounded-full border-8 border-primary shadow-xl">
               <img src="/img/headshot.webp" alt="headshot" className="h-48 rounded-full sm:h-56" />
             </div>
-            <div className=" md:pt-8 md:pl-8">
+            <div className="mt-4 md:mt-0 md:pt-8 md:pl-8 ">
               <h1 className="text-center font-header text-4xl text-white md:text-6xl">
                 Hi, I'm Charlie Johnson
               </h1>
