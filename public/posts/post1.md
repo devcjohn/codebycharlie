@@ -1,18 +1,23 @@
-# 10 Ways Developers can use ChatGPT
+---
+title: Coding with ChatGPT- 10 Practical Uses
+date: 2023-09-30
+tags: chatgpt, programming
+---
 
-#### 10-30-2023
+# Coding with ChatGPT: 10 Practical Uses
+
+#### 9-30-2023
 
 ---
 
-Here are a few questions that I asked OpenAI's ChatGPT 4.0 when making this website, and the answers given.
-The questions were asked between August and September 2023.
+Here are a few questions that I asked OpenAI's ChatGPT 4.0 in the last few months, as well as the answers given.
 I hope you find inspiration in these examples!
 
 ## 1. Generating SVGs
 
-Me: Generate an svg favicon that is 64x64 and has the text "CbC"
+**Me:** Generate an svg favicon that is 64x64 and has the text "CbC"
 
-ChatGPT: Certainly! I can provide you with an SVG markup for a favicon with the text "CbC". However, keep in mind that SVGs are textual representations, so the following is a simple SVG content and may need to be further styled for your exact needs.
+**ChatGPT:** Certainly! I can provide you with an SVG markup for a favicon with the text "CbC". However, keep in mind that SVGs are textual representations, so the following is a simple SVG content and may need to be further styled for your exact needs.
 
 ```svg
 <svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
@@ -26,9 +31,9 @@ ChatGPT: Certainly! I can provide you with an SVG markup for a favicon with the 
 
 ## 2. Generating code challenges
 
-Me: Please generate some suboptimal JS code, maybe like 5 or 6 lines. Then I'll try to improve it and you can grade my solution
+**Me:** Please generate some suboptimal JS code, maybe like 5 or 6 lines. Then I'll try to improve it and you can grade my solution
 
-ChatGPT: Sure, here is some suboptimal JavaScript code:
+**ChatGPT:** Sure, here is some suboptimal JavaScript code:
 
 ```js
 function sumEvenNumbers(arr) {
@@ -46,9 +51,13 @@ console.log(sumEvenNumbers([1, 2, 3, 4, 5, 6]))
 
 This code will find the sum of all even numbers in an array. Try to improve this code and then I'll grade your solution.
 
-Me: const sumEvenNumbers = (arr) => arr.filter(x => x % 2 === 0).reduce((a,b) => a+b)
+**Me:**
 
-ChatGPT: Nice work! Your solution is concise and functional. Here's your rating:
+```js
+const sumEvenNumbers = (arr) => arr.filter((x) => x % 2 === 0).reduce((a, b) => a + b)
+```
+
+**ChatGPT:** Nice work! Your solution is concise and functional. Here's your rating:
 
 Correctness: 10/10
 Readability: 10/10
@@ -62,9 +71,9 @@ Great job!
 
 ## 3. Discovering Programming Conventions
 
-Me: In React.JS, is it considered common practice to capitalize the names of files? (about.tsx vs About.tsx)
+**Me:** In React.JS, is it considered common practice to capitalize the names of files? (about.tsx vs About.tsx)
 
-ChatGPT: Yes, in the React.js community, it is generally considered common practice to capitalize the names of component files. This is not a technical requirement from React itself, but a convention that many developers follow to indicate that a file exports a React component. So, you would typically name your file as About.tsx rather than about.tsx.
+**ChatGPT:** Yes, in the React.js community, it is generally considered common practice to capitalize the names of component files. This is not a technical requirement from React itself, but a convention that many developers follow to indicate that a file exports a React component. So, you would typically name your file as About.tsx rather than about.tsx.
 
 Moreover, when you import this file, it becomes clear that you're importing a component and not a regular JavaScript module or utility function:
 
@@ -76,9 +85,9 @@ However, this is not a hard and fast rule. Consistency across a project is most 
 
 ## 4. Explaining Programming Paradigms
 
-Me: Explain "Progressive Enhancement"
+**Me:** Explain "Progressive Enhancement"
 
-ChatGPT: Progressive enhancement is a design philosophy that centers around providing a basic level of user experience to all end users by starting with a minimal level of user interface, then enhancing the system for those with advanced browser software or greater bandwidth. This approach aims to deliver functionality and aesthetics based on the capabilities of the user's system.
+**ChatGPT:** Progressive enhancement is a design philosophy that centers around providing a basic level of user experience to all end users by starting with a minimal level of user interface, then enhancing the system for those with advanced browser software or greater bandwidth. This approach aims to deliver functionality and aesthetics based on the capabilities of the user's system.
 
 Here's a breakdown of how it works:
 
@@ -92,9 +101,9 @@ This approach ensures that the essential content and functionality of a website 
 
 Progressive enhancement is often contrasted with another design philosophy called "graceful degradation". While progressive enhancement starts with a baseline experience and builds up, graceful degradation starts with a full experience and then tries to ensure that it still works in less-capable browsers or devices.
 
-## 5. Testing
+## 5. Testing Help
 
-Me: How can I simulate the user pressing a a key in Testing Library React?
+**Me:** How can I simulate the user pressing a a key in Testing Library React?
 
 In order to simulate the user pressing a key in the context of React Testing Library, you can use the fireEvent.keyDown or fireEvent.keyPress function.
 
@@ -125,11 +134,11 @@ Please remember to adjust your test case based on the specific requirements of y
 In addition, please consider whether a fireEvent or userEvent is more appropriate for your test case. userEvent is a library built on top of fireEvent that provides a more realistic simulation of user behavior, but may not be necessary for all test cases. You can import userEvent from @testing-library/user-event
 `
 
-## 6. Comparing tools
+## 6. Comparing Tools
 
-Me: Compare Vite with Remix
+**Me:** Compare Vite with Remix
 
-ChatGPT: As of my knowledge cutoff in September 2021, Vite and Remix are two different tools used in web development, with some overlap but also distinctive strengths. Here's a comparison of the two:
+**ChatGPT:** As of my knowledge cutoff in September 2021, Vite and Remix are two different tools used in web development, with some overlap but also distinctive strengths. Here's a comparison of the two:
 
 1. **Goal:**
 
@@ -171,9 +180,9 @@ Please note that the landscape of web development tools evolves rapidly, and the
 
 ## 7. Generating Documentation
 
-Me: Here is my package.json file. Please generate a README section consisting of some of the most important tools used, and a very short description of each. eg "- Vite: Build tool. - React: UI library." <I pasted my package.json file here>
+**Me:** Here is my package.json file. Please generate a README section consisting of some of the most important tools used, and a very short description of each. eg "- Vite: Build tool. - React: UI library." <I pasted my package.json file here>
 
-ChatGPT: Based on the `package.json` file you provided, below is a section you can include in your `README.md` file to describe some of the important tools used in your project:
+**ChatGPT:** Based on the `package.json` file you provided, below is a section you can include in your `README.md` file to describe some of the important tools used in your project:
 
 ```markdown
 ## Key Tools and Libraries Used
@@ -191,11 +200,9 @@ ChatGPT: Based on the `package.json` file you provided, below is a section you c
 - **React-DOM:** Provides DOM-specific methods that can be used at the top level of a React app to enable an efficient way of managing
 ```
 
-Me: (After Pressing the "Stop Generating" button) Those are a bit long. Can you make the output shorter like this? Vite: Build tool. React: UI library.
+**Me:** (After Pressing the "Stop Generating" button) Those are a bit long. Can you make the output shorter like this? Vite: Build tool. React: UI library.
 
-ChatGPT:
-
-Certainly! Below is a concise section for your `README.md`:
+**ChatGPT:** Certainly! Below is a concise section for your `README.md`:
 
 ```markdown
 ## Key Tools and Libraries
@@ -216,7 +223,7 @@ Certainly! Below is a concise section for your `README.md`:
 
 ## 8. Styling
 
-Me: Please generate a simple React component representing a 404 screen. It should use tailwindcss for styling, and take up the full screen. It should also work on mobile. For tailwindcss breakpoints, use nothing (medium or smaller) and "md" for medium and larger devices. Here is the basic skeleton:
+**Me:** Please generate a simple React component representing a 404 screen. It should use tailwindcss for styling, and take up the full screen. It should also work on mobile. For tailwindcss breakpoints, use nothing (medium or smaller) and "md" for medium and larger devices. Here is the basic skeleton:
 
 ```jsx
 <div>
@@ -226,8 +233,7 @@ Me: Please generate a simple React component representing a 404 screen. It shoul
 </div>
 ```
 
-ChatGPT:
-Certainly! You want to create a simple 404 error page React component using Tailwind CSS for styling that's responsive across different devices.
+**ChatGPT:** Certainly! You want to create a simple 404 error page React component using Tailwind CSS for styling that's responsive across different devices.
 
 Firstly, ensure you have Tailwind CSS installed in your React project. If not, you can install it via npm or yarn, and configure it based on the Tailwind CSS documentation.
 
@@ -270,7 +276,7 @@ For the responsiveness, Tailwind CSS utility classes inherently provide responsi
 
 ## 9. Understanding Code
 
-Me: Can you explain what this code does, annotate it, and give an example of its use?
+**Me:** Can you explain what this code does, annotate it, and give an example of its use?
 
 ```scheme
 (define ???
@@ -286,8 +292,7 @@ Me: Can you explain what this code does, annotate it, and give an example of its
          (add1 (length (cdr l)))))))))
 ```
 
-ChatGPT:
-Certainly! This code is written in Scheme, a dialect of Lisp. It’s a bit tricky due to the use of higher-order functions and anonymous functions (lambdas). Let’s break it down part by part.
+**ChatGPT:** Certainly! This code is written in Scheme, a dialect of Lisp. It’s a bit tricky due to the use of higher-order functions and anonymous functions (lambdas). Let’s break it down part by part.
 
 ### Code Breakdown:
 
@@ -331,12 +336,56 @@ Here's how you might use this function to calculate the length of a list:
 
 The `???` function is a recursive function to calculate the length of a list. It’s constructed using anonymous functions and higher-order functions, demonstrating concepts like closures and the Y combinator-style recursion technique in Scheme.
 
-## 10. Something else!
+## 10. User Stories
 
-### Conclusion
+**Me:** Please take the following user story summary and split it into 2 separate stories. Each one should represent a "vertical slice" of work and deliver value to the end user. Summary: Add filter and search to shop page.
+
+**ChatGPT:** Absolutely. Below are two user stories derived from your summary, each providing a vertical slice of functionality that delivers value to the end user.
+
+### User Story 1: Implement Filter Functionality on Shop Page
+
+**Summary:**  
+The team will add a filter functionality to the shop page, allowing users to narrow down products based on specific criteria, providing a more efficient and user-friendly shopping experience.
+
+**Acceptance Criteria:**
+
+1. **Given** that a user is on the shop page,  
+   **When** they view the product listing,  
+   **Then** they should see an option to filter products by various criteria (e.g. price, category, brand, etc.).
+
+2. **Given** that the filter options are visible,  
+   **When** a user selects a criterion and applies the filter,  
+   **Then** the product listing should update to display only products that match the selected criterion.
+
+3. **Given** that products are being filtered,  
+   **When** a user clears the selected filter(s),  
+   **Then** the product listing should revert to displaying all available products.
+
+### User Story 2: Implement Search Functionality on Shop Page
+
+**Summary:**  
+The team will integrate a search functionality on the shop page to enable users to quickly find and view products that match their search terms, facilitating faster and more efficient navigation.
+
+**Acceptance Criteria:**
+
+1. **Given** that a user is on the shop page,  
+   **When** they view the product listing,  
+   **Then** they should see a search bar above the list of products.
+
+2. **Given** that the search bar is visible,  
+   **When** a user enters a search term and submits the search,  
+   **Then** the product listing should update to display products that match the search term, based on product name, description, or other relevant attributes.
+
+3. **Given** that products are being displayed based on a search term,  
+   **When** a user clears the search bar,  
+   **Then** the product listing should revert to displaying all available products.
+
+In both stories, ensure that the user interface is intuitive and responsive, and that there is appropriate error handling and feedback for the user. Each story represents a vertical slice because they each deliver a distinct piece of functionality that provides value to the user independently, facilitating iterative development and testing.
+
+## Conclusion
 
 Note that these examples are cherry-picked!
 ChatGPT is sometimes completely unable to help, and very often requires additional prompting to produce something useful.
 
-However, in spite of its limitations, ChatGPT 4.0 can be a great tool in a developer's toolbox.
+However, in spite of its limitations, ChatGPT 4.0 can be a useful tool in a developer's toolbox.
 I am looking forward to seeing it become even more useful over time.

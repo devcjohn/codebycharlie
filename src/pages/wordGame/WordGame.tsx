@@ -202,7 +202,7 @@ export const WordGame = () => {
             flex items-center justify-center 
             overflow-hidden
             select-none
-            h-8 w-8
+            h-12 w-12
             lg:h-16
             lg:w-16
            ${getSquareColorClass(square)} 
@@ -235,7 +235,7 @@ export const WordGame = () => {
           )}
         </div>
 
-        <div className="w-60 h-auto lg:w-96 flex items-center">
+        <div className="w-screen md:w-96 h-auto flex items-center">
           <VirtualKeyboard onKeyPress={handleKeyDown} board={board} />
         </div>
         <button

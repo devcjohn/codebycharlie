@@ -8,6 +8,8 @@ import markdown from 'react-syntax-highlighter/dist/esm/languages/prism/markdown
 import scheme from 'react-syntax-highlighter/dist/esm/languages/prism/scheme'
 import ReactMarkdown from 'react-markdown'
 import { useLoaderData } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
+import { parseMarkdownWithYamlFrontmatter } from '../util/util'
 
 /* Because we are using prism-light, we need to register the languages we want to use
 xml and js seem to be supported out of the box for some unknown reason */
@@ -38,13 +40,30 @@ const CodeBlock: FC<CodeProps> = ({ className, children, inline, ...props }) => 
 }
 
 export const BlogPost: FC = () => {
-  const content = useLoaderData() as string /* Data is loaded in Router */
+  const contentWithMetadata = useLoaderData() as string /* Data is loaded in Router */
+
+  type MarkdownHeaderTags = {
+    title?: string
+    date?: string
+    tags?: string
+  }
+
+  const markdownMetadata = parseMarkdownWithYamlFrontmatter<MarkdownHeaderTags>(contentWithMetadata)
+  const { title } = markdownMetadata
+
+  /* Remove the metadata at the top of the content.  Metadata begins and ends with --- */
+  const content = contentWithMetadata.replace(/(---[\s\S]*?)---/, '')
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <article className="prose m-4 md:m-20 flex flex-col justify-center min-h-screen">
-        <ReactMarkdown components={{ code: CodeBlock }}>{content}</ReactMarkdown>
-      </article>
-    </div>
+    <>
+      <Helmet>
+        <title>{title}</title>
+      </Helmet>
+      <div className="flex justify-center">
+        <article className="m-4 md:m-20 prose prose-sm md:prose-base lg:prose-lg prose-slate prose-h2:underline">
+          <ReactMarkdown components={{ code: CodeBlock }}>{content}</ReactMarkdown>
+        </article>
+      </div>
+    </>
   )
 }

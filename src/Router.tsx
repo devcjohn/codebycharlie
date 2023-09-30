@@ -60,6 +60,8 @@ const routes = [
     component: <BlogPost />,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     loader: async ({ params }: { params: any }) => {
+      /* Having the loader here makes it easy to 404 when a post doesn't exist.
+        A downside is that it seems the loader call must finish before the page starts loading */
       const res = await fetch(`/posts/post${params.postId}.md`)
       if (res.status === 404) {
         throw new Response('Not Found', { status: 404 })
@@ -81,6 +83,13 @@ export const router = createBrowserRouter(
       <>
         <Helmet>
           <title>{title}</title>
+          <meta name="description" content="Code By Charlie" />
+          <meta name="author" content="Charlie Johnson" />
+          <meta
+            name="keywords"
+            content="Programming, Coding, Software Development, Charlie Johnson, Code By Charlie"
+          />
+          <meta name="robots" content="index, follow" />
         </Helmet>
         {!hideNavBar && <NavBar />}
         {component}
