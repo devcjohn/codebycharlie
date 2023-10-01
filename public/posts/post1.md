@@ -1,7 +1,7 @@
 ---
 title: Coding with ChatGPT- 10 Practical Uses
 date: 2023-09-30
-tags: chatgpt, programming
+tags: chatgpt, programming, AI
 ---
 
 # Coding with ChatGPT: 10 Practical Uses
@@ -10,7 +10,7 @@ tags: chatgpt, programming
 
 ---
 
-Here are a few questions that I asked OpenAI's ChatGPT 4.0 in the last few months, as well as the answers given.
+Here are a few questions that I asked OpenAI's ChatGPT 4.0 in the last few months, as well as the output.
 I hope you find inspiration in these examples!
 
 ## 1. Generating SVGs
@@ -29,7 +29,9 @@ I hope you find inspiration in these examples!
 </svg>
 ```
 
-## 2. Generating code challenges
+**My Take:** The SVG produced is pretty much what I asked for.
+
+## 2. Creating Code Challenges
 
 **Me:** Please generate some suboptimal JS code, maybe like 5 or 6 lines. Then I'll try to improve it and you can grade my solution
 
@@ -69,7 +71,9 @@ Note: The filter method creates a new array with all elements that pass the test
 
 Great job!
 
-## 3. Discovering Programming Conventions
+**My Take:** I appreciate that without specific prompting, it graded my answer in 3 different categories. The point taken off for performance, and the explanation for it, seems accurate. It would be nice if it mentioned the difference between imperative and declarative code.
+
+## 3. Exploring Programming Conventions
 
 **Me:** In React.JS, is it considered common practice to capitalize the names of files? (about.tsx vs About.tsx)
 
@@ -82,6 +86,8 @@ import About from './About'
 ```
 
 However, this is not a hard and fast rule. Consistency across a project is most important, so whether you choose to capitalize component files or not, it's best to stick with one naming convention throughout the project.
+
+**My Take:** The output is accurate, though it didn't mention PascalCase by name.
 
 ## 4. Explaining Programming Paradigms
 
@@ -100,6 +106,8 @@ Client-side scripting layer: Finally, JavaScript (or other client-side scripting
 This approach ensures that the essential content and functionality of a website is accessible to as many users as possible, regardless of their device or browser capabilities. It also allows developers to utilize the latest web technologies without excluding users who can't use or prefer not to use these technologies.
 
 Progressive enhancement is often contrasted with another design philosophy called "graceful degradation". While progressive enhancement starts with a baseline experience and builds up, graceful degradation starts with a full experience and then tries to ensure that it still works in less-capable browsers or devices.
+
+**My Take:** The output is accurate
 
 ## 5. Testing Help
 
@@ -133,6 +141,8 @@ Please remember to adjust your test case based on the specific requirements of y
 
 In addition, please consider whether a fireEvent or userEvent is more appropriate for your test case. userEvent is a library built on top of fireEvent that provides a more realistic simulation of user behavior, but may not be necessary for all test cases. You can import userEvent from @testing-library/user-event
 `
+
+**My Take:** The output is technically accurate, but I think it would be better if the example used userEvent instead of fireEvent, as that should be the default Source: [https://testing-library.com/docs/user-event/intro](https://testing-library.com/docs/user-event/intro)
 
 ## 6. Comparing Tools
 
@@ -178,9 +188,68 @@ In addition, please consider whether a fireEvent or userEvent is more appropriat
 
 Please note that the landscape of web development tools evolves rapidly, and the information might have changed beyond my knowledge cutoff in September 2021. You should look up the latest resources to get the most up-to-date comparison.
 
+**My Take:** The output seems accurate. There isn't a great summary here, like "Remix is more opinionated", but the question was very broad.
+
 ## 7. Generating Documentation
 
-**Me:** Here is my package.json file. Please generate a README section consisting of some of the most important tools used, and a very short description of each. eg "- Vite: Build tool. - React: UI library." <I pasted my package.json file here>
+**Me:** Here is my package.json file. Please generate a README section consisting of some of the most important tools used, and a very short description of each. eg "- Vite: Build tool. - React: UI library."
+
+```json
+{
+  "name": "my-vue-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "test": "vitest",
+    "analyzeBundle": "vite-bundle-visualizer"
+  },
+  "dependencies": {
+    "@sentry/react": "^7.57.0",
+    "@tldraw/tldraw": "^2.0.0-alpha.14",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-google-recaptcha": "^3.1.0",
+    "react-helmet-async": "^1.3.0",
+    "react-markdown": "^8.0.7",
+    "react-router-dom": "^6.14.1",
+    "react-simple-keyboard": "^3.7.8",
+    "react-syntax-highlighter": "^15.5.0"
+  },
+  "devDependencies": {
+    "@sentry/vite-plugin": "^2.4.0",
+    "@tailwindcss/typography": "^0.5.10",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/node": "^20.4.0",
+    "@types/nspell": "^2.1.3",
+    "@types/react": "^18.0.37",
+    "@types/react-dom": "^18.0.11",
+    "@types/react-google-recaptcha": "^2.1.5",
+    "@types/react-syntax-highlighter": "^15.5.7",
+    "@typescript-eslint/eslint-plugin": "^5.59.0",
+    "@typescript-eslint/parser": "^5.59.0",
+    "@vitejs/plugin-react-swc": "^3.0.0",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.38.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.3.4",
+    "jsdom": "^22.1.0",
+    "postcss": "^8.4.24",
+    "prettier": "^2.8.8",
+    "react-test-renderer": "^18.2.0",
+    "tailwindcss": "^3.3.2",
+    "typescript": "^5.0.2",
+    "vite": "^4.3.9",
+    "vite-bundle-visualizer": "^0.8.0",
+    "vitest": "^0.33.0"
+  }
+}
+```
 
 **ChatGPT:** Based on the `package.json` file you provided, below is a section you can include in your `README.md` file to describe some of the important tools used in your project:
 
@@ -221,9 +290,11 @@ Please note that the landscape of web development tools evolves rapidly, and the
 - **[Prettier](https://prettier.io/):** Code formatter.
 ```
 
+**My Take:** The result is basically accurate and highlights the most important packages. Documentation needs and styles can differ quite a bit between different companies and teams, so ChatGPT may need extra instructions to make something useful. Because ChatGPT has a knowledge cutoff (at least with this version), you cannot trust it to generate proper links. For example, the React-DOM link leads to deprecated docs.
+
 ## 8. Styling
 
-**Me:** Please generate a simple React component representing a 404 screen. It should use tailwindcss for styling, and take up the full screen. It should also work on mobile. For tailwindcss breakpoints, use nothing (medium or smaller) and "md" for medium and larger devices. Here is the basic skeleton:
+**Me:** Please update this code. It should use tailwindcss for styling, and take up the full screen. It should also work on mobile. For tailwindcss breakpoints, use nothing (medium or smaller) and "md" for medium and larger devices. Here is the basic skeleton:
 
 ```jsx
 <div>
@@ -273,6 +344,8 @@ Explanation of Tailwind CSS classes used:
 Before you use this code, ensure your project is set up to work with React and Tailwind CSS, and that you've imported and used the `NotFound` component in a way that it gets displayed when a page is not found. For proper navigation management, consider using React Router or a similar library to handle different routes and display the 404 page accordingly.
 
 For the responsiveness, Tailwind CSS utility classes inherently provide responsiveness. If you need more custom styling at different breakpoints, you can use Tailwind's responsive design features by prefixing classes with the appropriate breakpoint (e.g., `md:text-2xl` to set text size at the medium breakpoint). Adjust as necessary for your design needs!
+
+**My Take:** The result works well, and the extra explanations are nice. However, developers should always scrutinize ChatGTP's code instead of blindly copying it into their projects.
 
 ## 9. Understanding Code
 
@@ -336,7 +409,9 @@ Here's how you might use this function to calculate the length of a list:
 
 The `???` function is a recursive function to calculate the length of a list. It’s constructed using anonymous functions and higher-order functions, demonstrating concepts like closures and the Y combinator-style recursion technique in Scheme.
 
-## 10. User Stories
+**My Take:** I am not enough of a scheme guru to tell if every annotation is accurate, but it is correct that the function calculates the length of a list and uses the Y combinator. This code example is from "The Seasoned Schemer" by Daniel P. Firedman and Matthias Felleisen, MIT Press, 1996.
+
+## 10. Splitting User Stories
 
 **Me:** Please take the following user story summary and split it into 2 separate stories. Each one should represent a "vertical slice" of work and deliver value to the end user. Summary: Add filter and search to shop page.
 
@@ -382,10 +457,12 @@ The team will integrate a search functionality on the shop page to enable users 
 
 In both stories, ensure that the user interface is intuitive and responsive, and that there is appropriate error handling and feedback for the user. Each story represents a vertical slice because they each deliver a distinct piece of functionality that provides value to the user independently, facilitating iterative development and testing.
 
+**My Take:** Given the vageness of my input, this seems accurate. Could be a useful starting point.
+
 ## Conclusion
 
 Note that these examples are cherry-picked!
-ChatGPT is sometimes completely unable to help, and very often requires additional prompting to produce something useful.
+ChatGPT is sometimes completely unable to help, and usually requires additional prompting to produce something useful.
 
 However, in spite of its limitations, ChatGPT 4.0 can be a useful tool in a developer's toolbox.
 I am looking forward to seeing it become even more useful over time.
