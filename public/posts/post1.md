@@ -10,8 +10,9 @@ tags: chatgpt, programming, AI
 
 ---
 
-Here are a few questions that I asked OpenAI's ChatGPT 4.0 in the last few months, as well as the output.
-I hope you find inspiration in these examples!
+ChatGPT is a hot topic in the tech community, especially among software developers, as it has the potential to assist in everyday workflows.
+I've personally been using ChatGPT 4.0 to help with programming tasks, including the creation of this website.
+Here are some example use cases for ChatGPT, and my take on the results.
 
 ## 1. Generating SVGs
 
@@ -113,7 +114,7 @@ Progressive enhancement is often contrasted with another design philosophy calle
 
 **Me:** How can I simulate the user pressing a a key in Testing Library React?
 
-In order to simulate the user pressing a key in the context of React Testing Library, you can use the fireEvent.keyDown or fireEvent.keyPress function.
+**ChatGPT:**: In order to simulate the user pressing a key in the context of React Testing Library, you can use the fireEvent.keyDown or fireEvent.keyPress function.
 
 For instance, to simulate a user pressing the 'Enter' key, your test might look like this:
 
