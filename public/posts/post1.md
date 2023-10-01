@@ -1,5 +1,5 @@
 ---
-title: Coding with ChatGPT- 10 Practical Uses
+title: ChatGPT For Developers: A Look At 10 Examples
 date: 2023-09-30
 tags: chatgpt, programming, AI
 ---

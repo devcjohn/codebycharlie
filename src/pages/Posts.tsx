@@ -2,7 +2,7 @@ const allPosts = [
   {
     /* TODO: Get this info from MD metadata instead of hardcoding it */
     id: 1,
-    title: 'Coding with ChatGPT: 10 Practical Uses',
+    title: 'ChatGPT For Developers: A Look At 10 Examples',
     imageUrl: '/img/ChatGPT_logo.svg',
     date: '10-30-2023',
   },
