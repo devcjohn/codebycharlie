@@ -5,7 +5,7 @@ export const NavBar = () => {
   const dropDownOptions = (
     <div
       id="dropdownNavbar"
-      className="hidden group-hover:block absolute top-full left-0 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44   z-50"
+      className="absolute left-0 top-full z-50 hidden w-44 divide-y divide-gray-100 rounded-lg bg-white font-normal shadow   group-hover:block"
     >
       <ul className="py-2 text-sm text-gray-700 " aria-labelledby="dropdownLargeButton">
         <li>
@@ -30,18 +30,18 @@ export const NavBar = () => {
   return (
     <header>
       <nav>
-        <div className="flex flex-wrap items-center justify-evenly px-4 bg-gray-50">
+        <div className="flex flex-wrap items-center justify-evenly bg-gray-50 px-4">
           <a href="/" className="flex items-center">
-            <span className="mt-2 md:my-5 self-center text-2xl font-semibold whitespace-nowrap">
+            <span className="mt-2 self-center whitespace-nowrap text-2xl font-semibold md:my-5">
               CodeByCharlie
             </span>
           </a>
 
           <div className="w-full md:block md:w-auto" id="navbar-dropdown">
-            <ul className="flex flex-col font-medium p-2 md:p-0  rounded-lg  md:flex-row md:space-x-8 md:mt-0 ">
+            <ul className="flex flex-col rounded-lg p-2 font-medium  md:mt-0  md:flex-row md:space-x-8 md:p-0 ">
               <li>
                 <Link
-                  className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
+                  className="block rounded py-2 pl-3 pr-4 text-gray-900 hover:bg-gray-100 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 "
                   to="/Posts"
                 >
                   Posts
@@ -52,11 +52,11 @@ export const NavBar = () => {
                 <button
                   id="dropdownNavbarLink"
                   data-dropdown-toggle="dropdownNavbar"
-                  className="flex items-center justify-between w-full py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto "
+                  className="flex w-full items-center justify-between rounded py-2 pl-3 pr-4 text-gray-900 hover:bg-gray-100 md:w-auto md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 "
                 >
                   Demos{' '}
                   <svg /* Caret icon.  Rotates 180 when dropdown is open */
-                    className="w-2.5 h-2.5 ml-2.5 transition-transform group-hover:rotate-180"
+                    className="ml-2.5 h-2.5 w-2.5 transition-transform group-hover:rotate-180"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -78,7 +78,7 @@ export const NavBar = () => {
               </li>
               <li>
                 <Link
-                  className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
+                  className="block rounded py-2 pl-3 pr-4 text-gray-900 hover:bg-gray-100 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 "
                   to="/WordGame"
                 >
                   Word Game

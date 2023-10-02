@@ -36,9 +36,9 @@ export const V2CaptchaChallenge: React.FC<Props> = ({ encodedStr, decoder }) => 
         onChange={onChange}
         badge="bottomright"
         size="compact"
-        className="p-5 m-5"
+        className="m-5 p-5"
       />
-      <div className="p-5 m-5">{captchaToken ? decodedStr : null}</div>
+      <div className="m-5 p-5">{captchaToken ? decodedStr : null}</div>
     </div>
   )
 }

@@ -13,6 +13,5 @@ module.exports = {
   rules: {
     'react-refresh/only-export-components': 'warn',
     'no-shadow': ['error', { hoist: 'never' }],
-    'tailwindcss/classnames-order': 'off',
   },
 }

@@ -58,18 +58,18 @@ export const About = () => {
       <ConnectWithMe />
       <div>
         <h2 className="m-5 text-4xl font-bold">What I offer</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 md:mx-20">
+        <div className="grid grid-cols-1 md:mx-20 md:grid-cols-2">
           {aboutData.map(({ title, subtitle, alt, image }, index) => (
-            <div key={index} className="flex flex-col items-center border-gray-500 m-5 p-5">
+            <div key={index} className="m-5 flex flex-col items-center border-gray-500 p-5">
               <img src={image} className="align-middle" alt={alt} />
-              <h2 className="text-lg md:text-3xl mt-2">{title}</h2>
-              <h3 className="text-sm md:text-lg italic mt-3">{subtitle}</h3>
+              <h2 className="mt-2 text-lg md:text-3xl">{title}</h2>
+              <h3 className="mt-3 text-sm italic md:text-lg">{subtitle}</h3>
             </div>
           ))}
         </div>
         <div className="mb-20">
-          <h1 className="text-4xl font-bold text-center my-8">About this site</h1>
-          <div className="flex flex-col md:flex-row justify-center align-middle items-center">
+          <h1 className="my-8 text-center text-4xl font-bold">About this site</h1>
+          <div className="flex flex-col items-center justify-center align-middle md:flex-row">
             <h2>
               View the source code for this website and the tools used to build it &nbsp; &nbsp;
             </h2>

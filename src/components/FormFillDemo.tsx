@@ -15,7 +15,7 @@ const fields = [
 ]
 
 const stateSelect = (
-  <select className="mb-8 shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight">
+  <select className="mb-8 w-full rounded border px-3 py-2 leading-tight text-gray-700 shadow">
     <option value="AL">Alabama</option>
     <option value="AK">Alaska</option>
     <option value="AZ">Arizona</option>
@@ -72,12 +72,12 @@ const stateSelect = (
 
 const getSimpleLabelAndInput = (fieldName: string) => {
   return (
-    <label key={fieldName} className="block text-gray-700 text-sm font-bold mb-2">
+    <label key={fieldName} className="mb-2 block text-sm font-bold text-gray-700">
       {fieldName}
       <input
         type="text"
         name={fieldName}
-        className="shadow appearance-none border rounded w-full py-2 px-3 mb-5 text-gray-700 leading-tight focus:outline-1"
+        className="mb-5 w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-1"
       />
     </label>
   )
@@ -85,26 +85,26 @@ const getSimpleLabelAndInput = (fieldName: string) => {
 
 const FormFillDemo = () => {
   return (
-    <div className="flex items-center flex-col mt-10 m-5 p-5">
+    <div className="m-5 mt-10 flex flex-col items-center p-5">
       This is a simple form fill page for testing the autofill functionality of your browser or
       password manager. Data is never sent anywhere.
-      <div className="w-full max-w-xs mt-10">
-        <form className="shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <div className="mt-10 w-full max-w-xs">
+        <form className="mb-4 rounded px-8 pb-8 pt-6 shadow-md">
           {fields.map((f) => getSimpleLabelAndInput(f))}
           <div className="flex flex-col">
-            <div className="block text-gray-700 text-sm font-bold mb-2">State</div>
+            <div className="mb-2 block text-sm font-bold text-gray-700">State</div>
             {stateSelect}
           </div>
           <div className="flex justify-around">
             <input
               type="reset"
               value="Reset"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
             />
             <input
               type="submit"
               value="Submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
             />
           </div>
         </form>

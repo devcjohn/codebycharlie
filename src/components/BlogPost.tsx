@@ -59,7 +59,7 @@ export const BlogPost: FC = () => {
         <title>{title}</title>
       </Helmet>
       <div className="flex justify-center">
-        <article className="m-4 md:m-20 prose prose-sm md:prose-base lg:prose-lg prose-slate prose-h2:underline">
+        <article className="prose prose-sm prose-slate m-4 md:prose-base lg:prose-lg prose-h2:underline md:m-20">
           <ReactMarkdown components={{ code: CodeBlock }}>{content}</ReactMarkdown>
         </article>
       </div>

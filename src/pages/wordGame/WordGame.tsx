@@ -199,10 +199,10 @@ export const WordGame = () => {
           title={title}
           className={`
             m-0.5 
-            flex items-center justify-center 
-            overflow-hidden
+            flex h-12 w-12 
             select-none
-            h-12 w-12
+            items-center
+            justify-center overflow-hidden
             lg:h-16
             lg:w-16
            ${getSquareColorClass(square)} 
@@ -225,9 +225,9 @@ export const WordGame = () => {
 
   return (
     <>
-      <div className="mx-auto min-h-full flex flex-col items-center justify-center text-3xl lg:text-5xl mt-10">
+      <div className="mx-auto mt-10 flex min-h-full flex-col items-center justify-center text-3xl lg:text-5xl">
         {renderBoard()}
-        <div className="text-2xl text-center">
+        <div className="text-center text-2xl">
           {gameState === 'WON' && <div className="m-2 p-2">You Won!</div>}
           {gameState === 'LOST' && <div className="m-2 p-2">The answer was {answer}.</div>}
           {(gameState === 'WON' || gameState === 'LOST') && (
@@ -235,11 +235,11 @@ export const WordGame = () => {
           )}
         </div>
 
-        <div className="w-screen md:w-96 h-auto flex items-center">
+        <div className="flex h-auto w-screen items-center md:w-96">
           <VirtualKeyboard onKeyPress={handleKeyDown} board={board} />
         </div>
         <button
-          className="select-none p-2 m-2 border-2 border-slate-300 text-xl"
+          className="m-2 select-none border-2 border-slate-300 p-2 text-xl"
           aria-label="New Game"
           onClick={() => startNewGame()}
         >

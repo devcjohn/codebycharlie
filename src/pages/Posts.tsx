@@ -11,19 +11,19 @@ const allPosts = [
 export const Posts = () => {
   return (
     <div className="min-h-screen p-8">
-      <div className="max-w-2xl mx-auto">
-        <h1 className="text-3xl font-bold mb-4">Blog Posts</h1>
+      <div className="mx-auto max-w-2xl">
+        <h1 className="mb-4 text-3xl font-bold">Blog Posts</h1>
         {allPosts.map(({ id, imageUrl, date, title }) => (
           <a key={title} href={`/posts/${id}`}>
-            <div className=" p-6 rounded-lg shadow-md">
+            <div className=" rounded-lg p-6 shadow-md">
               {imageUrl && (
                 <img
                   src={imageUrl}
                   alt={title}
-                  className="w-full h-64 object-contain object-center rounded-md mb-4"
+                  className="mb-4 h-64 w-full rounded-md object-contain object-center"
                 />
               )}
-              <h2 className="text-2xl font-bold mb-2">{title}</h2>
+              <h2 className="mb-2 text-2xl font-bold">{title}</h2>
               <p className="text-gray-500">{date}</p>
             </div>
           </a>
