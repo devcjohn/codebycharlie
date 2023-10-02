@@ -4,7 +4,7 @@ import './virtualKeyboardStyle.css'
 import { Board, GuessResult, Square } from './utils'
 
 interface VirtualKeyboardProps {
-  onKeyPress: (button: any) => void
+  onKeyPress: (button: KeyboardEvent | string) => void
   board: Board
 }
 

@@ -13,6 +13,7 @@ tags: chatgpt, programming, AI
 ChatGPT is a hot topic in the tech community, especially among software developers, as it has the potential to assist in everyday workflows.
 I've personally been using ChatGPT 4.0 to help with programming tasks, including the creation of this website.
 Here are some example use cases for ChatGPT, and my take on the results.
+Note: Some inputs and outputs have been edited for brevity and clarity.
 
 ## 1. Generating SVGs
 
@@ -189,7 +190,7 @@ In addition, please consider whether a fireEvent or userEvent is more appropriat
 
 Please note that the landscape of web development tools evolves rapidly, and the information might have changed beyond my knowledge cutoff in September 2021. You should look up the latest resources to get the most up-to-date comparison.
 
-**My Take:** The output seems accurate. There isn't a great summary here, like "Remix is more opinionated", but the question was very broad.
+**My Take:** The output seems accurate. There isn't much of a summary here, like "Remix is more opinionated", but the question was very broad.
 
 ## 7. Generating Documentation
 
@@ -197,17 +198,13 @@ Please note that the landscape of web development tools evolves rapidly, and the
 
 ```json
 {
-  "name": "my-vue-app",
+  "name": "app",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "test": "vitest",
-    "analyzeBundle": "vite-bundle-visualizer"
+    "build": "tsc && vite build"
   },
   "dependencies": {
     "@sentry/react": "^7.57.0",
@@ -410,7 +407,7 @@ Here's how you might use this function to calculate the length of a list:
 
 The `???` function is a recursive function to calculate the length of a list. It’s constructed using anonymous functions and higher-order functions, demonstrating concepts like closures and the Y combinator-style recursion technique in Scheme.
 
-**My Take:** I am not enough of a scheme guru to tell if every annotation is accurate, but it is correct that the function calculates the length of a list and uses the Y combinator. This code example is from "The Seasoned Schemer" by Daniel P. Firedman and Matthias Felleisen, MIT Press, 1996.
+**My Take:** I am not enough of a scheme guru to tell if every annotation is accurate, but it is correct that the function calculates the length of a list and uses the Y combinator. Code example: Friedman, Daniel P., and Matthias Felleisen. “12. Take Cover.” The Seasoned Schemer, MIT Press, Cambridge, MA, 2000
 
 ## 10. Splitting User Stories
 
@@ -462,8 +459,8 @@ In both stories, ensure that the user interface is intuitive and responsive, and
 
 ## Conclusion
 
-Note that these examples are cherry-picked!
-ChatGPT is sometimes completely unable to help, and usually requires additional prompting to produce something useful.
+Note that these examples _are_ cherry-picked!
+ChatGPT is sometimes completely unable to output anything helpful, and usually requires additional prompting to produce something useful.
 
 However, in spite of its limitations, ChatGPT 4.0 can be a useful tool in a developer's toolbox.
-I am looking forward to seeing it become even more useful over time.
+I'm looking forward to seeing it become even more powerful over time.

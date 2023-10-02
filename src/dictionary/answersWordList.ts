@@ -1,4 +1,3 @@
-/* eslint-disable */
 // prettier-ignore
 export const answersWordList = [
 "aback",

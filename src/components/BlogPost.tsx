@@ -1,4 +1,3 @@
-/* eslint-disable no-useless-escape */
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism-light'
 import { materialDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import { CodeProps } from 'react-markdown/lib/ast-to-react'
