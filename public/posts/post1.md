@@ -113,7 +113,7 @@ Progressive enhancement is often contrasted with another design philosophy calle
 
 ## 5. Testing Help
 
-**Me:** How can I simulate the user pressing a a key in Testing Library React?
+**Me:** How can I simulate the user pressing a key in Testing Library React?
 
 **ChatGPT:**: In order to simulate the user pressing a key in the context of React Testing Library, you can use the fireEvent.keyDown or fireEvent.keyPress function.
 
@@ -455,7 +455,7 @@ The team will integrate a search functionality on the shop page to enable users 
 
 In both stories, ensure that the user interface is intuitive and responsive, and that there is appropriate error handling and feedback for the user. Each story represents a vertical slice because they each deliver a distinct piece of functionality that provides value to the user independently, facilitating iterative development and testing.
 
-**My Take:** Given the vageness of my input, this seems accurate. Could be a useful starting point.
+**My Take:** Given the vagueness of my input, this seems accurate. Could be a useful starting point.
 
 ## Conclusion
 
