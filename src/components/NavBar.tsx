@@ -30,7 +30,7 @@ export const NavBar = () => {
   return (
     <header>
       <nav>
-        <div className="max-w-screen flex flex-wrap items-center justify-evenly px-4 bg-gray-50">
+        <div className="flex flex-wrap items-center justify-evenly px-4 bg-gray-50">
           <a href="/" className="flex items-center">
             <span className="mt-2 md:my-5 self-center text-2xl font-semibold whitespace-nowrap">
               CodeByCharlie
@@ -56,7 +56,7 @@ export const NavBar = () => {
                 >
                   Demos{' '}
                   <svg /* Caret icon.  Rotates 180 when dropdown is open */
-                    className="w-2.5 h-2.5 ml-2.5 transform transition-transform duration-250 group-hover:rotate-180"
+                    className="w-2.5 h-2.5 ml-2.5 transition-transform group-hover:rotate-180"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"

@@ -48,7 +48,7 @@ const aboutData = [
 export const About = () => {
   return (
     <div className="mx-14 text-center">
-      <p className="pt-6 font-body leading-relaxed text-grey-20">
+      <p className="pt-6 font-normal leading-relaxed text-gray-700">
         <br /> I am based in Saint Louis.
         <br /> My specialty is full-stack Javascript development, but I have experience with a wide
         variety of languages and frameworks.
@@ -76,7 +76,7 @@ export const About = () => {
             <a href="https://github.com/devcjohn/codebycharlie">
               <img
                 src="/img/github-mark.svg"
-                className="h-15 w-15"
+                className="h-16 w-16"
                 title="Link to Github Repo"
                 alt="Github Logo"
               />
@@ -90,14 +90,9 @@ export const About = () => {
 
 export const ConnectWithMe = () => {
   return (
-    <div className="flex flex-col justify-center pt-20 pb-20 md:flex-row">
+    <div className="flex flex-col justify-center py-20 md:flex-row">
       <div className="flex items-center justify-center">
-        <p className="font-body text-lg font-semibold uppercase text-grey-20">
-          Connect with me &nbsp;
-        </p>
-        <div className="hidden sm:block">
-          <i className="bx bx-chevron-right text-2xl text-primary"></i>
-        </div>
+        <p className="text-lg font-semibold uppercase text-gray-700">Connect with me &nbsp;</p>
       </div>
       <div className="flex items-center justify-center">
         <a href="https://www.linkedin.com/in/devcjohn">

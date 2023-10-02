@@ -239,7 +239,7 @@ export const WordGame = () => {
           <VirtualKeyboard onKeyPress={handleKeyDown} board={board} />
         </div>
         <button
-          className="select-none p-2 m-2 border-1 border-slate-300 text-xl"
+          className="select-none p-2 m-2 border-2 border-slate-300 text-xl"
           aria-label="New Game"
           onClick={() => startNewGame()}
         >

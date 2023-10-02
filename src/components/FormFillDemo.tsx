@@ -15,7 +15,7 @@ const fields = [
 ]
 
 const stateSelect = (
-  <select className="mb-8 shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+  <select className="mb-8 shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight">
     <option value="AL">Alabama</option>
     <option value="AK">Alaska</option>
     <option value="AZ">Arizona</option>
@@ -77,7 +77,7 @@ const getSimpleLabelAndInput = (fieldName: string) => {
       <input
         type="text"
         name={fieldName}
-        className="shadow appearance-none border rounded w-full py-2 px-3 mb-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        className="shadow appearance-none border rounded w-full py-2 px-3 mb-5 text-gray-700 leading-tight focus:outline-1"
       />
     </label>
   )
@@ -92,7 +92,7 @@ const FormFillDemo = () => {
         <form className="shadow-md rounded px-8 pt-6 pb-8 mb-4">
           {fields.map((f) => getSimpleLabelAndInput(f))}
           <div className="flex flex-col">
-            <div className=' className="block text-gray-700 text-sm font-bold mb-2'>State</div>
+            <div className="block text-gray-700 text-sm font-bold mb-2">State</div>
             {stateSelect}
           </div>
           <div className="flex justify-around">

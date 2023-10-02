@@ -5,6 +5,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
     'plugin:jsx-a11y/recommended',
+    'plugin:tailwindcss/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
@@ -12,5 +13,6 @@ module.exports = {
   rules: {
     'react-refresh/only-export-components': 'warn',
     'no-shadow': ['error', { hoist: 'never' }],
+    'tailwindcss/classnames-order': 'off',
   },
 }
