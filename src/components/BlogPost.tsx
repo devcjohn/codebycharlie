@@ -29,7 +29,7 @@ const CodeBlock: FC<CodeProps> = ({ className, children, inline, ...props }) => 
       inline={inline}
       wrapLongLines={true}
     >
-      {String(children).replace(/\n$/, '')} /* Remove trailing newline */
+      {String(children).replace(/\n$/, '')} {/* Remove trailing newline */}
     </SyntaxHighlighter>
   ) : (
     <code className={className} {...props}>

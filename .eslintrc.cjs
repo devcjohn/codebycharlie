@@ -6,6 +6,8 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:jsx-a11y/recommended',
     'plugin:tailwindcss/recommended',
+    'plugin:react/recommended',
+    'plugin:testing-library/react',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
@@ -13,5 +15,13 @@ module.exports = {
   rules: {
     'react-refresh/only-export-components': 'warn',
     'no-shadow': ['error', { hoist: 'never' }],
+    'react/react-in-jsx-scope': 'off',
+    'react/prop-types': 'off',
+    'testing-library/no-manual-cleanup': 'off', //vitest seems to need manual cleanup
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
   },
 }

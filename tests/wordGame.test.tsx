@@ -4,7 +4,7 @@ import { WordGame } from '../src/pages/wordGame/WordGame'
 import { describe, expect, afterEach, it, vi } from 'vitest'
 import * as wordLib from '../src/dictionary/wordLib'
 
-/* Uncomment to minimize verbose output on test failure*/
+/* Uncomment to minimize verbose output on test failure */
 // import { configure } from '@testing-library/dom'
 // configure({
 //   getElementError: (message, container) => {
