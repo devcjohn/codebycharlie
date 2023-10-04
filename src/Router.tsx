@@ -1,6 +1,5 @@
 import { Helmet } from 'react-helmet-async'
 import { createBrowserRouter } from 'react-router-dom'
-import { About } from './pages/About'
 import { WordGame } from './pages/wordGame/WordGame'
 import FormFillDemo from './components/FormFillDemo'
 import Crash from './pages/Crash'
@@ -22,11 +21,6 @@ const routes = [
     path: '/wordgame',
     title: 'Word Game',
     component: <WordGame />,
-  },
-  {
-    path: '/about',
-    title: 'About',
-    component: <About />,
   },
   {
     path: '/formfill',

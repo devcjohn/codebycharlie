@@ -45,10 +45,10 @@ const aboutData = [
   },
 ]
 
-export const About = () => {
+export const AboutMe = () => {
   return (
     <div className="mx-14 text-center">
-      <p className="pt-6 font-normal leading-relaxed text-gray-700">
+      <p className="pt-6 font-normal leading-relaxed text-gray-700 font-body">
         <br /> I am based in Saint Louis.
         <br /> My specialty is full-stack Javascript development, but I have experience with a wide
         variety of languages and frameworks.
@@ -57,31 +57,20 @@ export const About = () => {
       </p>
       <ConnectWithMe />
       <div>
-        <h2 className="m-5 text-4xl font-bold">What I offer</h2>
+        <h2 className="text-center font-header text-4xl font-semibold uppercase text-primary sm:text-5xl lg:text-6xl">
+          What I offer
+        </h2>
         <div className="grid grid-cols-1 md:mx-20 md:grid-cols-2">
           {aboutData.map(({ title, subtitle, alt, image }, index) => (
-            <div key={index} className="m-5 flex flex-col items-center border-gray-500 p-5">
+            <div
+              key={index}
+              className="m-5 flex flex-col items-center border-gray-500 p-5 font-body"
+            >
               <img src={image} className="align-middle" alt={alt} />
               <h2 className="mt-2 text-lg md:text-3xl">{title}</h2>
               <h3 className="mt-3 text-sm italic md:text-lg">{subtitle}</h3>
             </div>
           ))}
-        </div>
-        <div className="mb-20">
-          <h1 className="my-8 text-center text-4xl font-bold">About this site</h1>
-          <div className="flex flex-col items-center justify-center align-middle md:flex-row">
-            <h2>
-              View the source code for this website and the tools used to build it &nbsp; &nbsp;
-            </h2>
-            <a href="https://github.com/devcjohn/codebycharlie">
-              <img
-                src="/img/github-mark.svg"
-                className="h-16 w-16"
-                title="Link to Github Repo"
-                alt="Github Logo"
-              />
-            </a>
-          </div>
         </div>
       </div>
     </div>
@@ -92,7 +81,9 @@ export const ConnectWithMe = () => {
   return (
     <div className="flex flex-col justify-center py-20 md:flex-row">
       <div className="flex items-center justify-center">
-        <p className="text-lg font-semibold uppercase text-gray-700">Connect with me &nbsp;</p>
+        <p className="text-lg font-semibold uppercase text-gray-700 font-header">
+          Connect with me &nbsp;
+        </p>
       </div>
       <div className="flex items-center justify-center">
         <a href="https://www.linkedin.com/in/devcjohn">

@@ -32,7 +32,7 @@ export const NavBar = () => {
       <nav>
         <div className="flex flex-wrap items-center justify-evenly bg-gray-50 px-4">
           <a href="/" className="flex items-center">
-            <span className="mt-2 self-center whitespace-nowrap text-2xl font-semibold md:my-5">
+            <span className="mt-2 self-center whitespace-nowrap text-2xl font-semibold md:my-5 font-header">
               CodeByCharlie
             </span>
           </a>
@@ -41,7 +41,15 @@ export const NavBar = () => {
             <ul className="flex flex-col rounded-lg p-2 font-medium  md:mt-0  md:flex-row md:space-x-8 md:p-0 ">
               <li>
                 <Link
-                  className="block rounded py-2 pl-3 pr-4 text-gray-900 hover:bg-gray-100 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 "
+                  className="font-header font-semibold block rounded py-2 pl-3 pr-4 text-gray-900 hover:bg-gray-100 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 "
+                  to="/#portfolio"
+                >
+                  Portfolio
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="font-header font-semibold block rounded py-2 pl-3 pr-4 text-gray-900 hover:bg-gray-100 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 "
                   to="/Posts"
                 >
                   Posts
@@ -52,7 +60,7 @@ export const NavBar = () => {
                 <button
                   id="dropdownNavbarLink"
                   data-dropdown-toggle="dropdownNavbar"
-                  className="flex w-full items-center justify-between rounded py-2 pl-3 pr-4 text-gray-900 hover:bg-gray-100 md:w-auto md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 "
+                  className="font-header font-semibold flex w-full items-center justify-between rounded py-2 pl-3 pr-4 text-gray-900 hover:bg-gray-100 md:w-auto md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 "
                 >
                   Demos{' '}
                   <svg /* Caret icon.  Rotates 180 when dropdown is open */
@@ -78,7 +86,7 @@ export const NavBar = () => {
               </li>
               <li>
                 <Link
-                  className="block rounded py-2 pl-3 pr-4 text-gray-900 hover:bg-gray-100 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 "
+                  className="font-header font-semibold block rounded py-2 pl-3 pr-4 text-gray-900 hover:bg-gray-100 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 "
                   to="/WordGame"
                 >
                   Word Game
