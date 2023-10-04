@@ -13,7 +13,7 @@ export const Portfolio = () => {
           className="mx-auto transition-all hover:scale-105 md:mx-0"
         >
           <img
-            src="src/assets/images/resilia-initatives.webp"
+            src="/img/resilia-initatives.webp"
             className="w-full shadow"
             alt="Screenshot of Resilia app"
             title="Resilia App"
@@ -24,7 +24,7 @@ export const Portfolio = () => {
           className="mx-auto transition-all hover:scale-105 md:mx-0 "
         >
           <img
-            src="src/assets/images/schnucks-rewards.webp"
+            src="/img/schnucks-rewards.webp"
             className="w-full shadow"
             alt="iPhone showing Scnucks Rewards App Homescreen"
             title="Schnucks Rewards App"
@@ -36,7 +36,7 @@ export const Portfolio = () => {
           className="mx-auto transition-all hover:scale-105 md:mx-0"
         >
           <img
-            src="src/assets/images/blern.webp"
+            src="/img/blern.webp"
             className="w-full shadow"
             alt="iPhone showing Pulse Oximetry App Homescreen"
             title="Pulse Oximetry App"
@@ -47,7 +47,7 @@ export const Portfolio = () => {
           className="mx-auto transition-all hover:scale-105 md:mx-0"
         >
           <img
-            src="src/assets/images/rpm-dashboard.webp"
+            src="/img/rpm-dashboard.webp"
             className="w-full shadow"
             alt="Richard Petty Motorsports Pit Crew member looking at racing dashboard"
             title="Richard Petty Motorsports Dashboard"
