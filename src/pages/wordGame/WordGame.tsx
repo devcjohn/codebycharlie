@@ -216,7 +216,7 @@ export const WordGame = () => {
   const renderBoard = () => {
     return board.map((row, colIndex) => {
       return (
-        <div key={colIndex} className={`grid grid-cols-5 gap-1 font-mono uppercase`}>
+        <div key={colIndex} className={`grid grid-cols-5 gap-1 uppercase`}>
           {renderRow(row, colIndex)}
         </div>
       )

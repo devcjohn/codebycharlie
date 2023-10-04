@@ -48,7 +48,7 @@ const aboutData = [
 export const AboutMe = () => {
   return (
     <div className="mx-14 text-center">
-      <p className="pt-6 font-normal leading-relaxed text-gray-700 font-body">
+      <p className="pt-6 font-body font-normal leading-relaxed text-gray-700">
         <br /> I am based in Saint Louis.
         <br /> My specialty is full-stack Javascript development, but I have experience with a wide
         variety of languages and frameworks.
@@ -62,13 +62,10 @@ export const AboutMe = () => {
         </h2>
         <div className="grid grid-cols-1 md:mx-20 md:grid-cols-2">
           {aboutData.map(({ title, subtitle, alt, image }, index) => (
-            <div
-              key={index}
-              className="m-5 flex flex-col items-center border-gray-500 p-5 font-body"
-            >
+            <div key={index} className="m-5 flex flex-col items-center border-gray-500 p-5 ">
               <img src={image} className="align-middle" alt={alt} />
-              <h2 className="mt-2 text-lg md:text-3xl">{title}</h2>
-              <h3 className="mt-3 text-sm italic md:text-lg">{subtitle}</h3>
+              <h2 className="mt-2 font-header text-xl md:text-2xl">{title}</h2>
+              <h3 className="mt-3 font-body text-sm italic md:text-lg">{subtitle}</h3>
             </div>
           ))}
         </div>
@@ -81,7 +78,7 @@ export const ConnectWithMe = () => {
   return (
     <div className="flex flex-col justify-center py-20 md:flex-row">
       <div className="flex items-center justify-center">
-        <p className="text-lg font-semibold uppercase text-gray-700 font-header">
+        <p className="font-header text-lg font-semibold uppercase text-gray-700">
           Connect with me &nbsp;
         </p>
       </div>

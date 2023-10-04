@@ -44,12 +44,12 @@ export const Home = () => {
               <img src="/img/headshot.webp" alt="headshot" className="h-48 rounded-full sm:h-56" />
             </div>
             <div className="mt-4 md:mt-0 md:pl-8 md:pt-8 ">
-              <h1 className="text-center text-4xl text-white md:text-6xl font-header">
+              <h1 className="text-center font-header text-4xl text-white md:text-6xl">
                 Hi, I&apos;m Charlie Johnson
               </h1>
               <div className="flex flex-col justify-center pt-3 sm:flex-row sm:pt-5 lg:justify-start">
                 <div className="flex items-center justify-center pl-0 sm:justify-start md:pl-1">
-                  <p className="text-lg  text-white font-header">Full Stack Software Engineer</p>
+                  <p className="font-header  text-lg text-white">Full Stack Software Engineer</p>
                 </div>
               </div>
             </div>
