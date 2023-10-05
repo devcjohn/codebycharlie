@@ -77,6 +77,7 @@ export const router = createBrowserRouter(
       <>
         <Helmet>
           <title>{title}</title>
+          <meta property="og:title" content={title} />
           <meta name="description" content="Code By Charlie" />
           <meta name="author" content="Charlie Johnson" />
           <meta
@@ -84,6 +85,7 @@ export const router = createBrowserRouter(
             content="Programming, Coding, Software Development, Charlie Johnson, Code By Charlie"
           />
           <meta name="robots" content="index, follow" />
+          <meta property="og:locale" content="en_US" />
         </Helmet>
         {!hideNavBar && <NavBar />}
         {component}
