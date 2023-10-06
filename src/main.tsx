@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import * as Sentry from '@sentry/react'
@@ -49,7 +49,9 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       showDialog
     >
       <HelmetProvider>
-        <RouterProvider router={router} />
+        <Suspense fallback={<>loading...</>}>
+          <RouterProvider router={router} />
+        </Suspense>
       </HelmetProvider>
     </Sentry.ErrorBoundary>
   </React.StrictMode>

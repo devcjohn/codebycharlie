@@ -1,15 +1,29 @@
 import { Helmet } from 'react-helmet-async'
 import { createBrowserRouter } from 'react-router-dom'
-import { WordGame } from './pages/wordGame/WordGame'
+//import { WordGame } from './pages/wordGame/WordGame'
 import FormFillDemo from './components/FormFillDemo'
-import Crash from './pages/Crash'
+//import Crash from './pages/Crash'
 import { Contact } from './pages/Contact'
 import { Home } from './pages/Home'
-import { WhiteBoard } from './pages/WhiteBoard'
-import { Posts } from './pages/Posts'
+//import { Posts } from './pages/Posts'
 import { NavBar } from './components/NavBar'
-import { BlogPost } from './components/BlogPost'
 import { FallbackComponent } from './components/FallbackComponent'
+import { lazy } from 'react'
+
+const WhiteBoard = lazy(() =>
+  import('./pages/WhiteBoard').then((module) => ({ default: module.WhiteBoard }))
+)
+const BlogPost = lazy(() =>
+  import('./components/BlogPost').then((module) => ({ default: module.BlogPost }))
+)
+
+const Posts = lazy(() => import('./pages/Posts').then((module) => ({ default: module.Posts })))
+
+const WordGame = lazy(() =>
+  import('./pages/wordGame/WordGame').then((module) => ({ default: module.WordGame }))
+)
+
+const Crash = lazy(() => import('./pages/Crash').then((module) => ({ default: module.Crash })))
 
 const routes = [
   {
