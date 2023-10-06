@@ -6,12 +6,14 @@ const isProduction = process.env.NODE_ENV === 'production'
 
 import type { Plugin } from 'vite'
 
-/* Check that required environment variables are set */
+/* Check that required environment variables are set
+  For now we are only checking variables that are required for both dev and production
+*/
 const envVarValidationPlugin = (): Plugin => {
   return {
     name: 'env-validation',
     configResolved(config) {
-      const requiredEnvVars = ['VITE_SENTRY_DSN', 'VITE_SENTRY_AUTH_TOKEN', 'VITE_CAPTCHA_KEY']
+      const requiredEnvVars = ['VITE_SENTRY_DSN', 'VITE_CAPTCHA_KEY']
       const errorList: string[] = []
       requiredEnvVars.forEach((varName) => {
         if (!config.env[varName]) {
