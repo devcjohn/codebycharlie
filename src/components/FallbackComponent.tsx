@@ -22,7 +22,9 @@ export const FallbackComponent = () => {
   if (!isRouteErrorResponse(error)) {
     return (
       <>
-        <div>An unknown error has occurred</div>
+        <div className="flex min-h-screen items-center justify-center">
+          <div className="text-6xl text-gray-800 md:text-9xl">An unknown error has occurred</div>
+        </div>
       </>
     )
   }

@@ -28,6 +28,8 @@ const envVarValidationPlugin = (): Plugin => {
   }
 }
 
+const isProduction = process.env.NODE_ENV === 'production'
+
 export default defineConfig({
   build: {
     sourcemap: true,
@@ -38,11 +40,15 @@ export default defineConfig({
     envVarValidationPlugin(),
     // Put the Sentry vite plugin after all other plugins
     // Sentry messes up hot reloading, so we only want to use it in production
-    sentryVitePlugin({
-      authToken: process.env.SENTRY_AUTH_TOKEN, // Remember that process.env will not work in browser code, so this should stay in this file.
-      org: 'codebycharlie',
-      project: 'code-by-charlie-project',
-    }),
+    ...(isProduction
+      ? [
+          sentryVitePlugin({
+            authToken: process.env.SENTRY_AUTH_TOKEN, // Remember that process.env will not work in browser code, so this should stay in this file.
+            org: 'codebycharlie',
+            project: 'code-by-charlie-project',
+          }),
+        ]
+      : []),
   ],
   test: {
     environment: 'jsdom',

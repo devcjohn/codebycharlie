@@ -8,6 +8,11 @@ export const NavBar = () => {
       className="absolute left-0 top-full z-50 hidden w-44 divide-y divide-gray-100 rounded-lg bg-white font-normal shadow   group-hover:block"
     >
       <ul className="py-2 text-sm text-gray-700 " aria-labelledby="dropdownLargeButton">
+        {/* <li>
+          <Link className="block px-4 py-2 hover:bg-gray-100 " to="/what-i-know-about-you">
+            What I Know About You
+          </Link>
+        </li> */}
         <li>
           <Link className="block px-4 py-2 hover:bg-gray-100 " to="/whiteboard">
             Whiteboard

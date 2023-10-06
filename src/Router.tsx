@@ -10,6 +10,7 @@ import { Posts } from './pages/Posts'
 import { NavBar } from './components/NavBar'
 import { BlogPost } from './components/BlogPost'
 import { FallbackComponent } from './components/FallbackComponent'
+import { WhatIKnowAboutYou } from './pages/WhatIKnowAboutYou'
 
 const routes = [
   {
@@ -67,6 +68,11 @@ const routes = [
     path: '/404',
     title: '404',
     component: <FallbackComponent />,
+  },
+  {
+    path: '/what-i-know-about-you',
+    title: 'What I Know About You',
+    component: <WhatIKnowAboutYou />,
   },
 ]
 
