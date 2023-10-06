@@ -1,10 +1,9 @@
 import react from '@vitejs/plugin-react-swc'
-import { sentryVitePlugin } from '@sentry/vite-plugin'
 import { defineConfig } from 'vitest/config'
 import path from 'path'
-const isProduction = process.env.NODE_ENV === 'production'
 
 import type { Plugin } from 'vite'
+import { sentryVitePlugin } from '@sentry/vite-plugin'
 
 /* Check that required environment variables are set
   For now we are only checking variables that are required for both dev and production
@@ -39,15 +38,11 @@ export default defineConfig({
     envVarValidationPlugin(),
     // Put the Sentry vite plugin after all other plugins
     // Sentry messes up hot reloading, so we only want to use it in production
-    ...(isProduction
-      ? [
-          sentryVitePlugin({
-            authToken: process.env.SENTRY_AUTH_TOKEN,
-            org: 'codebycharlie',
-            project: 'code-by-charlie-project',
-          }),
-        ]
-      : []),
+    sentryVitePlugin({
+      authToken: process.env.SENTRY_AUTH_TOKEN, // Remember that process.env will not work in browser code, so this should stay in this file.
+      org: 'codebycharlie',
+      project: 'code-by-charlie-project',
+    }),
   ],
   test: {
     environment: 'jsdom',
@@ -55,6 +50,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
+      '@util': path.resolve(__dirname, './src/util'),
     },
   },
 })
