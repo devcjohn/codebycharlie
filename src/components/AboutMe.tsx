@@ -55,19 +55,24 @@ export const AboutMe = () => {
         <br /> I am passionate about building high-quality software and fostering a collaborative
         and inclusive work environment. <br />
       </p>
-      <ConnectWithMe />
       <div>
-        <h2 className="text-center font-header text-4xl font-semibold uppercase text-primary sm:text-5xl lg:text-6xl">
+        <h2 className="my-10 text-center font-header text-4xl font-semibold uppercase text-primary sm:text-5xl lg:text-6xl ">
           What I offer
         </h2>
-        <div className="grid grid-cols-1 md:mx-20 md:grid-cols-2">
-          {aboutData.map(({ title, subtitle, alt, image }, index) => (
-            <div key={index} className="m-5 flex flex-col items-center border-gray-500 p-5 ">
-              <img src={image} className="align-middle" alt={alt} />
-              <h2 className="mt-2 font-header text-xl md:text-2xl">{title}</h2>
-              <h3 className="mt-3 font-body text-sm italic md:text-lg">{subtitle}</h3>
-            </div>
-          ))}
+        <div className="mx-auto max-w-5xl">
+          <div className="-mx-2 flex flex-wrap">
+            {aboutData.map(({ title, subtitle, alt, image }, index) => (
+              <div
+                id={`card-${index}`}
+                key={index}
+                className="flex flex-col items-center py-5 md:w-1/2"
+              >
+                <img src={image} className="mb-4" alt={alt} />
+                <h2 className="mb-2 font-header text-xl font-semibold">{title}</h2>
+                <h3 className="italic text-gray-700">{subtitle}</h3>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

@@ -9,6 +9,7 @@
 
 ## Development Tools Used
 
+- VSCode: IDE.
 - Vite: Build tool.
 - React: UI library.
 - TypeScript: Static type checker.
