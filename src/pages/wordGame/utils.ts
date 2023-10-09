@@ -1,5 +1,5 @@
-export const COLS = 5
-export const ROWS = 6
+export const COLS = 5 /* If you change this, you must also update the dictionaries */
+export const ROWS = 5
 
 export type GuessResult = 'CORRECT' | 'INCORRECT' | 'MISPLACED'
 
@@ -79,4 +79,26 @@ export const updateSquare = (
   // Update and return the board
   newBoard[rowIndex] = newRow
   return newBoard
+}
+
+/* 
+  Find words related to the answer to provide hints to the player.
+  The offset parameter is used to select a different word from the list of related words.
+  The "?mr=" url is described as "words with a meaning similar" to the input word.
+  */
+export const fetchHint = async (answer: string, offset: number): Promise<string> => {
+  console.info('Fetching Hint')
+
+  /* 
+    ml: "Means Like" - Find "words with a meaning similar" to the input.
+    "Require that the results have a meaning related to this string value, which can be any word or sequence of words."
+    https://www.datamuse.com/api/
+ */
+  const url = `https://api.datamuse.com/words?ml=${answer}`
+  return fetch(url)
+    .then((response) => response.json())
+    .then((data) => data[offset].word)
+    .catch(() => {
+      return 'Hint not available'
+    })
 }

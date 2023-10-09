@@ -19,8 +19,8 @@ const routes = [
     component: <Home />,
   },
   {
-    path: '/wordgame',
-    title: 'Word Game',
+    path: '/hintle',
+    title: 'Hintle',
     component: <WordGame />,
   },
   {

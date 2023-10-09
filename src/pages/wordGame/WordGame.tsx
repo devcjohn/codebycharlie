@@ -43,6 +43,7 @@ export const WordGame = () => {
     gameState,
     setGameState,
     startNewGame,
+    hints,
   } = useGameState()
 
   const answerArray = answer.split('')
@@ -226,12 +227,22 @@ export const WordGame = () => {
   return (
     <>
       <div className="mx-auto mt-10 flex min-h-full flex-col items-center justify-center text-3xl lg:text-5xl">
+        <h1 className="font-header">Hintle</h1>
+        <h2 className="font-body text-xl mb-5">Wordle with Hints</h2>
         {renderBoard()}
         <div className="text-center text-2xl">
+          <div>
+            <h2 className="text-xl">Hints</h2>
+            {hints.map((h) => (
+              <div className="text-lg" key={h}>
+                {h}
+              </div>
+            ))}
+          </div>
           {gameState === 'WON' && <div className="m-2 p-2">You Won!</div>}
           {gameState === 'LOST' && <div className="m-2 p-2">The answer was {answer}.</div>}
           {(gameState === 'WON' || gameState === 'LOST') && (
-            <p className=""> Click New Game to play again</p>
+            <p className=""> Press New Game to play again</p>
           )}
         </div>
 

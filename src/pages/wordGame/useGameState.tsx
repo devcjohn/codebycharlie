@@ -1,6 +1,6 @@
 import { getRandomAnswer } from '../../dictionary/wordLib'
-import { useState } from 'react'
-import { Board, GameState, getEmptyBoard } from './utils'
+import { useEffect, useState } from 'react'
+import { Board, GameState, fetchHint, getEmptyBoard } from './utils'
 
 export const useGameState = () => {
   /* Set this to a word to debug the game with a known answer, eg 'DUMMY' */
@@ -11,6 +11,21 @@ export const useGameState = () => {
   const [board, setBoard] = useState<Board>(getEmptyBoard())
   const [answer, setAnswer] = useState<string>(() => DEBUG_MANUAL_ANSWER || getRandomAnswer())
   const [gameState, setGameState] = useState<GameState>('IN_PROGRESS')
+  const [hints, setHints] = useState<string[]>([])
+
+  useEffect(() => {
+    /* Fetch a hint every turn */
+    if (gameState !== 'IN_PROGRESS') {
+      return
+    }
+    const doFetchHint = async () => {
+      const newHint = await fetchHint(answer, turn)
+      setHints((oldHints) => {
+        return oldHints.includes(newHint) ? oldHints : [...oldHints, newHint]
+      })
+    }
+    doFetchHint()
+  }, [turn, answer, gameState])
 
   const startNewGame = () => {
     setTurn(0)
@@ -18,6 +33,7 @@ export const useGameState = () => {
     setBoard(getEmptyBoard())
     setAnswer(DEBUG_MANUAL_ANSWER || getRandomAnswer())
     setGameState('IN_PROGRESS')
+    setHints([])
   }
 
   return {
@@ -31,5 +47,6 @@ export const useGameState = () => {
     gameState,
     setGameState,
     startNewGame,
+    hints,
   }
 }

@@ -92,9 +92,9 @@ export const NavBar = () => {
               <li>
                 <Link
                   className="block rounded py-2 pl-3 pr-4 font-header font-semibold text-gray-900 hover:bg-gray-100 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 "
-                  to="/WordGame"
+                  to="/hintle"
                 >
-                  Word Game
+                  Hintle
                 </Link>
               </li>
             </ul>

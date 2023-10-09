@@ -3,6 +3,8 @@ import userEvent from '@testing-library/user-event'
 import { WordGame } from '../src/pages/wordGame/WordGame'
 import { describe, expect, afterEach, it, vi } from 'vitest'
 import * as wordLib from '../src/dictionary/wordLib'
+import { COLS, ROWS } from '../src/pages/wordGame/utils'
+import * as utils from '../src/pages/wordGame/utils'
 
 /* Uncomment to minimize verbose output on test failure */
 // import { configure } from '@testing-library/dom'
@@ -17,6 +19,12 @@ import * as wordLib from '../src/dictionary/wordLib'
 
 const spyGenerateWord = vi.spyOn(wordLib, 'getRandomAnswer')
 
+/* We don't want to call the actual API in tests, so we mock it out */
+const spyFetchHint = vi.spyOn(utils, 'fetchHint')
+spyFetchHint.mockImplementation(() => Promise.resolve('mocked hint'))
+
+const TOTAL_SQUARES = COLS * ROWS
+
 // setup function.  Allows us to use user.keyboard to simlate keystrokes
 function setup(jsx: JSX.Element) {
   return {
@@ -30,13 +38,13 @@ afterEach(() => {
   cleanup()
 })
 
-describe('Word Game', () => {
+describe('Hintle', () => {
   it('renders the empty board', () => {
     render(<WordGame />)
 
-    // All squares are empty ('_')
+    // All squares are empty
     const emptySquares = screen.getAllByLabelText(/empty/i)
-    expect(emptySquares.length).toBe(30)
+    expect(emptySquares.length).toBe(TOTAL_SQUARES)
   })
 
   it('allows user to enter a letter', async () => {
@@ -45,9 +53,9 @@ describe('Word Game', () => {
     // User enters 'A'
     await user.keyboard('a')
 
-    // Now there are 29 empty squares
+    // 1 Square is filled
     const emptySquares = screen.getAllByLabelText(/empty/i)
-    expect(emptySquares.length).toBe(29)
+    expect(emptySquares.length).toBe(TOTAL_SQUARES - 1)
 
     // Now the first square is 'A'
     const filledSquare = await screen.findByTestId('square-0-0')
@@ -90,9 +98,9 @@ describe('Word Game', () => {
     await user.keyboard('c')
     await user.keyboard('d')
 
-    // Now there are 26 empty squares
+    // 4 Squares are filled
     const emptySquares = screen.getAllByLabelText(/empty/i)
-    expect(emptySquares.length).toBe(26)
+    expect(emptySquares.length).toBe(TOTAL_SQUARES - 4)
 
     // Squares are filled with the user's input
     const filledSquare = await screen.findByTestId('square-0-0')
@@ -114,8 +122,9 @@ describe('Word Game', () => {
     // User enters 'A'
     await user.keyboard('a')
 
+    // 1 Square is empty
     const emptySquares = screen.getAllByLabelText(/empty/i)
-    expect(emptySquares.length).toBe(29)
+    expect(emptySquares.length).toBe(TOTAL_SQUARES - 1)
 
     // Now the first square is 'A'
     const filledSquare = await screen.findByTestId('square-0-0')
@@ -124,8 +133,8 @@ describe('Word Game', () => {
     // User hit delete
     await user.keyboard('{backspace}')
 
-    // Now there are 30 empty squares again
-    expect(screen.getAllByLabelText(/empty/i).length).toBe(30)
+    // Now all squares are empty again
+    expect(screen.getAllByLabelText(/empty/i).length).toBe(TOTAL_SQUARES)
     // The first square is empty again
     expect((await screen.findByTestId('square-0-0')).textContent).toBe('')
   })
@@ -207,8 +216,9 @@ describe('Word Game', () => {
     const newGameButton = screen.getByText(/new game/i)
     await userEvent.click(newGameButton)
 
+    // All squares are empty again
     const emptySquares = screen.getAllByLabelText(/empty/i)
-    expect(emptySquares.length).toBe(30)
+    expect(emptySquares.length).toBe(TOTAL_SQUARES)
   })
 
   it('shows loss message when game is lost', async () => {
