@@ -1,39 +1,22 @@
 ---
-title: ChatGPT For Developers: A Look At 10 Examples
-date: 2023-09-30
+title: ChatGPT For Developers: A Look at 10 Examples 
+date: 2023-10-8
 tags: chatgpt, programming, AI
 ---
 
-# Coding with ChatGPT: 10 Practical Uses
+# ChatGPT For Developers: A Look at 10 Examples
 
-#### 9-30-2023
+#### 8-10-2023
 
 ---
 
 ChatGPT is a hot topic in the tech community, especially among software developers, as it has the potential to assist in everyday workflows.
 I've personally been using ChatGPT 4.0 to help with programming tasks, including the creation of this website.
-Here are some example use cases for ChatGPT, and my take on the results.
-Note: Some inputs and outputs have been edited for brevity and clarity.
+Here are some potential use cases for ChatGPT, and my take on the results. Some inputs and outputs have been edited for brevity and clarity.
 
-## 1. Generating SVGs
+**Note**: Never trust ChatGPT's output without testing it yourself, and if you aren't able or sure how to test it, try an online search or ask a colleague instead.
 
-**Me:** Generate an svg favicon that is 64x64 and has the text "CbC"
-
-**ChatGPT:** Certainly! I can provide you with an SVG markup for a favicon with the text "CbC". However, keep in mind that SVGs are textual representations, so the following is a simple SVG content and may need to be further styled for your exact needs.
-
-```svg
-<svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
-    <!-- Background -->
-    <rect width="100%" height="100%" fill="#FFFFFF"/>
-
-    <!-- Text "CbC" -->
-    <text x="50%" y="50%" font-family="Arial" font-size="32" text-anchor="middle" alignment-baseline="middle" fill="#000000">CbC</text>
-</svg>
-```
-
-**My Take:** The SVG produced is pretty much what I asked for.
-
-## 2. Creating Code Challenges
+## 1. Creating Code Challenges
 
 **Me:** Please generate some suboptimal JS code, maybe like 5 or 6 lines. Then I'll try to improve it and you can grade my solution
 
@@ -73,7 +56,25 @@ Note: The filter method creates a new array with all elements that pass the test
 
 Great job!
 
-**My Take:** I appreciate that without specific prompting, it graded my answer in 3 different categories. The point taken off for performance, and the explanation for it, seems accurate. It would be nice if it mentioned the difference between imperative and declarative code.
+**My Take:** I appreciate that without specific prompting, it graded my answer in 3 different categories. The point taken off for performance, and the explanation for it, seems accurate. It would be nice if it mentioned the terms "imperative" and "declarative".
+
+## 2. Generating SVGs
+
+**Me:** Generate an svg favicon that is 64x64 and has the text "CbC"
+
+**ChatGPT:** Certainly! I can provide you with an SVG markup for a favicon with the text "CbC". However, keep in mind that SVGs are textual representations, so the following is a simple SVG content and may need to be further styled for your exact needs.
+
+```svg
+<svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="#FFFFFF"/>
+
+    <!-- Text "CbC" -->
+    <text x="50%" y="50%" font-family="Arial" font-size="32" text-anchor="middle" alignment-baseline="middle" fill="#000000">CbC</text>
+</svg>
+```
+
+**My Take:** The SVG is what I asked for and would work as a favicon in a pinch.
 
 ## 3. Exploring Programming Conventions
 
@@ -89,7 +90,7 @@ import About from './About'
 
 However, this is not a hard and fast rule. Consistency across a project is most important, so whether you choose to capitalize component files or not, it's best to stick with one naming convention throughout the project.
 
-**My Take:** The output is accurate, though it didn't mention PascalCase by name.
+**My Take:** The output is accurate, though it didn't mention PascalCase by name. For questions like this, it may be better to just do an online search.
 
 ## 4. Explaining Programming Paradigms
 
@@ -109,13 +110,14 @@ This approach ensures that the essential content and functionality of a website 
 
 Progressive enhancement is often contrasted with another design philosophy called "graceful degradation". While progressive enhancement starts with a baseline experience and builds up, graceful degradation starts with a full experience and then tries to ensure that it still works in less-capable browsers or devices.
 
-**My Take:** The output is accurate
+**My Take:** The output seems accurate. It is a bit more specific (mentions CSS and HTML) than this [MDN doc](https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement) and seems more akin to a summary of the [Progressive Enhancement Wikipedia Article](https://en.wikipedia.org/wiki/Progressive_enhancement).
+The main benefit of using ChatGPT here is that you can follow up by asking clarifying questions, eg "What are some CSS features that are not supported by all browsers"
 
-## 5. Testing Help
+## 5. Testing
 
 **Me:** How can I simulate the user pressing a key in Testing Library React?
 
-**ChatGPT:**: In order to simulate the user pressing a key in the context of React Testing Library, you can use the fireEvent.keyDown or fireEvent.keyPress function.
+**ChatGPT:** In order to simulate the user pressing a key in the context of React Testing Library, you can use the fireEvent.keyDown or fireEvent.keyPress function.
 
 For instance, to simulate a user pressing the 'Enter' key, your test might look like this:
 
@@ -144,7 +146,7 @@ Please remember to adjust your test case based on the specific requirements of y
 In addition, please consider whether a fireEvent or userEvent is more appropriate for your test case. userEvent is a library built on top of fireEvent that provides a more realistic simulation of user behavior, but may not be necessary for all test cases. You can import userEvent from @testing-library/user-event
 `
 
-**My Take:** The output is technically accurate, but I think it would be better if the example used userEvent instead of fireEvent, as that should be the default Source: [https://testing-library.com/docs/user-event/intro](https://testing-library.com/docs/user-event/intro)
+**My Take:** The output is technically accurate, but I think it would be better if the example used userEvent instead of fireEvent, as that should be the default ([Source](https://testing-library.com/docs/user-event/intro))
 
 ## 6. Comparing Tools
 
@@ -288,11 +290,11 @@ Please note that the landscape of web development tools evolves rapidly, and the
 - **[Prettier](https://prettier.io/):** Code formatter.
 ```
 
-**My Take:** The result is basically accurate and highlights the most important packages. Documentation needs and styles can differ quite a bit between different companies and teams, so ChatGPT may need extra instructions to make something useful. Because ChatGPT has a knowledge cutoff (at least with this version), you cannot trust it to generate proper links. For example, the React-DOM link leads to deprecated docs.
+**My Take:** The result highlights and summarizes the most important packages. Because ChatGPT has a knowledge cutoff (at least with this version), you cannot trust it to generate proper links. For example, the React-DOM link leads to deprecated docs. Documentation needs and styles can differ quite a bit between different companies and teams, so ChatGPT may need extra instructions to make something useful. Overall it might be better to hand-craft your documentation to make sure it is accurate and useful.
 
 ## 8. Styling
 
-**Me:** Please update this code. It should use tailwindcss for styling, and take up the full screen. It should also work on mobile. For tailwindcss breakpoints, use nothing (medium or smaller) and "md" for medium and larger devices. Here is the basic skeleton:
+**Me:** Please update this code. It should use Tailwind CSS for styling, and take up the full screen. It should also work on mobile. For Tailwindcss breakpoints, use nothing (medium or smaller) and "md" for medium and larger devices. Here is the basic skeleton:
 
 ```jsx
 <div>
@@ -343,9 +345,72 @@ Before you use this code, ensure your project is set up to work with React and T
 
 For the responsiveness, Tailwind CSS utility classes inherently provide responsiveness. If you need more custom styling at different breakpoints, you can use Tailwind's responsive design features by prefixing classes with the appropriate breakpoint (e.g., `md:text-2xl` to set text size at the medium breakpoint). Adjust as necessary for your design needs!
 
-**My Take:** The result works well, and the extra explanations are nice. However, developers should always scrutinize ChatGTP's code instead of blindly copying it into their projects.
+**My Take:** The result works well, and the extra explanations are nice. However, developers should always scrutinize ChatGTP's code instead of blindly copying it into their projects. And learning the technology in-depth (in this case Tailwind CSS) will absolutely save time over asking ChatGPT every time you need to make a change.
 
-## 9. Understanding Code
+## 9. Databases
+
+**Me:** Let's say I have a .sql file that creates and populates various tables. I'd like to quickly create a local postgres db, load the sql file, and query the results using the command line. My machine is WSL2 Ubuntu. Be sure to set up any necessary users and passwords.
+
+**ChatGPT:** Creating and populating a PostgreSQL database from a `.sql` file on a machine with WSL2 Ubuntu can be done with a few steps. Here's a step-by-step guide to achieving that:
+
+1. **Install PostgreSQL**:
+
+   - First, you'll need to have PostgreSQL installed on your machine. If it's not already installed, you can do so with the following command:
+     ```bash
+     sudo apt-get update
+     sudo apt-get install postgresql postgresql-contrib
+     ```
+
+2. **Start PostgreSQL**:
+
+   - Now, start the PostgreSQL service:
+     ```bash
+     sudo service postgresql start
+     ```
+
+3. **Create a New User**:
+
+   - Create a new user for PostgreSQL with the following command. Replace "your_username" and "your_password" with your desired username and password:
+     ```bash
+     sudo -u postgres createuser -P your_username
+     ```
+
+4. **Create a New Database**:
+
+   - Create a new database, replacing "your_database_name" with the desired name for your database:
+     ```bash
+     sudo -u postgres createdb -O your_username your_database_name
+     ```
+
+5. **Load the .sql File**:
+
+   - Now, it's time to load your `.sql` file into the database you just created. Replace "path_to_your_file.sql" with the path to your `.sql` file:
+     ```bash
+     psql -U your_username -d your_database_name -f path_to_your_file.sql
+     ```
+
+6. **Query the Database**:
+
+   - Now, you can query the database using the `psql` command-line tool:
+     ```bash
+     psql -U your_username -d your_database_name
+     ```
+   - Once inside the `psql` interface, you can run SQL queries directly. For example, to see all the tables in your database, you'd type:
+     ```sql
+     \dt
+     ```
+
+7. **Exit PostgreSQL**:
+   - When you're finished, you can exit the `psql` interface by typing:
+     ```sql
+     \q
+     ```
+
+This process sets up a local PostgreSQL database, loads a `.sql` file, and allows you to query the results using the command line on a machine with WSL2 Ubuntu.
+
+**My Take:** Worked well. ChatGPT is great for these kinds of tasks where you want to get something done fast and don't require a lot of rigor.
+
+## 10. Understanding Code
 
 **Me:** Can you explain what this code does, annotate it, and give an example of its use?
 
@@ -407,60 +472,14 @@ Here's how you might use this function to calculate the length of a list:
 
 The `???` function is a recursive function to calculate the length of a list. It’s constructed using anonymous functions and higher-order functions, demonstrating concepts like closures and the Y combinator-style recursion technique in Scheme.
 
-**My Take:** I am not enough of a scheme guru to tell if every annotation is accurate, but it is correct that the function calculates the length of a list and uses the Y combinator. Code example: Friedman, Daniel P., and Matthias Felleisen. “12. Take Cover.” The Seasoned Schemer, MIT Press, Cambridge, MA, 2000
-
-## 10. Splitting User Stories
-
-**Me:** Please take the following user story summary and split it into 2 separate stories. Each one should represent a "vertical slice" of work and deliver value to the end user. Summary: Add filter and search to shop page.
-
-**ChatGPT:** Absolutely. Below are two user stories derived from your summary, each providing a vertical slice of functionality that delivers value to the end user.
-
-### User Story 1: Implement Filter Functionality on Shop Page
-
-**Summary:**  
-The team will add a filter functionality to the shop page, allowing users to narrow down products based on specific criteria, providing a more efficient and user-friendly shopping experience.
-
-**Acceptance Criteria:**
-
-1. **Given** that a user is on the shop page,  
-   **When** they view the product listing,  
-   **Then** they should see an option to filter products by various criteria (e.g. price, category, brand, etc.).
-
-2. **Given** that the filter options are visible,  
-   **When** a user selects a criterion and applies the filter,  
-   **Then** the product listing should update to display only products that match the selected criterion.
-
-3. **Given** that products are being filtered,  
-   **When** a user clears the selected filter(s),  
-   **Then** the product listing should revert to displaying all available products.
-
-### User Story 2: Implement Search Functionality on Shop Page
-
-**Summary:**  
-The team will integrate a search functionality on the shop page to enable users to quickly find and view products that match their search terms, facilitating faster and more efficient navigation.
-
-**Acceptance Criteria:**
-
-1. **Given** that a user is on the shop page,  
-   **When** they view the product listing,  
-   **Then** they should see a search bar above the list of products.
-
-2. **Given** that the search bar is visible,  
-   **When** a user enters a search term and submits the search,  
-   **Then** the product listing should update to display products that match the search term, based on product name, description, or other relevant attributes.
-
-3. **Given** that products are being displayed based on a search term,  
-   **When** a user clears the search bar,  
-   **Then** the product listing should revert to displaying all available products.
-
-In both stories, ensure that the user interface is intuitive and responsive, and that there is appropriate error handling and feedback for the user. Each story represents a vertical slice because they each deliver a distinct piece of functionality that provides value to the user independently, facilitating iterative development and testing.
-
-**My Take:** Given the vagueness of my input, this seems accurate. Could be a useful starting point.
+**My Take:** I am not enough of a scheme guru to tell if the annotations are accurate, but it is correct that the function calculates the length of a list and uses the Y combinator! Chat GPT's ability to 'understand' code can be very impressive.
+[Scheme code from: Friedman, Daniel P., and Matthias Felleisen. “12. Take Cover.” The Seasoned Schemer, MIT Press, Cambridge, MA, 2000]
 
 ## Conclusion
 
-Note that these examples _are_ cherry-picked!
-ChatGPT is sometimes completely unable to output anything helpful, and usually requires additional prompting to produce something useful.
+Note that these examples _are_ somewhat cherry-picked!
+ChatGPT is sometimes completely unable to output anything helpful, and often requires additional prompting to produce something useful.
+And again, developers need to carefully validate all its outputs.
 
-However, in spite of its limitations, ChatGPT 4.0 can be a useful tool in a developer's toolbox.
+In spite of its limitations, ChatGPT 4.0 can be a useful tool in a developer's toolbox.
 I'm looking forward to seeing it become even more powerful over time.
