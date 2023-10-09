@@ -2,10 +2,15 @@
 
 ## Credits
 
-- https://www.iconfinder.com/iconsets/circle-icons-1
-- https://unsplash.com/photos/95YRwf6CNw8?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink
-- https://atom.redpixelthemes.com/
-- https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg
+- Styling and theme
+  - https://atom.redpixelthemes.com/
+- Icons
+  - https://www.iconfinder.com/iconsets/circle-icons-1
+  - https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg
+- Laptop Pic
+  - https://unsplash.com/photos/95YRwf6CNw8?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink
+- Word Hints
+  - https://www.datamuse.com/api/
 
 ## Development Tools Used
 
