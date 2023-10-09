@@ -84,7 +84,7 @@ export const ConnectWithMe = () => {
   return (
     <div className="flex flex-col justify-center py-10 md:flex-row">
       <div className="flex items-center justify-center">
-        <p className="font-header text-xlg font-semibold uppercase text-gray-700">
+        <p className="font-header font-semibold uppercase text-gray-700">
           Connect with me &nbsp;
         </p>
       </div>

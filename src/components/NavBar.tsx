@@ -57,7 +57,7 @@ export const NavBar = () => {
                   className="block rounded py-2 pl-3 pr-4 font-header font-semibold text-gray-900 hover:bg-gray-100 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 "
                   to="/Posts"
                 >
-                  Posts
+                  Blog
                 </Link>
               </li>
 
@@ -67,7 +67,7 @@ export const NavBar = () => {
                   data-dropdown-toggle="dropdownNavbar"
                   className="flex w-full items-center justify-between rounded py-2 pl-3 pr-4 font-header font-semibold text-gray-900 hover:bg-gray-100 md:w-auto md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 "
                 >
-                  Demos{' '}
+                  Mini Demos{' '}
                   <svg /* Caret icon.  Rotates 180 when dropdown is open */
                     className="ml-2.5 h-2.5 w-2.5 transition-transform group-hover:rotate-180"
                     aria-hidden="true"

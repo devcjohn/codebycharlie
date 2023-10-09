@@ -228,11 +228,11 @@ export const WordGame = () => {
     <>
       <div className="mx-auto mt-10 flex min-h-full flex-col items-center justify-center text-3xl lg:text-5xl">
         <h1 className="font-header">Hintle</h1>
-        <h2 className="font-body text-xl mb-5">Wordle with Hints</h2>
+        <h2 className="mb-5 font-body text-xl">Wordle with Hints</h2>
         {renderBoard()}
-        <div className="text-center text-2xl">
+        <div className="mt-2 text-center text-2xl ">
           <div>
-            <h2 className="text-xl">Hints</h2>
+            <h2 className="text-xl font-bold">Hints</h2>
             {hints.map((h) => (
               <div className="text-lg" key={h}>
                 {h}
