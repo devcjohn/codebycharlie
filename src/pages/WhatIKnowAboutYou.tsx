@@ -84,8 +84,11 @@ export const WhatIKnowAboutYou = () => {
     product: navigator.product,
     productSub: navigator.productSub,
     performanceEntries,
+    //@ts-expect-error - it does exist, its experimental
     userAgentData: navigator.userAgentData,
+    //@ts-expect-error - it does exist, its experimental
     gpu: !navigator.gpu ? 'WebGPU not supported' : navigator.gpu,
+    //@ts-expect-error - it does exist, its experimental
     ink: navigator.ink,
   }
   return (
