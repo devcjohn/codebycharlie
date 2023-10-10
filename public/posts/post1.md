@@ -144,7 +144,7 @@ It asserts that the handleKeyDown function has been called, which would indicate
 Please remember to adjust your test case based on the specific requirements of your application. For example, if you are testing a component that should update its state or props when a key is pressed, your assertion might look different.
 
 In addition, please consider whether a fireEvent or userEvent is more appropriate for your test case. userEvent is a library built on top of fireEvent that provides a more realistic simulation of user behavior, but may not be necessary for all test cases. You can import userEvent from @testing-library/user-event
-`
+
 
 **My Take:** The output is technically accurate, but I think it would be better if the example used userEvent instead of fireEvent, as that should be the default ([Source](https://testing-library.com/docs/user-event/intro))
 

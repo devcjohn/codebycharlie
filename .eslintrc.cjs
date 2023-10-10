@@ -18,6 +18,7 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
     'testing-library/no-manual-cleanup': 'off', //vitest seems to need manual cleanup
+    'tailwindcss/classnames-order': 'off' // For some reason this won't auto fix
   },
   settings: {
     react: {
