@@ -117,13 +117,15 @@ export const WordGame = () => {
       const userWord = newBoard[turn].map((square) => square.value).join('')
       const checkResult = checkIsWordReal(userWord)
       if (!checkResult) {
-        // Invalid word.  Do not grade row.
-      } else {
-        newBoard = gradeRow(newBoard)
+        /* Word is not real. Set the letter, but don't grade the row or check for win/loss */
+        setBoard(newBoard)
+        return
       }
-
+      /* Word is valid. Grade the row */
+      newBoard = gradeRow(newBoard)
       setBoard(newBoard)
 
+      /* Check if game is won or lost */
       if (isLost(newBoard, turn)) {
         setGameState('LOST')
         return
@@ -133,11 +135,9 @@ export const WordGame = () => {
         return
       }
 
-      // Proceed to the next turn if word is valid
-      if (checkResult) {
-        setTurn((t) => t + 1)
-        setActiveSquare(0)
-      }
+      /* Word is valid and game is still in progress.  Proceed to next turn */
+      setTurn((t) => t + 1)
+      setActiveSquare(0)
     },
     [setActiveSquare, gradeRow, setBoard, setGameState, setTurn, turn]
   )
