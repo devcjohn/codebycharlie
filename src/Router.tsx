@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async'
-import { createBrowserRouter } from 'react-router-dom'
+import { Navigate, RouteObject, createBrowserRouter } from 'react-router-dom'
 import { WordGame } from './pages/wordGame/WordGame'
 import FormFillDemo from './components/FormFillDemo'
 import Crash from './pages/Crash'
@@ -45,19 +45,19 @@ const routes = [
     hideNavBar: true,
   },
   {
-    path: '/posts',
-    title: 'Posts',
+    path: '/blog',
+    title: 'Blogposts',
     component: <Posts />,
   },
   {
-    path: '/posts/:postId',
+    path: '/blog/:slug',
     title: 'Post',
     component: <BlogPost />,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     loader: async ({ params }: { params: any }) => {
       /* Having the loader here makes it easy to 404 when a post doesn't exist.
         A downside is that it seems the loader call must finish before the page starts loading */
-      const res = await fetch(`/posts/post${params.postId}.md`)
+      const res = await fetch(`/blog/${params.slug}.md`)
       if (res.status === 404) {
         throw new Response('Not Found', { status: 404 })
       }
@@ -76,8 +76,8 @@ const routes = [
   },
 ]
 
-export const router = createBrowserRouter(
-  routes.map(({ path, title, component, hideNavBar, loader }) => ({
+const allRoutes: RouteObject[] = routes.map(({ path, title, component, hideNavBar, loader }) => {
+  return {
     path,
     element: (
       <>
@@ -99,5 +99,19 @@ export const router = createBrowserRouter(
     ),
     errorElement: <FallbackComponent />,
     loader: loader,
-  }))
-)
+  }
+})
+
+/* Deprecated route.  Redirect to new route */
+allRoutes.push({
+  path: '/posts',
+  element: <Navigate to="/blog" replace />,
+})
+
+/* Deprecated route.  Redirect to new route */
+allRoutes.push({
+  path: '/posts/1',
+  element: <Navigate to="/blog/chatgpt-for-developers-10-examples" replace />,
+})
+
+export const router = createBrowserRouter(allRoutes)
