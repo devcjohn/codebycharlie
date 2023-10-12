@@ -18,6 +18,7 @@ import * as utils from '../src/pages/wordGame/utils'
 // })
 
 const spyGenerateWord = vi.spyOn(wordLib, 'getRandomAnswer')
+const spyCheckIsWordReal = vi.spyOn(wordLib, 'checkIsWordReal')
 
 /* We don't want to call the actual API in tests, so we mock it out */
 const spyFetchHint = vi.spyOn(utils, 'fetchHint')
@@ -36,6 +37,7 @@ function setup(jsx: JSX.Element) {
 
 afterEach(() => {
   cleanup()
+  vi.clearAllMocks()
 })
 
 describe('Hintle', () => {
@@ -286,9 +288,59 @@ describe('Hintle', () => {
   })
 
   describe('Grading', () => {
+    it('Should not grade ANY row if entered word is not "real" (in dictionary)', async () => {
+      spyGenerateWord.mockImplementation(() => 'RIGHT')
+
+      const { user } = setup(<WordGame />)
+
+      for (let i = 0; i < ROWS; i++) {
+        /* Fill row with fake word.  Word should not be graded */
+        spyCheckIsWordReal.mockImplementation(() => false)
+        await user.keyboard('ABCDE')
+        expect((await screen.findByTestId(`square-${i}-0`)).classList.contains('bg-white')).toBe(
+          true
+        )
+        expect((await screen.findByTestId(`square-${i}-1`)).classList.contains('bg-white')).toBe(
+          true
+        )
+        expect((await screen.findByTestId(`square-${i}-2`)).classList.contains('bg-white')).toBe(
+          true
+        )
+        expect((await screen.findByTestId(`square-${i}-3`)).classList.contains('bg-white')).toBe(
+          true
+        )
+        expect((await screen.findByTestId(`square-${i}-4`)).classList.contains('bg-white')).toBe(
+          true
+        )
+
+        /* Clear the row */
+        await user.keyboard('{backspace}{backspace}{backspace}{backspace}{backspace}')
+
+        /* Fill row with real word.  Word should be graded */
+        spyCheckIsWordReal.mockImplementation(() => true)
+        await user.keyboard('ABCDE')
+        expect((await screen.findByTestId(`square-${i}-0`)).classList.contains('bg-gray-500')).toBe(
+          true
+        )
+        expect((await screen.findByTestId(`square-${i}-1`)).classList.contains('bg-gray-500')).toBe(
+          true
+        )
+        expect((await screen.findByTestId(`square-${i}-2`)).classList.contains('bg-gray-500')).toBe(
+          true
+        )
+        expect((await screen.findByTestId(`square-${i}-3`)).classList.contains('bg-gray-500')).toBe(
+          true
+        )
+        expect((await screen.findByTestId(`square-${i}-4`)).classList.contains('bg-gray-500')).toBe(
+          true
+        )
+      }
+    })
+
     it('Colors squares based on correctness', async () => {
       // Mock out the correct answer to be 'RIGHT'
       spyGenerateWord.mockImplementation(() => 'RIGHT')
+      spyCheckIsWordReal.mockImplementation(() => true)
 
       const { user } = setup(<WordGame />)
 
