@@ -11,6 +11,18 @@ module.exports = {
       padding: '1rem',
     },
     extend: {
+      animation: {
+        spinPulsate: 'spinPulsate 4s linear infinite',
+      },
+      keyframes: {
+        spinPulsate: {
+          '0%': { transform: 'rotate(0deg) scale(1)' },
+          '25%': { transform: 'rotate(-90deg) scale(0.85)' },
+          '50%': { transform: 'rotate(-180deg) scale(1)' },
+          '75%': { transform: 'rotate(-270deg) scale(0.85)' },
+          '100%': { transform: 'rotate(-360deg) scale(1)' },
+        },
+      },
       backgroundImage: {
         laptop: "url('/img/laptop.webp')",
       },

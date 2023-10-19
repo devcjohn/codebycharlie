@@ -1,16 +1,34 @@
 import { Helmet } from 'react-helmet-async'
-import { Navigate, RouteObject, createBrowserRouter } from 'react-router-dom'
-import { WordGame } from './pages/wordGame/WordGame'
+import { Navigate, RouteObject, RouterProvider, createBrowserRouter } from 'react-router-dom'
 import FormFillDemo from './components/FormFillDemo'
-import Crash from './pages/Crash'
 import { Contact } from './pages/Contact'
 import { Home } from './pages/Home'
-import { WhiteBoard } from './pages/WhiteBoard'
-import { Posts } from './pages/Posts'
 import { NavBar } from './components/NavBar'
-import { BlogPost } from './components/BlogPost'
 import { FallbackComponent } from './components/FallbackComponent'
 import { WhatIKnowAboutYou } from './pages/WhatIKnowAboutYou'
+import { Suspense, lazy } from 'react'
+import { LoadingFallback } from './components/LoadingFallback'
+
+/* 
+  Lazy load pages
+  This allows faster loading of the inital page the user visits, because the vite bundler will create a separate chunk for each page
+  instead of bundling all pages into one giant chunk.
+*/
+const WhiteBoard = lazy(() =>
+  import('./pages/WhiteBoard').then((module) => ({ default: module.WhiteBoard }))
+)
+
+const BlogPost = lazy(() =>
+  import('./components/BlogPost').then((module) => ({ default: module.BlogPost }))
+)
+
+const Posts = lazy(() => import('./pages/Posts').then((module) => ({ default: module.Posts })))
+
+const WordGame = lazy(() =>
+  import('./pages/wordGame/WordGame').then((module) => ({ default: module.WordGame }))
+)
+
+const Crash = lazy(() => import('./pages/Crash').then((module) => ({ default: module.Crash })))
 
 const routes = [
   {
@@ -80,7 +98,14 @@ const allRoutes: RouteObject[] = routes.map(({ path, title, component, hideNavBa
   return {
     path,
     element: (
-      <>
+      <Suspense /* This is shown while components are being lazy loaded */
+        fallback={
+          <>
+            <NavBar />
+            <LoadingFallback />
+          </>
+        }
+      >
         <Helmet>
           <title>{title}</title>
           <meta property="og:title" content={title} />
@@ -95,7 +120,7 @@ const allRoutes: RouteObject[] = routes.map(({ path, title, component, hideNavBa
         </Helmet>
         {!hideNavBar && <NavBar />}
         {component}
-      </>
+      </Suspense>
     ),
     errorElement: <FallbackComponent />,
     loader: loader,
@@ -114,4 +139,4 @@ allRoutes.push({
   element: <Navigate to="/blog/chatgpt-for-developers-10-examples" replace />,
 })
 
-export const router = createBrowserRouter(allRoutes)
+export const Router = () => <RouterProvider router={createBrowserRouter(allRoutes)} />

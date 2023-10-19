@@ -54,8 +54,8 @@ export const AboutMe = () => {
         variety of languages and frameworks.
         <br /> I am passionate about building high-quality software and fostering a collaborative
         and inclusive work environment.
-        <ConnectWithMe />
       </p>
+      <ConnectWithMe />
       <div>
         <h2 className="my-10 text-center font-header text-3xl font-semibold uppercase text-primary sm:text-4xl lg:text-5xl ">
           What I offer
@@ -84,9 +84,7 @@ export const ConnectWithMe = () => {
   return (
     <div className="flex flex-col justify-center py-10 md:flex-row">
       <div className="flex items-center justify-center">
-        <p className="font-header font-semibold uppercase text-gray-700">
-          Connect with me &nbsp;
-        </p>
+        <p className="font-header font-semibold uppercase text-gray-700">Connect with me &nbsp;</p>
       </div>
       <div className="flex items-center justify-center">
         <a href="https://www.linkedin.com/in/devcjohn">
