@@ -21,7 +21,7 @@ export const WhatIKnowAboutYou = () => {
 
   const perf = timingKeys
     .map((k) => {
-      const val = (window.performance.timing as any)[k]
+      const val = (window.performance.timing as never)[k]
       const actualVal = typeof val === 'number' && !!val ? val : null
       if (!actualVal) {
         return null
