@@ -3,7 +3,7 @@
 ## Overview
 
 This is my personal portfolio website.
-For now it contains an overview of who I am, a blog, a word game, and some miscellanous demos.
+It contains an overview of who I am, a blog, a word game, and some miscellanous demos.
 This website was built to be responsibe, so every page should work well on both mobile and larger screens.
 
 ## Credits
