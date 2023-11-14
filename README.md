@@ -1,8 +1,14 @@
 # codebycharlie
 
+## Overview
+
+This is my personal portfolio website.
+For now it contains an overview of who I am, a blog, a word game, and some miscellanous demos.
+This website was built to be responsibe, so every page should work well on both mobile and larger screens.
+
 ## Credits
 
-- Styling and theme
+- Styling and theme inspiration
   - https://atom.redpixelthemes.com/
 - Icons
   - https://www.iconfinder.com/iconsets/circle-icons-1
@@ -10,7 +16,7 @@
   - https://www.iconpacks.net/free-icon/gear-1213.html
 - Laptop Pic
   - https://unsplash.com/photos/95YRwf6CNw8?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink
-- Word Hints
+- Word Hints for Hintle
   - https://www.datamuse.com/api/
 
 ## Development Tools Used
