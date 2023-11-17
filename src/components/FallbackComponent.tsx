@@ -36,7 +36,7 @@ export const FallbackComponent = () => {
   return (
     <>
       <div>An error has occurred</div>
-      <div>{`${error.status} - ${error.statusText} - ${error.data} - ${error.internal} - ${error.error}`}</div>
+      <div>{`${error.status} - ${error.statusText} - ${error.data}`}</div>
     </>
   )
 }
