@@ -8,7 +8,7 @@ import scheme from 'react-syntax-highlighter/dist/esm/languages/prism/scheme'
 import ReactMarkdown, { ExtraProps } from 'react-markdown'
 import { useLoaderData } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
-import { parseMarkdownWithYamlFrontmatter } from '../util/util'
+import { parseMarkdownHeaders } from '../util/util'
 
 /* Because we are using prism-light, we need to register the languages we want to use
 xml and js seem to be supported out of the box for some unknown reason */
@@ -44,13 +44,12 @@ export const BlogPost: FC = () => {
   const contentWithMetadata = useLoaderData() as string /* Data is loaded in Router */
 
   type MarkdownHeaderTags = {
-    title?: string
-    date?: string
-    tags?: string
+    title: string
+    date: string
+    tags: string
   }
 
-  const markdownMetadata = parseMarkdownWithYamlFrontmatter<MarkdownHeaderTags>(contentWithMetadata)
-  const { title } = markdownMetadata
+  const { title } = parseMarkdownHeaders<MarkdownHeaderTags>(contentWithMetadata)
 
   /* Remove the metadata at the top of the content.  Metadata begins and ends with --- */
   const content = contentWithMetadata.replace(/(---[\s\S]*?)---/, '')

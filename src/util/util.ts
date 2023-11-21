@@ -9,25 +9,44 @@ export const logNestedObjectProperties = (obj: Record<string, unknown>, prefix =
   }
 }
 
-/* https://github.com/remarkjs/react-markdown/issues/164#issuecomment-1081647686 */
-type MarkdownWithYamlFrontmatter<T> = {
-  metadata: string
-} & {
-  [K in keyof T]?: string
+type parseMarkdownHeaders<T> = {
+  [K in keyof T]: string
 }
 
-/* Supports reading tags added to the top of a markdown file */
-export const parseMarkdownWithYamlFrontmatter = <T extends Record<string, string>>(
+/* Adapted from https://github.com/remarkjs/react-markdown/issues/164#issuecomment-1081647686
+ Frontmatter is a YAML block at the top of a markdown file that contains metadata about the file.
+ react-markdown does not support reading this metadata, so we have to parse it ourselves. 
+ Given an input of the form:
+
+  ---
+  header1: value1
+  header2: value2
+  ---
+  # Markdown content
+
+  This function will return:
+  {
+    header1: value1,
+    header2: value2
+  }
+
+  Type T might be something like:
+  {
+    title: string,
+    date: string,
+  }
+ */
+export const parseMarkdownHeaders = <T extends Record<string, string>>(
   markdown: string
-): MarkdownWithYamlFrontmatter<T> => {
+): parseMarkdownHeaders<T> => {
   const metaRegExp = new RegExp(/^---[\n\r](((?!---).|[\n\r])*)[\n\r]---$/m)
 
-  // "rawYamlHeader" is the full matching string, including the --- and ---
-  // "yamlVariables" is the first capturing group, which is the string content between the --- and ---
+  /*  "rawYamlHeader" is the full matching string, including the --- and ---
+   "yamlVariables" is the first capturing group, which is the string content between the --- and ---  */
   const [rawYamlHeader, yamlVariables] = metaRegExp.exec(markdown) ?? []
 
   if (!rawYamlHeader || !yamlVariables) {
-    return { metadata: markdown }
+    throw new Error('Expected YAML frontmatter to be present in markdown file')
   }
 
   const keyValues = yamlVariables.split('\n')
@@ -41,5 +60,5 @@ export const parseMarkdownWithYamlFrontmatter = <T extends Record<string, string
     })
   ) as Record<keyof T, string>
 
-  return { ...frontmatter, metadata: markdown.replace(rawYamlHeader, '').trim() }
+  return frontmatter
 }
