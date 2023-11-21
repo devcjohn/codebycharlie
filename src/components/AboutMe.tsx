@@ -49,11 +49,12 @@ export const AboutMe = () => {
   return (
     <div className="mx-14 text-center">
       <p className="pt-6 font-body leading-relaxed text-gray-700">
-        <br /> I am based in Saint Louis.
-        <br /> My specialty is full-stack Javascript development, but I have experience with a wide
-        variety of languages and frameworks.
+        <br /> I am a software engineer based in Saint Louis.
+        <br /> My specialty is full-stack development with Node.js, Javascript/Typescript, React,
+        .NET framework w/ C#, and SQL.
         <br /> I am passionate about building high-quality software and fostering a collaborative
         and inclusive work environment.
+        <br /> For a copy of my full resume, please send me a message on LinkedIn.
       </p>
       <ConnectWithMe />
       <div>
@@ -86,7 +87,7 @@ export const ConnectWithMe = () => {
       <div className="flex items-center justify-center">
         <p className="font-header font-semibold uppercase text-gray-700">Connect with me &nbsp;</p>
       </div>
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center  transition-all hover:scale-110">
         <a href="https://www.linkedin.com/in/devcjohn">
           <img src={linkedinSvg} className="h-10 w-10" alt="LinkedIn Logo" />
         </a>

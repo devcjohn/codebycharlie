@@ -38,8 +38,8 @@ export default defineConfig({
   plugins: [
     react(),
     envVarValidationPlugin(),
-    // Put the Sentry vite plugin after all other plugins
-    // Sentry messes up hot reloading, so we only want to use it in production
+    // Docs: "Put the Sentry vite plugin after all other plugins"
+    // Sentry messes up hot reloading if this is loaded here in dev mode.
     ...(isProduction
       ? [
           sentryVitePlugin({

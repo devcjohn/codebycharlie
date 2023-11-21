@@ -7,7 +7,10 @@ export const AboutThisSite = () => (
       <h2 className="font-header">
         View the source code for this website and the tools used to build it &nbsp; &nbsp;
       </h2>
-      <a href="https://github.com/devcjohn/codebycharlie">
+      <a
+        href="https://github.com/devcjohn/codebycharlie"
+        className="transition-all hover:scale-110"
+      >
         <img
           src="/img/github-mark.svg"
           className="h-16 w-16"
