@@ -41,7 +41,11 @@ export const Home = () => {
         <div className="relative z-30 py-36">
           <div className="flex flex-col items-center justify-center lg:flex-row">
             <div className="rounded-full border-8  shadow-xl">
-              <img src="/img/headshot.webp" alt="headshot" className="h-48 rounded-full sm:h-56" />
+              <img
+                src="/img/capy.webp"
+                alt="Capybara with glasses and a coffee mug"
+                className="h-48 rounded-full lg:h-60"
+              />
             </div>
             <div className="mt-4 md:mt-0 md:pl-8 md:pt-8 ">
               <h1 className="text-center font-header text-4xl text-white md:text-6xl">
@@ -49,7 +53,7 @@ export const Home = () => {
               </h1>
               <div className="flex flex-col justify-center pt-3 sm:flex-row sm:pt-5 lg:justify-start">
                 <div className="flex items-center justify-center pl-0 sm:justify-start md:pl-1">
-                  <p className="font-header  text-lg text-white">Full Stack Software Engineer</p>
+                  <p className="font-header  text-lg text-white">Software Engineer</p>
                 </div>
               </div>
             </div>
